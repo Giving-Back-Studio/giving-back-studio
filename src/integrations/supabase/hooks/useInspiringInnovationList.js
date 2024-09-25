@@ -3,20 +3,9 @@ import { supabase } from '../supabase';
 
 const fromSupabase = async (query) => {
   const { data, error } = await query;
-  if (error) throw new Error(error.message);
+  if (error) throw error;
   return data;
 };
-
-/*
-### inspiring_innovation_list
-
-| name       | type                     | format  | required |
-|------------|--------------------------|---------|----------|
-| id         | bigint                   | integer | true     |
-| created_at | timestamp with time zone | string  | true     |
-| email      | text                     | string  | true     |
-
-*/
 
 export const useInspiringInnovationListItem = (id) => useQuery({
   queryKey: ['inspiring_innovation_list', id],
@@ -31,7 +20,11 @@ export const useInspiringInnovationList = () => useQuery({
 export const useAddInspiringInnovationListItem = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (newItem) => fromSupabase(supabase.from('inspiring_innovation_list').insert([newItem])),
+    mutationFn: async (newItem) => {
+      const { data, error } = await supabase.from('inspiring_innovation_list').insert([newItem]);
+      if (error) throw error;
+      return data;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inspiring_innovation_list'] });
     },
@@ -41,7 +34,11 @@ export const useAddInspiringInnovationListItem = () => {
 export const useUpdateInspiringInnovationListItem = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, ...updateData }) => fromSupabase(supabase.from('inspiring_innovation_list').update(updateData).eq('id', id)),
+    mutationFn: async ({ id, ...updateData }) => {
+      const { data, error } = await supabase.from('inspiring_innovation_list').update(updateData).eq('id', id);
+      if (error) throw error;
+      return data;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inspiring_innovation_list'] });
     },
@@ -51,7 +48,11 @@ export const useUpdateInspiringInnovationListItem = () => {
 export const useDeleteInspiringInnovationListItem = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (id) => fromSupabase(supabase.from('inspiring_innovation_list').delete().eq('id', id)),
+    mutationFn: async (id) => {
+      const { data, error } = await supabase.from('inspiring_innovation_list').delete().eq('id', id);
+      if (error) throw error;
+      return data;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inspiring_innovation_list'] });
     },

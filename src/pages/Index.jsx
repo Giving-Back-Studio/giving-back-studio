@@ -17,8 +17,12 @@ const Index = () => {
       toast.success('Thank you for subscribing!');
       setEmail('');
     } catch (error) {
-      toast.error('An error occurred. Please try again.');
       console.error('Error adding email to list:', error);
+      if (error.message.includes('row-level security policy')) {
+        toast.error('Unable to subscribe. Please try again later.');
+      } else {
+        toast.error('An error occurred. Please try again.');
+      }
     }
   };
 
