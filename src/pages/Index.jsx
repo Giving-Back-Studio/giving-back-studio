@@ -1,7 +1,8 @@
 import React from 'react';
-import { CheckCircle, Lightbulb, Users } from 'lucide-react';
+import { CheckCircle, Wrench, Users } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import FlowerOfLife from '@/components/FlowerOfLife';
 
 const Index = () => {
   const handleSubmit = (e) => {
@@ -10,9 +11,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col justify-between relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-blue-700 to-teal-500 opacity-50"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22%3E%3Cpath fill=%22%23fff%22 d=%22M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z%22%3E%3C/path%3E%3C/svg%3E')] opacity-10 animate-wave"></div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-teal-800 text-white flex flex-col justify-between relative overflow-hidden">
+      <FlowerOfLife />
       
       <header className="relative z-10 pt-8 px-4">
         <nav className="container mx-auto flex justify-between items-center">
@@ -47,9 +47,9 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           {[
-            ["Master actionable Integrative Organizing strategies to revolutionize your approach", <CheckCircle key="check" />],
-            ["Unlock innovative tools and techniques to amplify your impact and reach", <Lightbulb key="lightbulb" />],
-            ["Connect with like-minded changemakers in exclusive events and conversations", <Users key="users" />]
+            ["A practical Integrative Organizing lesson", <CheckCircle key="check" />],
+            ["New tools to grow and scale your impact", <Wrench key="wrench" />],
+            ["Invitations to exclusive events and conversations", <Users key="users" />]
           ].map(([benefit, icon], index) => (
             <div key={index} className="flex items-start bg-white/5 p-6 rounded-lg backdrop-blur-sm transform transition-all duration-300 hover:scale-105 hover:bg-white/10">
               <span className="text-teal-400 mr-3 flex-shrink-0 mt-1">{icon}</span>
