@@ -33,17 +33,20 @@ const Index = () => {
             </div>
           ))}
         </div>
-        <div className="w-full max-w-md">
-          <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
-            <Input
-              type="email"
-              placeholder="jane@example.com"
-              className="flex-grow bg-white/10 border-white/20 text-white placeholder-gray-400"
-              required
-            />
-            <Button type="submit" className="bg-gradient-to-r from-teal-400 to-purple-500 hover:from-teal-500 hover:to-purple-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
-              Subscribe to Inspiring Innovations
-            </Button>
+        <div className="w-full max-w-md animate-bounce-slow">
+          <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105">
+            <h2 className="text-2xl font-bold mb-4 text-teal-300">Subscribe to Inspiring Innovations</h2>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Input
+                type="email"
+                placeholder="jane@example.com"
+                className="flex-grow bg-white/20 border-white/30 text-white placeholder-gray-300"
+                required
+              />
+              <Button type="submit" className="bg-gradient-to-r from-teal-400 to-purple-500 hover:from-teal-500 hover:to-purple-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                Subscribe
+              </Button>
+            </div>
           </form>
         </div>
       </main>
