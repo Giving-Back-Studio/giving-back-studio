@@ -61,16 +61,6 @@ const CosmicAnimation = () => {
       transition={{ duration: 1 }}
     >
       <canvas ref={canvasRef} className="w-full h-full" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          className="text-6xl font-bold text-white text-center"
-          initial={{ scale: 0 }}
-          animate={{ scale: [0, 1.2, 1] }}
-          transition={{ duration: 2, times: [0, 0.8, 1] }}
-        >
-          Cosmos Awakens
-        </motion.div>
-      </div>
     </motion.div>
   );
 };
