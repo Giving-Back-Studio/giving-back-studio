@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Wrench, Mail } from 'lucide-react';
+import { CheckCircle, Lightbulb, Users } from 'lucide-react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -35,13 +35,13 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           {[
-            ["A practical Integrative Organizing lesson", <CheckCircle key="check" />],
-            ["New tools to help grow and scale impact", <Wrench key="wrench" />],
-            ["Invitations to exclusive events and community conversations", <Mail key="mail" />]
+            ["Master actionable Integrative Organizing strategies to revolutionize your approach", <CheckCircle key="check" />],
+            ["Unlock innovative tools and techniques to amplify your impact and reach", <Lightbulb key="lightbulb" />],
+            ["Connect with like-minded changemakers in exclusive events and conversations", <Users key="users" />]
           ].map(([benefit, icon], index) => (
-            <div key={index} className="flex items-start bg-white/5 p-4 rounded-lg backdrop-blur-sm">
-              <span className="text-teal-400 mr-2 flex-shrink-0 mt-1">{icon}</span>
-              <p className="text-gray-200">{benefit}</p>
+            <div key={index} className="flex items-start bg-white/5 p-6 rounded-lg backdrop-blur-sm">
+              <span className="text-teal-400 mr-3 flex-shrink-0 mt-1">{icon}</span>
+              <p className="text-gray-200 text-lg">{benefit}</p>
             </div>
           ))}
         </div>
