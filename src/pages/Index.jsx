@@ -39,7 +39,7 @@ const Index = () => {
             <div className="flex flex-col md:flex-row gap-4">
               <Input
                 type="email"
-                placeholder="jane@example.com"
+                placeholder="Enter your email"
                 className="flex-grow bg-white/20 border-white/30 text-white placeholder-gray-300"
                 required
               />
