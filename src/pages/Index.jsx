@@ -5,9 +5,11 @@ import { Input } from "@/components/ui/input";
 import FlowerOfLife from '@/components/FlowerOfLife';
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
+import CosmicAnimation from '@/components/CosmicAnimation';
 
 const Index = () => {
   const [email, setEmail] = useState('');
+  const [showCosmic, setShowCosmic] = useState(false);
   const addInspiringInnovationListItem = useAddInspiringInnovationListItem();
 
   const handleSubmit = async (e) => {
@@ -16,6 +18,8 @@ const Index = () => {
       await addInspiringInnovationListItem.mutateAsync({ email });
       toast.success('Thank you for subscribing!');
       setEmail('');
+      setShowCosmic(true);
+      setTimeout(() => setShowCosmic(false), 5000); // Hide animation after 5 seconds
     } catch (error) {
       console.error('Error adding email to list:', error);
       if (error.message.includes('row-level security policy')) {
@@ -29,6 +33,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-teal-800 text-white flex flex-col justify-between relative overflow-hidden">
       <FlowerOfLife />
+      {showCosmic && <CosmicAnimation />}
       
       <main className="container mx-auto px-4 py-16 flex flex-col items-center text-center relative z-10">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-500">
