@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckCircle, Wrench, Users } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import FlowerOfLife from '@/components/FlowerOfLife';
+import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
+import { toast } from 'sonner';
 
 const Index = () => {
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState('');
+  const addInspiringInnovationListItem = useAddInspiringInnovationListItem();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted');
+    try {
+      await addInspiringInnovationListItem.mutateAsync({ email });
+      toast.success('Thank you for subscribing!');
+      setEmail('');
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
+      console.error('Error adding email to list:', error);
+    }
   };
 
   return (
@@ -42,6 +54,8 @@ const Index = () => {
                 placeholder="Enter your email"
                 className="flex-grow bg-white/20 border-white/30 text-white placeholder-gray-300 text-center"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <Button type="submit" className="bg-gradient-to-r from-teal-400 to-purple-500 hover:from-teal-500 hover:to-purple-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                 Subscribe
