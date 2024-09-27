@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { CheckCircle, Wrench, Users } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import FlowerOfLife from '@/components/FlowerOfLife';
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
+import Logo from '@/components/Logo';
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -19,57 +19,57 @@ const Index = () => {
       toast.success('Thank you for subscribing!');
       setEmail('');
       setShowCosmic(true);
-      setTimeout(() => setShowCosmic(false), 5000); // Hide animation after 5 seconds
+      setTimeout(() => setShowCosmic(false), 5000);
     } catch (error) {
       console.error('Error adding email to list:', error);
-      if (error.message.includes('row-level security policy')) {
-        toast.error('Unable to subscribe. Please try again later.');
-      } else {
-        toast.error('An error occurred. Please try again.');
-      }
+      toast.error('An error occurred. Please try again.');
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-teal-800 text-white flex flex-col justify-between relative overflow-hidden">
-      <FlowerOfLife />
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900 text-white flex flex-col">
       {showCosmic && <CosmicAnimation />}
       
-      <main className="container mx-auto px-4 py-16 flex flex-col items-center text-center relative z-10">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-500">
-          Grow Your Regenerative Social Enterprise
-        </h1>
-        <p className="text-xl md:text-2xl mb-12 max-w-3xl text-gray-300">
-          Get weekly insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-16">
-          {[
-            ["A practical Integrative Organizing lesson", <CheckCircle key="check" />],
-            ["New tools to grow and scale your impact", <Wrench key="wrench" />],
-            ["Invitations to exclusive events and conversations", <Users key="users" />]
-          ].map(([benefit, icon], index) => (
-            <div key={index} className="flex flex-col items-center bg-white/5 p-6 rounded-lg backdrop-blur-sm transform transition-all duration-300 hover:scale-105 hover:bg-white/10">
-              <span className="text-teal-400 mb-3">{icon}</span>
-              <p className="text-gray-200 text-lg">{benefit}</p>
-            </div>
-          ))}
+      <header className="container mx-auto px-4 py-6">
+        <Logo />
+      </header>
+
+      <main className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between flex-grow">
+        <div className="md:w-1/2 mb-8 md:mb-0">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Grow your regenerative social enterprise
+          </h1>
+          <p className="text-xl mb-6">
+            Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
+          </p>
         </div>
-        <div className="w-full max-w-md animate-bounce-slow">
-          <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105">
-            <h2 className="text-2xl font-bold mb-4 text-teal-300">Subscribe to Inspiring Innovations</h2>
-            <div className="flex flex-col md:flex-row gap-4">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-grow bg-white/20 border-white/30 text-white placeholder-gray-300 text-center"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Button type="submit" className="bg-gradient-to-r from-teal-400 to-purple-500 hover:from-teal-500 hover:to-purple-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                Subscribe
-              </Button>
-            </div>
+
+        <div className="md:w-1/2 bg-white/10 backdrop-blur-md p-8 rounded-xl">
+          <h2 className="text-2xl font-bold mb-6">Every Monday, you'll get:</h2>
+          <ul className="space-y-4 mb-6">
+            {[
+              "A practical Integrative Organizing lesson",
+              "New tools to grow and scale your impact",
+              "Invitations to exclusive events and conversations"
+            ].map((benefit, index) => (
+              <li key={index} className="flex items-center">
+                <CheckCircle className="text-green-400 mr-2" />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              className="bg-white/20 border-white/30 text-white placeholder-gray-300"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
+              Subscribe to inspiring innovations
+            </Button>
           </form>
         </div>
       </main>
