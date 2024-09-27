@@ -27,7 +27,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900 text-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue text-white flex flex-col font-sans">
       {showCosmic && <CosmicAnimation />}
       
       <header className="container mx-auto px-4 py-6">
@@ -36,16 +36,16 @@ const Index = () => {
 
       <main className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between flex-grow">
         <div className="md:w-1/2 mb-8 md:mb-0">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-light mb-6 leading-tight">
             Grow your regenerative social enterprise
           </h1>
-          <p className="text-xl mb-6">
+          <p className="text-xl mb-6 font-light">
             Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
           </p>
         </div>
 
         <div className="md:w-1/2 bg-white/10 backdrop-blur-md p-8 rounded-xl">
-          <h2 className="text-2xl font-bold mb-6">Every Monday, you'll get:</h2>
+          <h2 className="text-2xl font-light mb-6">Every Monday, you'll get:</h2>
           <ul className="space-y-4 mb-6">
             {[
               "A practical Integrative Organizing lesson",
@@ -54,7 +54,7 @@ const Index = () => {
             ].map((benefit, index) => (
               <li key={index} className="flex items-center">
                 <CheckCircle className="text-green-400 mr-2" />
-                <span>{benefit}</span>
+                <span className="font-light">{benefit}</span>
               </li>
             ))}
           </ul>
@@ -67,7 +67,7 @@ const Index = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button type="submit" className="w-full bg-gbs-purple hover:bg-gbs-purple/90">
               Subscribe to inspiring innovations
             </Button>
           </form>

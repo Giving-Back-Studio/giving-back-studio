@@ -51,6 +51,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gbs: {
+          purple: '#610088',
+          blue: '#262D8C',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,6 +84,9 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "wave": "wave 15s ease-in-out infinite",
         "bounce-slow": "bounce-slow 3s ease-in-out infinite",
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },
