@@ -9,7 +9,7 @@ import Logo from '@/components/Logo';
 import { BuilderComponent, builder } from '@builder.io/react';
 
 // Initialize Builder with your API key
-builder.init(import.meta.env.VITE_BUILDER_API_KEY);
+builder.init(process.env.REACT_APP_BUILDER_API_KEY);
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -66,7 +66,7 @@ const Index = () => {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="bg-white/30 border-white/50 text-white placeholder-white/70"
+              className="bg-white/20 border-white/30 text-white placeholder-gray-300"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
