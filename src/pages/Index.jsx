@@ -9,7 +9,7 @@ import Logo from '@/components/Logo';
 import { BuilderComponent, builder } from '@builder.io/react';
 
 // Initialize Builder with your API key
-builder.init(process.env.REACT_APP_BUILDER_API_KEY);
+builder.init(import.meta.env.VITE_BUILDER_API_KEY);
 
 const Index = () => {
   const [email, setEmail] = useState('');
