@@ -66,7 +66,7 @@ const Index = () => {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300"
+              className="bg-white/30 border-white/50 text-white placeholder-white/70"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
