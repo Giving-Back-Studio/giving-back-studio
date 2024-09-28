@@ -6,6 +6,10 @@ import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
 import Logo from '@/components/Logo';
+import { BuilderComponent, builder } from '@builder.io/react';
+
+// Initialize Builder with your API key
+builder.init(process.env.REACT_APP_BUILDER_API_KEY);
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -73,6 +77,9 @@ const Index = () => {
           </form>
         </div>
       </main>
+
+      {/* Add the BuilderComponent to render Builder content */}
+      <BuilderComponent model="page" />
     </div>
   );
 };
