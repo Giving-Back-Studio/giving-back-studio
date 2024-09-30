@@ -29,14 +29,16 @@ const ReFiInvestors = ({ searchTerm, currentPage, itemsPerPage, onPageChange }) 
         {paginatedInvestors.map((investor) => (
           <Card key={investor.id} className="bg-white/10 hover:bg-white/20 transition-colors">
             <CardHeader>
-              <CardTitle className="text-lg">{investor.name}</CardTitle>
+              <CardTitle className="text-lg">{investor.name || 'Unnamed Investor'}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm mb-2">{investor.description}</p>
-              <a href={investor.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline text-sm">
-                Learn More
-              </a>
-              <p className="text-xs mt-2 text-gray-400">Posted: {new Date(investor.createdAt).toLocaleDateString()}</p>
+              <p className="text-sm mb-2">{investor.description || 'No description available'}</p>
+              {investor.link && (
+                <a href={investor.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline text-sm">
+                  Learn More
+                </a>
+              )}
+              <p className="text-xs mt-2 text-gray-400">Posted: {investor.createdAt ? new Date(investor.createdAt).toLocaleDateString() : 'Date unknown'}</p>
             </CardContent>
           </Card>
         ))}
