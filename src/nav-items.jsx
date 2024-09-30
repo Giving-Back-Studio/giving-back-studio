@@ -1,24 +1,14 @@
-import { HomeIcon, DollarSignIcon, BriefcaseIcon, LeafIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
+import Index from "./pages/Index.jsx";
 
+/**
+ * Central place for defining the navigation items. Used for navigation components and routing.
+ */
 export const navItems = [
   {
     title: "Home",
     to: "/",
     icon: <HomeIcon className="h-4 w-4" />,
-  },
-  {
-    title: "Conscious Capital",
-    to: "/conscious-capital",
-    icon: <DollarSignIcon className="h-4 w-4" />,
-  },
-  {
-    title: "Tech4Good Jobs",
-    to: "/tech4good",
-    icon: <BriefcaseIcon className="h-4 w-4" />,
-  },
-  {
-    title: "Permaculture Farms",
-    to: "/permaculture",
-    icon: <LeafIcon className="h-4 w-4" />,
+    page: <Index />,
   },
 ];
