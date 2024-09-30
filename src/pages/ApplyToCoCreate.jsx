@@ -15,12 +15,9 @@ const ApplyToCoCreate = () => {
     { name: 'enterpriseName', label: "What's the name of your enterprise?", type: 'text' },
     { name: 'purpose', label: "In one sentence, what is its purpose?", type: 'text' },
     { name: 'customerPersona', label: "Who is your customer persona?", type: 'textarea' },
-    { name: 'brandAssets', label: "Do you have brand assets that you want to bring in (logo, brand kit) or do you need support to create those?", type: 'radio', options: ['Have assets', 'Need support', 'Both'] },
-    { name: 'productDocumentation', label: "Do you have documentation about your product offering? Photos, descriptions, price, size?", type: 'radio', options: ['Yes', 'No', 'Partial'] },
-    { name: 'shipping', label: "How do you currently handle shipping?", type: 'textarea' },
-    { name: 'inventoryTracking', label: "Do you have inventory tracking online?", type: 'radio', options: ['Yes', 'No'] },
     { name: 'essentialSoftware', label: "What software is currently most essential for your organization & operation?", type: 'textarea' },
     { name: 'challenges', label: "What are the biggest challenges and frustrations you have right now as a social enterprise creator?", type: 'textarea' },
+    { name: 'currentSales', label: "What are your current sales?", type: 'text' },
     { name: 'growthValue', label: "If you could grow your sales exponentially what would that be worth to you?", type: 'textarea' },
   ];
 
@@ -33,20 +30,9 @@ const ApplyToCoCreate = () => {
   const renderQuestion = (question) => {
     switch (question.type) {
       case 'text':
-        return <Input {...register(question.name, { required: true })} className="w-full" />;
+        return <Input {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70" />;
       case 'textarea':
-        return <Textarea {...register(question.name, { required: true })} className="w-full" />;
-      case 'radio':
-        return (
-          <RadioGroup onValueChange={(value) => register(question.name).onChange({ target: { name: question.name, value } })}>
-            {question.options.map((option) => (
-              <div className="flex items-center space-x-2" key={option}>
-                <RadioGroupItem value={option} id={`${question.name}-${option}`} />
-                <Label htmlFor={`${question.name}-${option}`}>{option}</Label>
-              </div>
-            ))}
-          </RadioGroup>
-        );
+        return <Textarea {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70" />;
       default:
         return null;
     }
