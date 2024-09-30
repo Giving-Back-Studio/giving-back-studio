@@ -22,6 +22,13 @@ const realLinks = {
     'https://www.permaculturenews.org/category/community/',
     'https://www.regenerative.com/farms',
   ],
+  socialEnterprises: [
+    'https://www.socialenterprise.org.uk/directory/',
+    'https://www.se-alliance.org/member-directory',
+    'https://www.socialtraders.com.au/for-buyers/certified-social-enterprise-directory/',
+    'https://www.buysocialcanada.com/directory',
+    'https://www.socialenterprisemark.org.uk/directory/',
+  ],
 };
 
 const generateMockData = (category, count) => {
@@ -38,3 +45,4 @@ const generateMockData = (category, count) => {
 export const scrapeReFiInvestors = () => generateMockData('refi', 100);
 export const scrapeTech4GoodJobs = () => generateMockData('tech4good', 100);
 export const scrapePermacultureFarms = () => generateMockData('permaculture', 100);
+export const scrapeSocialEnterprises = () => generateMockData('socialEnterprises', 100);
