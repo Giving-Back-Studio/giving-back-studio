@@ -18,6 +18,24 @@ const realData = {
       description: 'Providing free world-class education for anyone, anywhere.',
       link: 'https://www.khanacademy.org/careers',
     },
+    {
+      id: '4',
+      name: 'Mozilla Foundation',
+      description: 'Working to ensure the internet remains a public resource that is open and accessible to all.',
+      link: 'https://foundation.mozilla.org/careers/',
+    },
+    {
+      id: '5',
+      name: 'Wikimedia Foundation',
+      description: 'Supporting and growing Wikipedia and other free knowledge projects.',
+      link: 'https://wikimediafoundation.org/about/jobs/',
+    },
+    {
+      id: '6',
+      name: 'DonorsChoose',
+      description: 'Empowering public school teachers to request much-needed materials and experiences for their students.',
+      link: 'https://www.donorschoose.org/about/careers/',
+    },
   ],
   refi: [
     {
@@ -38,6 +56,24 @@ const realData = {
       description: 'Bringing carbon credits on-chain for greater transparency and liquidity.',
       link: 'https://toucan.earth/',
     },
+    {
+      id: '4',
+      name: 'Celo',
+      description: 'A carbon-negative blockchain ecosystem focused on creating the conditions for prosperity for everyone.',
+      link: 'https://celo.org/',
+    },
+    {
+      id: '5',
+      name: 'KlimaDAO',
+      description: 'Driving climate action and earning rewards with a carbon-backed digital currency.',
+      link: 'https://www.klimadao.finance/',
+    },
+    {
+      id: '6',
+      name: 'Moss.Earth',
+      description: 'Democratizing carbon credits and promoting environmental conservation through blockchain technology.',
+      link: 'https://moss.earth/',
+    },
   ],
   permaculture: [
     {
@@ -57,6 +93,24 @@ const realData = {
       name: 'Ferme du Bec Hellouin',
       description: 'Pioneering bio-intensive micro-farming in France.',
       link: 'https://www.fermedubec.com/',
+    },
+    {
+      id: '4',
+      name: 'Polyface Farm',
+      description: "Joel Salatin's farm demonstrating sustainable and regenerative agriculture practices.",
+      link: 'https://www.polyfacefarms.com/',
+    },
+    {
+      id: '5',
+      name: 'Miracle Farms',
+      description: 'A commercial-scale permaculture orchard in Quebec, Canada.',
+      link: 'https://miracle.farm/en/',
+    },
+    {
+      id: '6',
+      name: 'Limestone Permaculture Farm',
+      description: 'A small family farm in Australia showcasing suburban permaculture design.',
+      link: 'https://limestonepermaculture.com/',
     },
   ],
 };
