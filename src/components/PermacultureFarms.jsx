@@ -1,37 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { generateMockDatasets } from '@/utils/mockDataGenerator';
+import { scrapePermacultureFarms } from '@/utils/scraper';
+import { useQuery } from '@tanstack/react-query';
 
 const PermacultureFarms = ({ searchTerm }) => {
-  const [farms, setFarms] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 12;
 
-  useEffect(() => {
-    const fetchFarms = async () => {
-      const allData = generateMockDatasets();
-      const permacultureFarms = allData.filter(item => item.category === 'permaculture');
+  const { data: farms = [], isLoading, error } = useQuery({
+    queryKey: ['permacultureFarms'],
+    queryFn: scrapePermacultureFarms,
+    staleTime: 1000 * 60 * 60, // 1 hour
+  });
 
-      const filteredFarms = permacultureFarms.filter(farm => 
-        farm.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        farm.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+  const filteredFarms = farms.filter(farm => 
+    farm.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    farm.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-      setTotalPages(Math.ceil(filteredFarms.length / itemsPerPage));
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
-      setFarms(filteredFarms.slice(startIndex, endIndex));
-    };
+  const totalPages = Math.ceil(filteredFarms.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentFarms = filteredFarms.slice(startIndex, endIndex);
 
-    fetchFarms();
-  }, [searchTerm, currentPage]);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-        {farms.map((farm) => (
+        {currentFarms.map((farm) => (
           <Card key={farm.id} className="bg-white/10">
             <CardHeader>
               <CardTitle>{farm.name}</CardTitle>

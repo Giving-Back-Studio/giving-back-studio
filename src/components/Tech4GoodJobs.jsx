@@ -1,37 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { generateMockDatasets } from '@/utils/mockDataGenerator';
+import { scrapeTech4GoodJobs } from '@/utils/scraper';
+import { useQuery } from '@tanstack/react-query';
 
 const Tech4GoodJobs = ({ searchTerm }) => {
-  const [jobs, setJobs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 12;
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      const allData = generateMockDatasets();
-      const tech4GoodJobs = allData.filter(item => item.category === 'tech4good');
+  const { data: jobs = [], isLoading, error } = useQuery({
+    queryKey: ['tech4GoodJobs'],
+    queryFn: scrapeTech4GoodJobs,
+    staleTime: 1000 * 60 * 60, // 1 hour
+  });
 
-      const filteredJobs = tech4GoodJobs.filter(job => 
-        job.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        job.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+  const filteredJobs = jobs.filter(job => 
+    job.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-      setTotalPages(Math.ceil(filteredJobs.length / itemsPerPage));
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
-      setJobs(filteredJobs.slice(startIndex, endIndex));
-    };
+  const totalPages = Math.ceil(filteredJobs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentJobs = filteredJobs.slice(startIndex, endIndex);
 
-    fetchJobs();
-  }, [searchTerm, currentPage]);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-        {jobs.map((job) => (
+        {currentJobs.map((job) => (
           <Card key={job.id} className="bg-white/10">
             <CardHeader>
               <CardTitle>{job.name}</CardTitle>

@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { generateMockDatasets } from '@/utils/mockDataGenerator';
+import { scrapeReFiInvestors } from '@/utils/scraper';
+import { useQuery } from '@tanstack/react-query';
 
 const ReFiInvestors = ({ searchTerm }) => {
-  const [investors, setInvestors] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 12;
 
-  useEffect(() => {
-    const fetchInvestors = async () => {
-      const allData = generateMockDatasets();
-      const reFiInvestors = allData.filter(item => item.category === 'refi');
+  const { data: investors = [], isLoading, error } = useQuery({
+    queryKey: ['refiInvestors'],
+    queryFn: scrapeReFiInvestors,
+    staleTime: 1000 * 60 * 60, // 1 hour
+  });
 
-      const filteredInvestors = reFiInvestors.filter(investor => 
-        investor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        investor.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+  const filteredInvestors = investors.filter(investor => 
+    investor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    investor.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-      setTotalPages(Math.ceil(filteredInvestors.length / itemsPerPage));
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
-      setInvestors(filteredInvestors.slice(startIndex, endIndex));
-    };
+  const totalPages = Math.ceil(filteredInvestors.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentInvestors = filteredInvestors.slice(startIndex, endIndex);
 
-    fetchInvestors();
-  }, [searchTerm, currentPage]);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-        {investors.map((investor) => (
+        {currentInvestors.map((investor) => (
           <Card key={investor.id} className="bg-white/10">
             <CardHeader>
               <CardTitle>{investor.name}</CardTitle>
