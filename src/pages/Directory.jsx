@@ -9,14 +9,21 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search } from 'lucide-react';
+import { Search, Loader2 } from 'lucide-react';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentTab, setCurrentTab] = useState('tech4good');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
   };
 
   return (
@@ -54,16 +61,16 @@ const Directory = () => {
             </TabsList>
             <CardContent className="p-4 bg-white/5 rounded-lg">
               <TabsContent value="tech4good">
-                <Tech4GoodJobs searchTerm={searchTerm} />
+                <Tech4GoodJobs searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
               </TabsContent>
               <TabsContent value="refi">
-                <ReFiInvestors searchTerm={searchTerm} />
+                <ReFiInvestors searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
               </TabsContent>
               <TabsContent value="permaculture">
-                <PermacultureFarms searchTerm={searchTerm} />
+                <PermacultureFarms searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
               </TabsContent>
               <TabsContent value="socialEnterprises">
-                <SocialEnterprises searchTerm={searchTerm} />
+                <SocialEnterprises searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
               </TabsContent>
             </CardContent>
           </Tabs>
