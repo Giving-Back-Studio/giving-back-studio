@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
-import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -67,18 +66,6 @@ const Index = () => {
             </Button>
           </form>
         </div>
-      </div>
-      <div className="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <Link to="/directory">
-          <Button className="w-full sm:w-auto bg-white text-gbs-purple hover:bg-white/90 text-base md:text-lg px-4 py-2 md:px-6 md:py-3">
-            Explore Directory
-          </Button>
-        </Link>
-        <Link to="/build">
-          <Button className="w-full sm:w-auto bg-gbs-purple hover:bg-gbs-purple/90 text-base md:text-lg px-4 py-2 md:px-6 md:py-3">
-            Apply to Co-Create
-          </Button>
-        </Link>
       </div>
     </>
   );
