@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { generateMockDatasets } from '@/utils/mockDataGenerator';
 
 const Tech4GoodJobs = ({ searchTerm }) => {
   const [jobs, setJobs] = useState([]);
@@ -9,19 +10,12 @@ const Tech4GoodJobs = ({ searchTerm }) => {
   const itemsPerPage = 12;
 
   useEffect(() => {
-    // In a real application, this would be an API call
     const fetchJobs = async () => {
-      // Simulating an API call with 1000+ items
-      const allJobs = Array.from({ length: 1000 }, (_, i) => ({
-        id: i + 1,
-        title: `Tech4Good Job ${i + 1}`,
-        company: `Company ${i + 1}`,
-        description: `This is a description for Tech4Good Job ${i + 1}`,
-      }));
+      const allData = generateMockDatasets();
+      const tech4GoodJobs = allData.filter(item => item.category === 'tech4good');
 
-      const filteredJobs = allJobs.filter(job => 
-        job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      const filteredJobs = tech4GoodJobs.filter(job => 
+        job.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
@@ -40,11 +34,13 @@ const Tech4GoodJobs = ({ searchTerm }) => {
         {jobs.map((job) => (
           <Card key={job.id} className="bg-white/10">
             <CardHeader>
-              <CardTitle>{job.title}</CardTitle>
+              <CardTitle>{job.name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm mb-2">{job.company}</p>
-              <p className="text-sm">{job.description}</p>
+              <p className="text-sm mb-2">{job.description}</p>
+              <a href={job.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                Learn More
+              </a>
             </CardContent>
           </Card>
         ))}

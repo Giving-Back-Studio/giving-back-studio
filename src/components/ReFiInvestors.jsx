@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { generateMockDatasets } from '@/utils/mockDataGenerator';
 
 const ReFiInvestors = ({ searchTerm }) => {
   const [investors, setInvestors] = useState([]);
@@ -9,19 +10,12 @@ const ReFiInvestors = ({ searchTerm }) => {
   const itemsPerPage = 12;
 
   useEffect(() => {
-    // In a real application, this would be an API call
     const fetchInvestors = async () => {
-      // Simulating an API call with 1000+ items
-      const allInvestors = Array.from({ length: 1000 }, (_, i) => ({
-        id: i + 1,
-        name: `ReFi Investor ${i + 1}`,
-        focus: `Focus Area ${i + 1}`,
-        description: `This is a description for ReFi Investor ${i + 1}`,
-      }));
+      const allData = generateMockDatasets();
+      const reFiInvestors = allData.filter(item => item.category === 'refi');
 
-      const filteredInvestors = allInvestors.filter(investor => 
+      const filteredInvestors = reFiInvestors.filter(investor => 
         investor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        investor.focus.toLowerCase().includes(searchTerm.toLowerCase()) ||
         investor.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
@@ -43,8 +37,10 @@ const ReFiInvestors = ({ searchTerm }) => {
               <CardTitle>{investor.name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm mb-2">Focus: {investor.focus}</p>
-              <p className="text-sm">{investor.description}</p>
+              <p className="text-sm mb-2">{investor.description}</p>
+              <a href={investor.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                Learn More
+              </a>
             </CardContent>
           </Card>
         ))}

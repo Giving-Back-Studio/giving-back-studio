@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { generateMockDatasets } from '@/utils/mockDataGenerator';
 
 const PermacultureFarms = ({ searchTerm }) => {
   const [farms, setFarms] = useState([]);
@@ -9,19 +10,12 @@ const PermacultureFarms = ({ searchTerm }) => {
   const itemsPerPage = 12;
 
   useEffect(() => {
-    // In a real application, this would be an API call
     const fetchFarms = async () => {
-      // Simulating an API call with 1000+ items
-      const allFarms = Array.from({ length: 1000 }, (_, i) => ({
-        id: i + 1,
-        name: `Permaculture Farm ${i + 1}`,
-        location: `Location ${i + 1}`,
-        description: `This is a description for Permaculture Farm ${i + 1}`,
-      }));
+      const allData = generateMockDatasets();
+      const permacultureFarms = allData.filter(item => item.category === 'permaculture');
 
-      const filteredFarms = allFarms.filter(farm => 
+      const filteredFarms = permacultureFarms.filter(farm => 
         farm.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        farm.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
         farm.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
@@ -43,8 +37,10 @@ const PermacultureFarms = ({ searchTerm }) => {
               <CardTitle>{farm.name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm mb-2">Location: {farm.location}</p>
-              <p className="text-sm">{farm.description}</p>
+              <p className="text-sm mb-2">{farm.description}</p>
+              <a href={farm.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                Learn More
+              </a>
             </CardContent>
           </Card>
         ))}
