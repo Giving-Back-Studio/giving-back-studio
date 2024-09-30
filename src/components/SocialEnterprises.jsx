@@ -28,7 +28,7 @@ const SocialEnterprises = ({ searchTerm }) => {
           </CardHeader>
           <CardContent>
             <p className="text-sm mb-2 text-white">{enterprise.description}</p>
-            <a href={enterprise.link} target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline text-sm">
+            <a href={enterprise.link} target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-100 hover:underline text-sm font-medium">
               Learn More
             </a>
             <p className="text-xs mt-2 text-gray-300">Posted: {new Date(enterprise.createdAt).toLocaleDateString()}</p>
