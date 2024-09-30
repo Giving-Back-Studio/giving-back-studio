@@ -29,17 +29,17 @@ const Index = () => {
     <>
       {showCosmic && <CosmicAnimation />}
       <div className="flex flex-col md:flex-row items-center justify-between">
-        <div className="md:w-1/2 mb-8 md:mb-0">
-          <h1 className="text-5xl md:text-6xl font-light mb-6 leading-tight">
+        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">
             Grow your regenerative social enterprise
           </h1>
-          <p className="text-xl mb-6 font-light">
+          <p className="text-lg md:text-xl mb-6 font-light">
             Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
           </p>
         </div>
 
-        <div className="md:w-1/2 bg-white/20 backdrop-blur-md p-8 rounded-xl">
-          <h2 className="text-2xl font-light mb-6">Every Monday, you'll get:</h2>
+        <div className="w-full md:w-1/2 bg-white/20 backdrop-blur-md p-6 md:p-8 rounded-xl">
+          <h2 className="text-xl md:text-2xl font-light mb-6">Every Monday, you'll get:</h2>
           <ul className="space-y-4 mb-6">
             {[
               "A practical Integrative Organizing lesson",
@@ -47,7 +47,7 @@ const Index = () => {
               "Invitations to exclusive events and conversations"
             ].map((benefit, index) => (
               <li key={index} className="flex items-center">
-                <CheckCircle className="text-green-400 mr-2" />
+                <CheckCircle className="text-green-400 mr-2 flex-shrink-0" />
                 <span className="font-light">{benefit}</span>
               </li>
             ))}

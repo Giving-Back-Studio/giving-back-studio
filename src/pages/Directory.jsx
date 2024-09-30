@@ -16,10 +16,10 @@ const Directory = () => {
   };
 
   return (
-    <Card className="bg-white/30 backdrop-blur-md p-8 rounded-xl mb-8">
-      <h1 className="text-4xl font-light mb-8 text-white">Humanity-Centered Innovation Directory</h1>
+    <Card className="bg-white/30 backdrop-blur-md p-4 sm:p-6 md:p-8 rounded-xl mb-8">
+      <h1 className="text-3xl sm:text-4xl font-light mb-6 sm:mb-8 text-white">Humanity-Centered Innovation Directory</h1>
       
-      <div className="relative mb-8">
+      <div className="relative mb-6 sm:mb-8">
         <Input
           type="text"
           placeholder="Search directory..."
@@ -31,7 +31,7 @@ const Directory = () => {
       </div>
 
       <Tabs value={currentTab} onValueChange={setCurrentTab} className="space-y-4">
-        <TabsList className="grid w-full grid-cols-3 gap-2 bg-white/20">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 bg-white/20">
           <TabsTrigger 
             value="investors" 
             className="data-[state=active]:bg-white data-[state=active]:text-gbs-purple text-white hover:bg-white/40 transition-colors"

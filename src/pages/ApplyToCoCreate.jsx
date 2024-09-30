@@ -42,13 +42,13 @@ const ApplyToCoCreate = () => {
   return (
     <Card className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-white">Apply to Co-Create</CardTitle>
+        <CardTitle className="text-xl sm:text-2xl font-bold text-center text-white">Apply to Co-Create</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {questions.map((question) => (
             <div key={question.name}>
-              <Label htmlFor={question.name} className="block text-lg font-medium mb-2 text-white">{question.label}</Label>
+              <Label htmlFor={question.name} className="block text-base sm:text-lg font-medium mb-2 text-white">{question.label}</Label>
               {renderQuestion(question)}
               {errors[question.name] && <span className="text-red-400 text-sm">This field is required</span>}
             </div>
