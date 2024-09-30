@@ -43,13 +43,13 @@ const realData = {
     {
       id: '1',
       name: 'Zaytuna Farm',
-      description: 'Geoff Lawton's Permaculture Research Institute demonstration site.',
+      description: "Geoff Lawton's Permaculture Research Institute demonstration site.",
       link: 'https://www.zaytunafarm.com/',
     },
     {
       id: '2',
       name: 'Ridgedale Permaculture',
-      description: 'Richard Perkins' farm in Sweden, showcasing profitable small-scale farming.',
+      description: "Richard Perkins' farm in Sweden, showcasing profitable small-scale farming.",
       link: 'https://www.ridgedalepermaculture.com/',
     },
     {
