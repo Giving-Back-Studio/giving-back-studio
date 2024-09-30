@@ -25,7 +25,7 @@ const Directory = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gbs-blue to-gbs-indigo text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue text-white flex flex-col font-sans">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Logo />
         <nav>
@@ -36,8 +36,8 @@ const Directory = () => {
       </header>
 
       <main className="container mx-auto px-4 py-16">
-        <Card className="bg-white/10 backdrop-blur-md p-8 rounded-xl mb-8 shadow-lg">
-          <h1 className="text-4xl font-light mb-8 text-center">Social Enterprise Directory</h1>
+        <Card className="bg-white/10 backdrop-blur-md p-8 rounded-xl mb-8">
+          <h1 className="text-4xl font-light mb-8">Social Enterprise Directory</h1>
           
           <div className="relative mb-8">
             <Input
@@ -51,10 +51,10 @@ const Directory = () => {
           </div>
 
           <Tabs value={currentTab} onValueChange={setCurrentTab} className="space-y-4">
-            <TabsList className="grid w-full grid-cols-3 gap-2 bg-white/10 p-1 rounded-lg">
-              <TabsTrigger value="investors" className="data-[state=active]:bg-white data-[state=active]:text-gbs-blue">Conscious Capital Investors</TabsTrigger>
-              <TabsTrigger value="tech4good" className="data-[state=active]:bg-white data-[state=active]:text-gbs-blue">Tech4Good Jobs</TabsTrigger>
-              <TabsTrigger value="permaculture" className="data-[state=active]:bg-white data-[state=active]:text-gbs-blue">Permaculture Farms</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 gap-2">
+              <TabsTrigger value="investors" className="data-[state=active]:bg-gbs-purple">Conscious Capital Investors</TabsTrigger>
+              <TabsTrigger value="tech4good" className="data-[state=active]:bg-gbs-purple">Tech4Good Jobs</TabsTrigger>
+              <TabsTrigger value="permaculture" className="data-[state=active]:bg-gbs-purple">Permaculture Farms</TabsTrigger>
             </TabsList>
             <CardContent className="p-4 bg-white/5 rounded-lg">
               <TabsContent value="investors">
