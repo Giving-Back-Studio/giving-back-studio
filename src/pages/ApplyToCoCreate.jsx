@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const ApplyToCoCreate = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const [currentStep, setCurrentStep] = useState(0);
 
   const questions = [
     { name: 'enterpriseName', label: "What's the name of your enterprise?", type: 'text' },
@@ -45,27 +44,16 @@ const ApplyToCoCreate = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {questions.map((question, index) => (
-              <div key={question.name} className={index !== currentStep ? 'hidden' : ''}>
+            {questions.map((question) => (
+              <div key={question.name}>
                 <Label htmlFor={question.name} className="block text-lg font-medium mb-2 text-white">{question.label}</Label>
                 {renderQuestion(question)}
                 {errors[question.name] && <span className="text-red-400 text-sm">This field is required</span>}
               </div>
             ))}
-            <div className="flex justify-between mt-6">
-              {currentStep > 0 && (
-                <Button type="button" onClick={() => setCurrentStep(currentStep - 1)} variant="outline" className="text-white border-white hover:bg-white/20">
-                  Previous
-                </Button>
-              )}
-              {currentStep < questions.length - 1 ? (
-                <Button type="button" onClick={() => setCurrentStep(currentStep + 1)} className="bg-white text-gbs-purple hover:bg-white/90">
-                  Next
-                </Button>
-              ) : (
-                <Button type="submit" className="bg-white text-gbs-purple hover:bg-white/90">Submit Application</Button>
-              )}
-            </div>
+            <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90">
+              Submit Application
+            </Button>
           </form>
         </CardContent>
       </Card>
