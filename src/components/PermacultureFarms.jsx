@@ -16,19 +16,19 @@ const PermacultureFarms = ({ searchTerm }) => {
     farm.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (isLoading) return <div className="flex justify-center items-center h-64"><Loader2 className="w-8 h-8 animate-spin" /></div>;
+  if (isLoading) return <div className="flex justify-center items-center h-64"><Loader2 className="w-8 h-8 animate-spin text-white" /></div>;
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {filteredFarms.map((farm) => (
-        <Card key={farm.id} className="bg-white/10 hover:bg-white/20 transition-colors">
+        <Card key={farm.id} className="bg-white/20 hover:bg-white/30 transition-colors">
           <CardHeader>
-            <CardTitle className="text-lg">{farm.name}</CardTitle>
+            <CardTitle className="text-lg text-white">{farm.name}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm mb-2">{farm.description}</p>
-            <a href={farm.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline text-sm">
+            <p className="text-sm mb-2 text-white">{farm.description}</p>
+            <a href={farm.link} target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline text-sm">
               Learn More
             </a>
           </CardContent>

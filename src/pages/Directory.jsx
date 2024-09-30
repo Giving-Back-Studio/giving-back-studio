@@ -29,8 +29,8 @@ const Directory = () => {
       </header>
 
       <main className="container mx-auto px-4 py-16">
-        <Card className="bg-white/10 backdrop-blur-md p-8 rounded-xl mb-8">
-          <h1 className="text-4xl font-light mb-8">Social Enterprise Directory</h1>
+        <Card className="bg-white/20 backdrop-blur-md p-8 rounded-xl mb-8">
+          <h1 className="text-4xl font-light mb-8 text-white">Social Enterprise Directory</h1>
           
           <div className="relative mb-8">
             <Input
@@ -38,18 +38,18 @@ const Directory = () => {
               placeholder="Search directory..."
               value={searchTerm}
               onChange={handleSearch}
-              className="bg-white/20 border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 rounded-full w-full"
+              className="bg-white/30 border-white/50 text-white placeholder-white/70 pl-10 pr-4 py-2 rounded-full w-full"
             />
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
           </div>
 
           <Tabs value={currentTab} onValueChange={setCurrentTab} className="space-y-4">
             <TabsList className="grid w-full grid-cols-3 gap-2">
-              <TabsTrigger value="investors" className="data-[state=active]:bg-gbs-purple">Conscious Capital Investors</TabsTrigger>
-              <TabsTrigger value="tech4good" className="data-[state=active]:bg-gbs-purple">Tech4Good Jobs</TabsTrigger>
-              <TabsTrigger value="permaculture" className="data-[state=active]:bg-gbs-purple">Permaculture Farms</TabsTrigger>
+              <TabsTrigger value="investors" className="data-[state=active]:bg-gbs-purple text-white">Conscious Capital Investors</TabsTrigger>
+              <TabsTrigger value="tech4good" className="data-[state=active]:bg-gbs-purple text-white">Tech4Good Jobs</TabsTrigger>
+              <TabsTrigger value="permaculture" className="data-[state=active]:bg-gbs-purple text-white">Permaculture Farms</TabsTrigger>
             </TabsList>
-            <CardContent className="p-4 bg-white/5 rounded-lg">
+            <CardContent className="p-4 bg-white/10 rounded-lg">
               <TabsContent value="investors">
                 <ReFiInvestors searchTerm={searchTerm} />
               </TabsContent>

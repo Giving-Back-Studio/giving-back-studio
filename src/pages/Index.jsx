@@ -50,7 +50,7 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="md:w-1/2 bg-white/10 backdrop-blur-md p-8 rounded-xl">
+        <div className="md:w-1/2 bg-white/20 backdrop-blur-md p-8 rounded-xl">
           <h2 className="text-2xl font-light mb-6">Every Monday, you'll get:</h2>
           <ul className="space-y-4 mb-6">
             {[
@@ -68,7 +68,7 @@ const Index = () => {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="bg-white/20 border-white/30 text-white placeholder-white/70"
+              className="bg-white/30 border-white/50 text-white placeholder-white/70"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
