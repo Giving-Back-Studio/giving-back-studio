@@ -1,48 +1,66 @@
-import { faker } from '@faker-js/faker';
-
-const realLinks = {
+const realData = {
   tech4good: [
-    'https://www.idealist.org/en/jobs',
-    'https://www.techjobsforgood.com/',
-    'https://www.netimpact.org/careers',
-    'https://jobs.b-lab.net/',
-    'https://www.devex.com/jobs',
+    {
+      id: '1',
+      name: 'Code for America',
+      description: 'Improving government services through technology and design.',
+      link: 'https://www.codeforamerica.org/jobs',
+    },
+    {
+      id: '2',
+      name: 'Charity: Water',
+      description: 'Bringing clean and safe drinking water to people in developing countries.',
+      link: 'https://www.charitywater.org/about/jobs',
+    },
+    {
+      id: '3',
+      name: 'Khan Academy',
+      description: 'Providing free world-class education for anyone, anywhere.',
+      link: 'https://www.khanacademy.org/careers',
+    },
   ],
   refi: [
-    'https://www.climatefinancelab.org/project/',
-    'https://www.crunchbase.com/hub/regenerative-finance-refi-companies',
-    'https://gitcoin.co/',
-    'https://www.climatefi.org/',
-    'https://www.regen.network/',
+    {
+      id: '1',
+      name: 'Gitcoin',
+      description: 'Building and funding digital public goods.',
+      link: 'https://gitcoin.co/',
+    },
+    {
+      id: '2',
+      name: 'Regen Network',
+      description: 'Ecological assets for a regenerative economy.',
+      link: 'https://www.regen.network/',
+    },
+    {
+      id: '3',
+      name: 'Toucan Protocol',
+      description: 'Bringing carbon credits on-chain for greater transparency and liquidity.',
+      link: 'https://toucan.earth/',
+    },
   ],
   permaculture: [
-    'https://permacultureglobal.org/projects',
-    'https://www.permaculture.org.uk/land',
-    'https://permacultureprinciples.com/post/permaculture-farms/',
-    'https://www.permaculturenews.org/category/community/',
-    'https://www.regenerative.com/farms',
-  ],
-  socialEnterprises: [
-    'https://www.socialenterprise.org.uk/directory/',
-    'https://www.se-alliance.org/member-directory',
-    'https://www.socialtraders.com.au/for-buyers/certified-social-enterprise-directory/',
-    'https://www.buysocialcanada.com/directory',
-    'https://www.socialenterprisemark.org.uk/directory/',
+    {
+      id: '1',
+      name: 'Zaytuna Farm',
+      description: 'Geoff Lawton's Permaculture Research Institute demonstration site.',
+      link: 'https://www.zaytunafarm.com/',
+    },
+    {
+      id: '2',
+      name: 'Ridgedale Permaculture',
+      description: 'Richard Perkins' farm in Sweden, showcasing profitable small-scale farming.',
+      link: 'https://www.ridgedalepermaculture.com/',
+    },
+    {
+      id: '3',
+      name: 'Ferme du Bec Hellouin',
+      description: 'Pioneering bio-intensive micro-farming in France.',
+      link: 'https://www.fermedubec.com/',
+    },
   ],
 };
 
-const generateMockData = (category, count) => {
-  return Array.from({ length: count }, () => ({
-    id: faker.string.uuid(),
-    name: faker.company.name(),
-    description: faker.company.catchPhrase(),
-    link: faker.helpers.arrayElement(realLinks[category]),
-    createdAt: faker.date.recent({ days: 28 }),
-    category,
-  }));
-};
-
-export const scrapeReFiInvestors = () => generateMockData('refi', 100);
-export const scrapeTech4GoodJobs = () => generateMockData('tech4good', 100);
-export const scrapePermacultureFarms = () => generateMockData('permaculture', 100);
-export const scrapeSocialEnterprises = () => generateMockData('socialEnterprises', 100);
+export const scrapeReFiInvestors = () => realData.refi;
+export const scrapeTech4GoodJobs = () => realData.tech4good;
+export const scrapePermacultureFarms = () => realData.permaculture;
