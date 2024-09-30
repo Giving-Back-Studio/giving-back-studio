@@ -6,6 +6,7 @@ import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
 import Logo from '@/components/Logo';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -30,8 +31,13 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue text-white flex flex-col font-sans">
       {showCosmic && <CosmicAnimation />}
       
-      <header className="container mx-auto px-4 py-6">
+      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Logo />
+        <nav>
+          <Link to="/directory" className="text-white hover:text-gray-300 transition-colors">
+            Directory
+          </Link>
+        </nav>
       </header>
 
       <main className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between flex-grow">
