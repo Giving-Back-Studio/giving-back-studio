@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import { navItems } from '@/nav-items';
+import { Button } from "@/components/ui/button";
 
 const Layout = ({ children }) => {
   return (
@@ -27,8 +28,17 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      <footer className="container mx-auto px-4 py-6 text-center">
-        <p>&copy; {new Date().getFullYear()} Giving Back Studio. All rights reserved.</p>
+      <footer className="container mx-auto px-4 py-6 flex justify-center space-x-4">
+        <Link to="/directory">
+          <Button className="bg-white text-gbs-purple hover:bg-white/90">
+            Explore Directory
+          </Button>
+        </Link>
+        <Link to="/build">
+          <Button className="bg-gbs-purple hover:bg-gbs-purple/90">
+            Apply to Co-Create
+          </Button>
+        </Link>
       </footer>
     </div>
   );

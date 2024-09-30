@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
-import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -37,18 +36,6 @@ const Index = () => {
           <p className="text-xl mb-6 font-light">
             Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
           </p>
-          <div className="space-y-4">
-            <Link to="/directory" className="block">
-              <Button className="w-full bg-white text-gbs-purple hover:bg-white/90">
-                Explore Directory
-              </Button>
-            </Link>
-            <Link to="/build" className="block">
-              <Button className="w-full bg-gbs-purple hover:bg-gbs-purple/90">
-                Apply to Co-Create
-              </Button>
-            </Link>
-          </div>
         </div>
 
         <div className="md:w-1/2 bg-white/20 backdrop-blur-md p-8 rounded-xl">
