@@ -40,27 +40,25 @@ const ApplyToCoCreate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue text-white p-8">
-      <Card className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center text-white">Apply to Co-Create</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {questions.map((question) => (
-              <div key={question.name}>
-                <Label htmlFor={question.name} className="block text-lg font-medium mb-2 text-white">{question.label}</Label>
-                {renderQuestion(question)}
-                {errors[question.name] && <span className="text-red-400 text-sm">This field is required</span>}
-              </div>
-            ))}
-            <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90">
-              Submit Application
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+    <Card className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md">
+      <CardHeader>
+        <CardTitle className="text-2xl font-bold text-center text-white">Apply to Co-Create</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {questions.map((question) => (
+            <div key={question.name}>
+              <Label htmlFor={question.name} className="block text-lg font-medium mb-2 text-white">{question.label}</Label>
+              {renderQuestion(question)}
+              {errors[question.name] && <span className="text-red-400 text-sm">This field is required</span>}
+            </div>
+          ))}
+          <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90">
+            Submit Application
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 
