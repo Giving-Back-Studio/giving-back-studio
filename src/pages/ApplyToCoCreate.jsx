@@ -31,29 +31,29 @@ const ApplyToCoCreate = () => {
     switch (question.type) {
       case 'text':
       case 'email':
-        return <Input {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70" />;
+        return <Input {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70 py-3" />;
       case 'textarea':
-        return <Textarea {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70" />;
+        return <Textarea {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70 py-3" />;
       default:
         return null;
     }
   };
 
   return (
-    <Card className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md">
-      <CardHeader>
-        <CardTitle className="text-xl sm:text-2xl font-bold text-center text-white">Apply to Co-Create</CardTitle>
+    <Card className="max-w-4xl mx-auto bg-white/10 backdrop-blur-md">
+      <CardHeader className="text-center">
+        <CardTitle className="text-3xl md:text-4xl font-bold text-white">Apply to Co-Create</CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           {questions.map((question) => (
-            <div key={question.name}>
-              <Label htmlFor={question.name} className="block text-base sm:text-lg font-medium mb-2 text-white">{question.label}</Label>
+            <div key={question.name} className="space-y-2">
+              <Label htmlFor={question.name} className="text-lg md:text-xl font-medium text-white">{question.label}</Label>
               {renderQuestion(question)}
               {errors[question.name] && <span className="text-red-400 text-sm">This field is required</span>}
             </div>
           ))}
-          <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90">
+          <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90 text-lg py-3 mt-6">
             Submit Application
           </Button>
         </form>

@@ -28,8 +28,8 @@ const Index = () => {
   return (
     <>
       {showCosmic && <CosmicAnimation />}
-      <div className="flex flex-col md:flex-row items-center justify-between">
-        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="w-full lg:w-1/2">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">
             Grow your regenerative social enterprise
           </h1>
@@ -38,16 +38,16 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="w-full md:w-1/2 bg-white/20 backdrop-blur-md p-6 md:p-8 rounded-xl">
-          <h2 className="text-xl md:text-2xl font-light mb-6">Every Monday, you'll get:</h2>
-          <ul className="space-y-4 mb-6">
+        <div className="w-full lg:w-1/2 bg-white/20 backdrop-blur-md p-8 rounded-xl">
+          <h2 className="text-2xl md:text-3xl font-light mb-6">Every Monday, you'll get:</h2>
+          <ul className="space-y-4 mb-8">
             {[
               "A practical Integrative Organizing lesson",
               "New tools to grow and scale your impact",
               "Invitations to exclusive events and conversations"
             ].map((benefit, index) => (
-              <li key={index} className="flex items-center">
-                <CheckCircle className="text-green-400 mr-2 flex-shrink-0" />
+              <li key={index} className="flex items-center text-lg">
+                <CheckCircle className="text-green-400 mr-3 flex-shrink-0" />
                 <span className="font-light">{benefit}</span>
               </li>
             ))}
@@ -56,12 +56,12 @@ const Index = () => {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="bg-white/30 border-white/50 text-white placeholder-white/70"
+              className="bg-white/30 border-white/50 text-white placeholder-white/70 text-lg py-3"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button type="submit" className="w-full bg-gbs-purple hover:bg-gbs-purple/90">
+            <Button type="submit" className="w-full bg-gbs-purple hover:bg-gbs-purple/90 text-lg py-3">
               Subscribe to inspiring innovations
             </Button>
           </form>
