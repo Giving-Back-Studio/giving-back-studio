@@ -12,16 +12,9 @@ import { Search } from 'lucide-react';
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentTab, setCurrentTab] = useState('investors');
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
   };
 
   return (
@@ -58,13 +51,13 @@ const Directory = () => {
             </TabsList>
             <CardContent className="p-4 bg-white/5 rounded-lg">
               <TabsContent value="investors">
-                <ReFiInvestors searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+                <ReFiInvestors searchTerm={searchTerm} />
               </TabsContent>
               <TabsContent value="tech4good">
-                <Tech4GoodJobs searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+                <Tech4GoodJobs searchTerm={searchTerm} />
               </TabsContent>
               <TabsContent value="permaculture">
-                <PermacultureFarms searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+                <PermacultureFarms searchTerm={searchTerm} />
               </TabsContent>
             </CardContent>
           </Tabs>
