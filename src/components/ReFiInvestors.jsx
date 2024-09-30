@@ -36,7 +36,6 @@ const ReFiInvestors = ({ searchTerm, currentPage, itemsPerPage, onPageChange }) 
               <a href={investor.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline text-sm">
                 Learn More
               </a>
-              <p className="text-xs mt-2 text-gray-400">Posted: {new Date(investor.createdAt).toLocaleDateString()}</p>
             </CardContent>
           </Card>
         ))}
