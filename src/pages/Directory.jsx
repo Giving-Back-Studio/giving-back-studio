@@ -4,16 +4,14 @@ import Logo from '@/components/Logo';
 import Tech4GoodJobs from '@/components/Tech4GoodJobs';
 import ReFiInvestors from '@/components/ReFiInvestors';
 import PermacultureFarms from '@/components/PermacultureFarms';
-import SocialEnterprises from '@/components/SocialEnterprises';
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, Loader2 } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentTab, setCurrentTab] = useState('tech4good');
+  const [currentTab, setCurrentTab] = useState('investors');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -53,24 +51,20 @@ const Directory = () => {
           </div>
 
           <Tabs value={currentTab} onValueChange={setCurrentTab} className="space-y-4">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-2">
+            <TabsList className="grid w-full grid-cols-3 gap-2">
+              <TabsTrigger value="investors" className="data-[state=active]:bg-gbs-purple">Conscious Capital Investors</TabsTrigger>
               <TabsTrigger value="tech4good" className="data-[state=active]:bg-gbs-purple">Tech4Good Jobs</TabsTrigger>
-              <TabsTrigger value="refi" className="data-[state=active]:bg-gbs-purple">ReFi Investors</TabsTrigger>
               <TabsTrigger value="permaculture" className="data-[state=active]:bg-gbs-purple">Permaculture Farms</TabsTrigger>
-              <TabsTrigger value="socialEnterprises" className="data-[state=active]:bg-gbs-purple">Social Enterprises</TabsTrigger>
             </TabsList>
             <CardContent className="p-4 bg-white/5 rounded-lg">
+              <TabsContent value="investors">
+                <ReFiInvestors searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+              </TabsContent>
               <TabsContent value="tech4good">
                 <Tech4GoodJobs searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
               </TabsContent>
-              <TabsContent value="refi">
-                <ReFiInvestors searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
-              </TabsContent>
               <TabsContent value="permaculture">
                 <PermacultureFarms searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
-              </TabsContent>
-              <TabsContent value="socialEnterprises">
-                <SocialEnterprises searchTerm={searchTerm} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
               </TabsContent>
             </CardContent>
           </Tabs>
