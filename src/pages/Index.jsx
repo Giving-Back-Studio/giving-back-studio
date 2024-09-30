@@ -33,9 +33,12 @@ const Index = () => {
       
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Logo />
-        <nav>
+        <nav className="space-x-4">
           <Link to="/directory" className="text-white hover:text-gray-300 transition-colors">
             Directory
+          </Link>
+          <Link to="/build" className="text-white hover:text-gray-300 transition-colors">
+            Apply to Co-Create
           </Link>
         </nav>
       </header>
@@ -48,6 +51,18 @@ const Index = () => {
           <p className="text-xl mb-6 font-light">
             Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
           </p>
+          <div className="space-y-4">
+            <Link to="/directory" className="block">
+              <Button className="w-full bg-white text-gbs-purple hover:bg-white/90">
+                Explore Directory
+              </Button>
+            </Link>
+            <Link to="/build" className="block">
+              <Button className="w-full bg-gbs-purple hover:bg-gbs-purple/90">
+                Apply to Co-Create
+              </Button>
+            </Link>
+          </div>
         </div>
 
         <div className="md:w-1/2 bg-white/20 backdrop-blur-md p-8 rounded-xl">

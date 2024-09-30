@@ -10,6 +10,8 @@ const ApplyToCoCreate = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const questions = [
+    { name: 'name', label: "What's your name?", type: 'text' },
+    { name: 'email', label: "What's your email address?", type: 'email' },
     { name: 'enterpriseName', label: "What's the name of your enterprise?", type: 'text' },
     { name: 'purpose', label: "In one sentence, what is its purpose?", type: 'text' },
     { name: 'customerPersona', label: "Who is your customer persona?", type: 'textarea' },
@@ -28,6 +30,7 @@ const ApplyToCoCreate = () => {
   const renderQuestion = (question) => {
     switch (question.type) {
       case 'text':
+      case 'email':
         return <Input {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70" />;
       case 'textarea':
         return <Textarea {...register(question.name, { required: true })} className="w-full bg-white/20 border-white/30 text-white placeholder-white/70" />;
