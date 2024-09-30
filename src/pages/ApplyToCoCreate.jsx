@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
@@ -42,29 +41,29 @@ const ApplyToCoCreate = () => {
     <div className="min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue text-white p-8">
       <Card className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">Apply to Co-Create</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center text-white">Apply to Co-Create</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {questions.map((question, index) => (
               <div key={question.name} className={index !== currentStep ? 'hidden' : ''}>
-                <Label htmlFor={question.name} className="block text-lg font-medium mb-2">{question.label}</Label>
+                <Label htmlFor={question.name} className="block text-lg font-medium mb-2 text-white">{question.label}</Label>
                 {renderQuestion(question)}
-                {errors[question.name] && <span className="text-red-500 text-sm">This field is required</span>}
+                {errors[question.name] && <span className="text-red-400 text-sm">This field is required</span>}
               </div>
             ))}
             <div className="flex justify-between mt-6">
               {currentStep > 0 && (
-                <Button type="button" onClick={() => setCurrentStep(currentStep - 1)} variant="outline">
+                <Button type="button" onClick={() => setCurrentStep(currentStep - 1)} variant="outline" className="text-white border-white hover:bg-white/20">
                   Previous
                 </Button>
               )}
               {currentStep < questions.length - 1 ? (
-                <Button type="button" onClick={() => setCurrentStep(currentStep + 1)}>
+                <Button type="button" onClick={() => setCurrentStep(currentStep + 1)} className="bg-white text-gbs-purple hover:bg-white/90">
                   Next
                 </Button>
               ) : (
-                <Button type="submit">Submit Application</Button>
+                <Button type="submit" className="bg-white text-gbs-purple hover:bg-white/90">Submit Application</Button>
               )}
             </div>
           </form>
