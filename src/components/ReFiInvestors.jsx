@@ -13,8 +13,8 @@ const ReFiInvestors = ({ searchTerm, currentPage, itemsPerPage, onPageChange }) 
   });
 
   const filteredInvestors = investors.filter(investor => 
-    investor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    investor.description.toLowerCase().includes(searchTerm.toLowerCase())
+    (investor?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    investor?.description?.toLowerCase().includes(searchTerm.toLowerCase())) ?? false
   );
 
   const totalPages = Math.ceil(filteredInvestors.length / itemsPerPage);
