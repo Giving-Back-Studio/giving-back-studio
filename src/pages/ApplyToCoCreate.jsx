@@ -14,7 +14,12 @@ const ApplyToCoCreate = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await addMovementCreatorOpportunity.mutateAsync(data);
+      await addMovementCreatorOpportunity.mutateAsync({
+        name: data.name,
+        email: data.email,
+        enterprise_purpose: data.enterprisePurpose,
+        growth_value: data.growthValue
+      });
       toast.success('Application submitted successfully!');
       reset();
     } catch (error) {
