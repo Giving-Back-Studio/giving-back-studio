@@ -30,7 +30,7 @@ const Directory = () => {
       </div>
 
       <Tabs value={currentTab} onValueChange={setCurrentTab} className="space-y-6">
-        <TabsList className="flex space-x-4 border-b border-white/20">
+        <TabsList className="flex space-x-4 border-b border-white/20 bg-transparent">
           <TabsTrigger 
             value="investors" 
             className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
