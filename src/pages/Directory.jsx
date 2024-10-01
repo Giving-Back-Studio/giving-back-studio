@@ -4,9 +4,7 @@ import ReFiInvestors from '@/components/ReFiInvestors';
 import PermacultureFarms from '@/components/PermacultureFarms';
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
-import { Search } from 'lucide-react';
-import LinkIcon from '@/components/LinkIcon';
+import { Search, ExternalLink } from 'lucide-react';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -35,19 +33,19 @@ const Directory = () => {
         <TabsList className="flex space-x-4 border-b border-white/20">
           <TabsTrigger 
             value="investors" 
-            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
           >
             Conscious Capital Investors
           </TabsTrigger>
           <TabsTrigger 
             value="tech4good" 
-            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
           >
             Tech4Good Jobs
           </TabsTrigger>
           <TabsTrigger 
             value="permaculture" 
-            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
           >
             Permaculture Farms
           </TabsTrigger>
