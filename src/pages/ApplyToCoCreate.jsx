@@ -55,7 +55,7 @@ const ApplyToCoCreate = () => {
             <Textarea
               id="enterprisePurpose"
               {...register('enterprisePurpose', { required: 'Enterprise purpose is required' })}
-              placeholder="Briefly describe your enterprise's mission"
+              placeholder="Enterprise's why"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
               rows={4}
             />
