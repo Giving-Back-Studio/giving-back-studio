@@ -54,6 +54,7 @@ module.exports = {
         gbs: {
           purple: '#610088',
           blue: '#262D8C',
+          lightPurple: '#8B4B8B',
         },
       },
       borderRadius: {

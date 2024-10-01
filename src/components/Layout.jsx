@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-white hover:text-gray-300 transition-colors px-3 py-2 text-lg"
+                className="text-white hover:text-white/80 transition-colors px-3 py-2 text-lg"
               >
                 {item.title}
               </Link>
@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
           </Button>
         </Link>
         <Link to="/build">
-          <Button className="w-full sm:w-auto bg-gbs-purple hover:bg-gbs-purple/90 text-lg px-6 py-3">
+          <Button className="w-full sm:w-auto bg-gbs-lightPurple hover:bg-gbs-lightPurple/90 text-white text-lg px-6 py-3">
             Apply to Co-Create
           </Button>
         </Link>
