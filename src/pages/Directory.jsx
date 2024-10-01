@@ -17,8 +17,8 @@ const Directory = () => {
     <div className="space-y-8">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Humanity-Centered Innovation Directory</h1>
       
-      <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-        <div className="relative w-full md:w-64 mb-4 md:mb-0 md:mr-4">
+      <div className="mb-8">
+        <div className="relative w-full md:w-64 mb-4">
           <Input
             type="text"
             placeholder="Search directory..."
@@ -34,19 +34,19 @@ const Directory = () => {
         <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-8">
           <TabsTrigger 
             value="investors" 
-            className="text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
           >
             Investors
           </TabsTrigger>
           <TabsTrigger 
             value="tech4good" 
-            className="text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
           >
             Tech4Good Jobs
           </TabsTrigger>
           <TabsTrigger 
             value="permaculture" 
-            className="text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
           >
             Permaculture Farms
           </TabsTrigger>
