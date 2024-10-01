@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import { Button } from "@/components/ui/button";
+import NewsletterFooter from '@/components/NewsletterFooter';
 
 const Layout = ({ children }) => {
   return (
@@ -28,13 +29,11 @@ const Layout = ({ children }) => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 md:py-12 flex-grow">
+      <main className="container mx-auto px-4 py-8 md:py-12 flex-grow mb-20">
         {children}
       </main>
 
-      <footer className="container mx-auto px-4 py-6 md:py-8 text-center">
-        <p>&copy; 2023 Giving Back Studio. All rights reserved.</p>
-      </footer>
+      <NewsletterFooter />
     </div>
   );
 };
