@@ -1,44 +1,67 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
-import ReFiInvestors from '@/components/ReFiInvestors';
+import React, { useState } from 'react';
 import Tech4GoodJobs from '@/components/Tech4GoodJobs';
+import ReFiInvestors from '@/components/ReFiInvestors';
 import PermacultureFarms from '@/components/PermacultureFarms';
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import { Search } from 'lucide-react';
+import LinkIcon from '@/components/LinkIcon';
 
 const Directory = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentTab, setCurrentTab] = useState('investors');
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-8">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Humanity-Centered Innovation Directory</h1>
       
-      <section>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-light text-white">Conscious Capital Investors</h2>
-          <Link to="/investors">
-            <Button variant="outline" className="text-white border-white hover:bg-white hover:text-gbs-purple">See All</Button>
-          </Link>
-        </div>
-        <ReFiInvestors limit={5} />
-      </section>
+      <div className="relative mb-8 max-w-2xl mx-auto">
+        <Input
+          type="text"
+          placeholder="Search directory..."
+          value={searchTerm}
+          onChange={handleSearch}
+          className="bg-white/10 border-white/30 text-white placeholder-white/70 pl-12 pr-4 py-3 rounded-full w-full text-lg"
+        />
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 w-6 h-6" />
+      </div>
 
-      <section>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-light text-white">Tech4Good Jobs</h2>
-          <Link to="/jobs">
-            <Button variant="outline" className="text-white border-white hover:bg-white hover:text-gbs-purple">See All</Button>
-          </Link>
-        </div>
-        <Tech4GoodJobs limit={5} />
-      </section>
-
-      <section>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-light text-white">Permaculture Farms</h2>
-          <Link to="/farms">
-            <Button variant="outline" className="text-white border-white hover:bg-white hover:text-gbs-purple">See All</Button>
-          </Link>
-        </div>
-        <PermacultureFarms limit={5} />
-      </section>
+      <Tabs value={currentTab} onValueChange={setCurrentTab} className="space-y-6">
+        <TabsList className="flex space-x-4 border-b border-white/20">
+          <TabsTrigger 
+            value="investors" 
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+          >
+            Conscious Capital Investors
+          </TabsTrigger>
+          <TabsTrigger 
+            value="tech4good" 
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+          >
+            Tech4Good Jobs
+          </TabsTrigger>
+          <TabsTrigger 
+            value="permaculture" 
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+          >
+            Permaculture Farms
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="investors">
+          <ReFiInvestors searchTerm={searchTerm} />
+        </TabsContent>
+        <TabsContent value="tech4good">
+          <Tech4GoodJobs searchTerm={searchTerm} />
+        </TabsContent>
+        <TabsContent value="permaculture">
+          <PermacultureFarms searchTerm={searchTerm} />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

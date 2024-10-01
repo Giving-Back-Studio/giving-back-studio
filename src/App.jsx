@@ -5,10 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Directory from "./pages/Directory";
-import Investors from "./pages/Investors";
-import Jobs from "./pages/Jobs";
-import Farms from "./pages/Farms";
-import Sponsor from "./pages/Sponsor";
+import ApplyToCoCreate from "./pages/ApplyToCoCreate";
 
 const queryClient = new QueryClient();
 
@@ -21,10 +18,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/directory" element={<Directory />} />
-            <Route path="/investors" element={<Investors />} />
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/farms" element={<Farms />} />
-            <Route path="/sponsor" element={<Sponsor />} />
+            <Route path="/build" element={<ApplyToCoCreate />} />
           </Routes>
         </Layout>
       </BrowserRouter>
