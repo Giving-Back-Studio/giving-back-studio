@@ -8,21 +8,21 @@ const fromSupabase = async (query) => {
 };
 
 export const useMovementCreatorOpportunity = (id) => useQuery({
-  queryKey: ['apply', id],
-  queryFn: () => fromSupabase(supabase.from('apply').select('*').eq('id', id).single()),
+  queryKey: ['applications', id],
+  queryFn: () => fromSupabase(supabase.from('applications').select('*').eq('id', id).single()),
 });
 
 export const useMovementCreatorOpportunities = () => useQuery({
-  queryKey: ['apply'],
-  queryFn: () => fromSupabase(supabase.from('apply').select('*')),
+  queryKey: ['applications'],
+  queryFn: () => fromSupabase(supabase.from('applications').select('*')),
 });
 
 export const useAddMovementCreatorOpportunity = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (newOpportunity) => fromSupabase(supabase.from('apply').insert([newOpportunity])),
+    mutationFn: (newOpportunity) => fromSupabase(supabase.from('applications').insert([newOpportunity])),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['apply'] });
+      queryClient.invalidateQueries({ queryKey: ['applications'] });
     },
   });
 };
@@ -30,9 +30,9 @@ export const useAddMovementCreatorOpportunity = () => {
 export const useUpdateMovementCreatorOpportunity = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, ...updateData }) => fromSupabase(supabase.from('apply').update(updateData).eq('id', id)),
+    mutationFn: ({ id, ...updateData }) => fromSupabase(supabase.from('applications').update(updateData).eq('id', id)),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['apply'] });
+      queryClient.invalidateQueries({ queryKey: ['applications'] });
     },
   });
 };
@@ -40,9 +40,9 @@ export const useUpdateMovementCreatorOpportunity = () => {
 export const useDeleteMovementCreatorOpportunity = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (id) => fromSupabase(supabase.from('apply').delete().eq('id', id)),
+    mutationFn: (id) => fromSupabase(supabase.from('applications').delete().eq('id', id)),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['apply'] });
+      queryClient.invalidateQueries({ queryKey: ['applications'] });
     },
   });
 };

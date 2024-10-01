@@ -17,7 +17,8 @@ const ApplyToCoCreate = () => {
       await addMovementCreatorOpportunity.mutateAsync({
         name: data.name,
         email: data.email,
-        enterprise_purpose: data.enterprisePurpose,
+        enterprise_name: data.enterpriseName,
+        purpose: data.purpose,
         growth_value: data.growthValue
       });
       toast.success('Application submitted successfully!');
@@ -56,15 +57,25 @@ const ApplyToCoCreate = () => {
             {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
           </div>
           <div className="mb-4">
-            <label htmlFor="enterprisePurpose" className="block text-white text-lg mb-2">Enterprise Purpose</label>
+            <label htmlFor="enterpriseName" className="block text-white text-lg mb-2">Enterprise Name</label>
+            <Input
+              id="enterpriseName"
+              {...register('enterpriseName', { required: 'Enterprise name is required' })}
+              placeholder="Your enterprise name"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
+            />
+            {errors.enterpriseName && <p className="text-red-500 mt-1">{errors.enterpriseName.message}</p>}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="purpose" className="block text-white text-lg mb-2">Purpose</label>
             <Textarea
-              id="enterprisePurpose"
-              {...register('enterprisePurpose', { required: 'Enterprise purpose is required' })}
-              placeholder="Enterprise's why"
+              id="purpose"
+              {...register('purpose', { required: 'Purpose is required' })}
+              placeholder="Enterprise's purpose"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
               rows={4}
             />
-            {errors.enterprisePurpose && <p className="text-red-500 mt-1">{errors.enterprisePurpose.message}</p>}
+            {errors.purpose && <p className="text-red-500 mt-1">{errors.purpose.message}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="growthValue" className="block text-white text-lg mb-2">Growth Impact</label>
