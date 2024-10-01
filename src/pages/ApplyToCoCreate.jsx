@@ -30,17 +30,17 @@ const ApplyToCoCreate = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="border border-white/30 p-6 rounded-lg">
           <div className="mb-4">
-            <label htmlFor="name" className="block text-white text-lg mb-2">Your Name</label>
+            <label htmlFor="name" className="block text-white text-lg mb-2">Name</label>
             <Input
               id="name"
               {...register('name', { required: 'Name is required' })}
-              placeholder="Enter your full name"
+              placeholder="Your full name"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
             />
             {errors.name && <p className="text-red-500 mt-1">{errors.name.message}</p>}
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-white text-lg mb-2">Email Address</label>
+            <label htmlFor="email" className="block text-white text-lg mb-2">Email</label>
             <Input
               id="email"
               {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } })}
@@ -55,18 +55,18 @@ const ApplyToCoCreate = () => {
             <Textarea
               id="enterprisePurpose"
               {...register('enterprisePurpose', { required: 'Enterprise purpose is required' })}
-              placeholder="Describe the purpose and mission of your enterprise"
+              placeholder="Briefly describe your enterprise's mission"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
               rows={4}
             />
             {errors.enterprisePurpose && <p className="text-red-500 mt-1">{errors.enterprisePurpose.message}</p>}
           </div>
           <div className="mb-4">
-            <label htmlFor="growthValue" className="block text-white text-lg mb-2">Value of Exponential Growth</label>
+            <label htmlFor="growthValue" className="block text-white text-lg mb-2">Growth Impact</label>
             <Textarea
               id="growthValue"
               {...register('growthValue', { required: 'This field is required' })}
-              placeholder="Describe what exponential profit growth with purpose would mean for your enterprise and its impact"
+              placeholder="How would exponential growth impact your enterprise?"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
               rows={4}
             />

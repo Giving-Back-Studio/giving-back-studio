@@ -4,7 +4,7 @@ import ReFiInvestors from '@/components/ReFiInvestors';
 import PermacultureFarms from '@/components/PermacultureFarms';
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, ExternalLink } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -35,7 +35,7 @@ const Directory = () => {
             value="investors" 
             className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
           >
-            Conscious Capital Investors
+            Investors
           </TabsTrigger>
           <TabsTrigger 
             value="tech4good" 
