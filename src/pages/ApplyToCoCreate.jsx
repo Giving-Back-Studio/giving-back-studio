@@ -28,52 +28,46 @@ const ApplyToCoCreate = () => {
     <div className="max-w-2xl mx-auto">
       <h1 className="text-4xl font-light mb-8 text-white">Apply to Co-Create</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div>
-          <Input
-            {...register('name', { required: 'Name is required' })}
-            placeholder="Your Name"
-            className="bg-white/10 border-white/30 text-white placeholder-white/70"
-          />
-          {errors.name && <p className="text-red-500 mt-1">{errors.name.message}</p>}
+        <div className="border border-white/30 p-6 rounded-lg">
+          <div className="mb-4">
+            <Input
+              {...register('name', { required: 'Name is required' })}
+              placeholder="Your Name"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
+            />
+            {errors.name && <p className="text-red-500 mt-1">{errors.name.message}</p>}
+          </div>
+          <div className="mb-4">
+            <Input
+              {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } })}
+              placeholder="Email Address"
+              type="email"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
+            />
+            {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
+          </div>
+          <div className="mb-4">
+            <Textarea
+              {...register('enterprisePurpose', { required: 'Enterprise purpose is required' })}
+              placeholder="Enterprise Purpose"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
+              rows={4}
+            />
+            {errors.enterprisePurpose && <p className="text-red-500 mt-1">{errors.enterprisePurpose.message}</p>}
+          </div>
+          <div className="mb-4">
+            <Textarea
+              {...register('growthValue', { required: 'This field is required' })}
+              placeholder="If you could grow your profit with purpose exponentially, what would that be worth to you?"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
+              rows={4}
+            />
+            {errors.growthValue && <p className="text-red-500 mt-1">{errors.growthValue.message}</p>}
+          </div>
+          <Button type="submit" disabled={isSubmitting} className="w-full bg-gbs-purple hover:bg-gbs-purple/90 text-lg font-lato">
+            {isSubmitting ? 'Submitting...' : 'Submit Application'}
+          </Button>
         </div>
-        <div>
-          <Input
-            {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } })}
-            placeholder="Email Address"
-            type="email"
-            className="bg-white/10 border-white/30 text-white placeholder-white/70"
-          />
-          {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
-        </div>
-        <div>
-          <Textarea
-            {...register('projectIdea', { required: 'Project idea is required' })}
-            placeholder="Describe your project idea"
-            className="bg-white/10 border-white/30 text-white placeholder-white/70"
-            rows={4}
-          />
-          {errors.projectIdea && <p className="text-red-500 mt-1">{errors.projectIdea.message}</p>}
-        </div>
-        <div>
-          <Input
-            {...register('skills', { required: 'Skills are required' })}
-            placeholder="Your relevant skills"
-            className="bg-white/10 border-white/30 text-white placeholder-white/70"
-          />
-          {errors.skills && <p className="text-red-500 mt-1">{errors.skills.message}</p>}
-        </div>
-        <div>
-          <Textarea
-            {...register('motivation', { required: 'Motivation is required' })}
-            placeholder="What motivates you to co-create?"
-            className="bg-white/10 border-white/30 text-white placeholder-white/70"
-            rows={4}
-          />
-          {errors.motivation && <p className="text-red-500 mt-1">{errors.motivation.message}</p>}
-        </div>
-        <Button type="submit" disabled={isSubmitting} className="w-full bg-gbs-purple hover:bg-gbs-purple/90">
-          {isSubmitting ? 'Submitting...' : 'Submit Application'}
-        </Button>
       </form>
     </div>
   );
