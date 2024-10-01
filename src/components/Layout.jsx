@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@/components/Logo';
-import { navItems } from '@/nav-items';
 import { Button } from "@/components/ui/button";
 
 const Layout = ({ children }) => {
@@ -13,15 +12,18 @@ const Layout = ({ children }) => {
             <Logo />
           </Link>
           <nav className="flex flex-wrap justify-center sm:space-x-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="text-white hover:text-white/80 transition-colors px-3 py-2 text-lg"
-              >
-                {item.title}
-              </Link>
-            ))}
+            <Link
+              to="/"
+              className="text-white hover:text-white/80 transition-colors px-3 py-2 text-lg"
+            >
+              Directory
+            </Link>
+            <Link
+              to="/sponsor"
+              className="text-white hover:text-white/80 transition-colors px-3 py-2 text-lg"
+            >
+              Sponsor
+            </Link>
           </nav>
         </div>
       </header>
@@ -30,17 +32,8 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      <footer className="container mx-auto px-4 py-6 md:py-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <Link to="/directory">
-          <Button className="w-full sm:w-auto bg-white text-gbs-purple hover:bg-white/90 text-lg px-6 py-3">
-            Explore Directory
-          </Button>
-        </Link>
-        <Link to="/build">
-          <Button className="w-full sm:w-auto bg-gbs-lightPurple hover:bg-gbs-lightPurple/90 text-white text-lg px-6 py-3">
-            Apply to Co-Create
-          </Button>
-        </Link>
+      <footer className="container mx-auto px-4 py-6 md:py-8 text-center">
+        <p>&copy; 2023 Giving Back Studio. All rights reserved.</p>
       </footer>
     </div>
   );

@@ -4,9 +4,7 @@ import ReFiInvestors from '@/components/ReFiInvestors';
 import PermacultureFarms from '@/components/PermacultureFarms';
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
 import { Search } from 'lucide-react';
-import LinkIcon from '@/components/LinkIcon';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,7 +24,7 @@ const Directory = () => {
           placeholder="Search directory..."
           value={searchTerm}
           onChange={handleSearch}
-          className="bg-white/10 border-white/30 text-white placeholder-white/70 pl-12 pr-4 py-3 rounded-full w-full text-lg"
+          className="bg-transparent border-white/30 text-white placeholder-white/70 pl-12 pr-4 py-3 rounded-full w-full text-lg"
         />
         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 w-6 h-6" />
       </div>
@@ -35,19 +33,19 @@ const Directory = () => {
         <TabsList className="flex space-x-4 border-b border-white/20">
           <TabsTrigger 
             value="investors" 
-            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
           >
             Conscious Capital Investors
           </TabsTrigger>
           <TabsTrigger 
             value="tech4good" 
-            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
           >
             Tech4Good Jobs
           </TabsTrigger>
           <TabsTrigger 
             value="permaculture" 
-            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
+            className="pb-2 text-white/70 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent"
           >
             Permaculture Farms
           </TabsTrigger>
