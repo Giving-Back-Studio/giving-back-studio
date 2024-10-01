@@ -30,35 +30,43 @@ const ApplyToCoCreate = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="border border-white/30 p-6 rounded-lg">
           <div className="mb-4">
+            <label htmlFor="name" className="block text-white text-lg mb-2">Your Name</label>
             <Input
+              id="name"
               {...register('name', { required: 'Name is required' })}
-              placeholder="Your Name"
+              placeholder="Enter your full name"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
             />
             {errors.name && <p className="text-red-500 mt-1">{errors.name.message}</p>}
           </div>
           <div className="mb-4">
+            <label htmlFor="email" className="block text-white text-lg mb-2">Email Address</label>
             <Input
+              id="email"
               {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } })}
-              placeholder="Email Address"
+              placeholder="your.email@example.com"
               type="email"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
             />
             {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
           </div>
           <div className="mb-4">
+            <label htmlFor="enterprisePurpose" className="block text-white text-lg mb-2">Enterprise Purpose</label>
             <Textarea
+              id="enterprisePurpose"
               {...register('enterprisePurpose', { required: 'Enterprise purpose is required' })}
-              placeholder="Enterprise Purpose"
+              placeholder="Describe the purpose and mission of your enterprise"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
               rows={4}
             />
             {errors.enterprisePurpose && <p className="text-red-500 mt-1">{errors.enterprisePurpose.message}</p>}
           </div>
           <div className="mb-4">
+            <label htmlFor="growthValue" className="block text-white text-lg mb-2">Value of Exponential Growth</label>
             <Textarea
+              id="growthValue"
               {...register('growthValue', { required: 'This field is required' })}
-              placeholder="If you could grow your profit with purpose exponentially, what would that be worth to you?"
+              placeholder="Describe what exponential profit growth with purpose would mean for your enterprise and its impact"
               className="bg-transparent border-white/30 text-white placeholder-white/70 text-lg font-lato"
               rows={4}
             />
