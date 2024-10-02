@@ -28,7 +28,7 @@ const Index = () => {
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-16 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full"
+            className="w-full pl-10 pr-16 py-3 bg-transparent border-white/30 text-white placeholder-white/70 rounded-full"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-2">
@@ -39,24 +39,24 @@ const Index = () => {
       </form>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
-        <Link to="/directory?category=investors">
-          <Button className="w-full h-full py-6 bg-white/10 hover:bg-white/20 text-white border-none">
+        <Link to="/directory?category=investors" className="group">
+          <Button className="w-full h-full py-6 bg-transparent hover:bg-white/10 text-white border border-white transition-colors duration-300">
             <div className="text-left">
               <h3 className="text-lg font-semibold mb-2">Find ReFi Investors</h3>
               <p className="text-sm opacity-70">Connect with investors focused on regenerative finance.</p>
             </div>
           </Button>
         </Link>
-        <Link to="/directory?category=tech4good">
-          <Button className="w-full h-full py-6 bg-white/10 hover:bg-white/20 text-white border-none">
+        <Link to="/directory?category=tech4good" className="group">
+          <Button className="w-full h-full py-6 bg-transparent hover:bg-white/10 text-white border border-white transition-colors duration-300">
             <div className="text-left">
               <h3 className="text-lg font-semibold mb-2">Find Tech for Good Jobs</h3>
               <p className="text-sm opacity-70">Discover tech jobs making a positive impact.</p>
             </div>
           </Button>
         </Link>
-        <Link to="/directory?category=permaculture">
-          <Button className="w-full h-full py-6 bg-white/10 hover:bg-white/20 text-white border-none">
+        <Link to="/directory?category=permaculture" className="group">
+          <Button className="w-full h-full py-6 bg-transparent hover:bg-white/10 text-white border border-white transition-colors duration-300">
             <div className="text-left">
               <h3 className="text-lg font-semibold mb-2">Find Permaculture Farms</h3>
               <p className="text-sm opacity-70">Locate farms dedicated to sustainable practices.</p>
