@@ -14,7 +14,7 @@ const Directory = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col h-full">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Humanity-Centered Innovation Directory</h1>
       
       <div className="mb-8 flex justify-between items-center">
@@ -30,7 +30,7 @@ const Directory = () => {
         </div>
       </div>
 
-      <Tabs defaultValue="investors" className="w-full">
+      <Tabs defaultValue="investors" className="flex-grow flex flex-col">
         <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-8">
           <TabsTrigger 
             value="investors" 
@@ -52,15 +52,17 @@ const Directory = () => {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="investors">
-          <ReFiInvestors searchTerm={searchTerm} />
-        </TabsContent>
-        <TabsContent value="tech4good">
-          <Tech4GoodJobs searchTerm={searchTerm} />
-        </TabsContent>
-        <TabsContent value="permaculture">
-          <PermacultureFarms searchTerm={searchTerm} />
-        </TabsContent>
+        <div className="flex-grow overflow-y-auto">
+          <TabsContent value="investors">
+            <ReFiInvestors searchTerm={searchTerm} />
+          </TabsContent>
+          <TabsContent value="tech4good">
+            <Tech4GoodJobs searchTerm={searchTerm} />
+          </TabsContent>
+          <TabsContent value="permaculture">
+            <PermacultureFarms searchTerm={searchTerm} />
+          </TabsContent>
+        </div>
       </Tabs>
     </div>
   );
