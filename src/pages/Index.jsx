@@ -1,73 +1,58 @@
-import React, { useState } from 'react';
-import { CheckCircle } from 'lucide-react';
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
-import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
-import { toast } from 'sonner';
-import CosmicAnimation from '@/components/CosmicAnimation';
+import { Button } from "@/components/ui/button";
+import { Search, Mic, Camera } from 'lucide-react';
 
 const Index = () => {
-  const [email, setEmail] = useState('');
-  const [showCosmic, setShowCosmic] = useState(false);
-  const addInspiringInnovationListItem = useAddInspiringInnovationListItem();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await addInspiringInnovationListItem.mutateAsync({ email });
-      toast.success('Thank you for subscribing!');
-      setEmail('');
-      setShowCosmic(true);
-      setTimeout(() => setShowCosmic(false), 5000);
-    } catch (error) {
-      console.error('Error adding email to list:', error);
-      toast.error('An error occurred. Please try again.');
-    }
-  };
-
   return (
-    <>
-      {showCosmic && <CosmicAnimation />}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-        <div className="w-full lg:w-1/2">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-6 leading-tight">
-            Grow your regenerative social enterprise
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl mb-6 font-light">
-            Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
-          </p>
-        </div>
-
-        <div className="w-full lg:w-1/2 bg-white/20 backdrop-blur-md p-6 md:p-8 rounded-xl">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-light mb-6">Every Monday, you'll get:</h2>
-          <ul className="space-y-4 mb-8">
-            {[
-              "A practical Integrative Organizing lesson",
-              "New tools to grow and scale your impact",
-              "Invitations to exclusive events and conversations"
-            ].map((benefit, index) => (
-              <li key={index} className="flex items-center text-base md:text-lg">
-                <CheckCircle className="text-green-400 mr-3 flex-shrink-0" />
-                <span className="font-light">{benefit}</span>
-              </li>
-            ))}
-          </ul>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="bg-white/30 border-white/50 text-white placeholder-white/70 text-base md:text-lg py-2 md:py-3"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Button type="submit" className="w-full bg-gbs-purple hover:bg-gbs-purple/90 text-base md:text-lg py-2 md:py-3">
-              Subscribe to inspiring innovations
-            </Button>
-          </form>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-12 text-center">
+        Explore human-centered innovation
+      </h1>
+      
+      <div className="w-full max-w-2xl mb-12">
+        <div className="relative">
+          <Input
+            type="text"
+            placeholder="Search..."
+            className="w-full pl-10 pr-16 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full"
+          />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-2">
+            <Mic className="text-white/70" />
+            <Camera className="text-white/70" />
+          </div>
         </div>
       </div>
-    </>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
+        <Link to="/directory?category=investors">
+          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Find ReFi Investors</h3>
+              <p className="text-sm opacity-70">Connect with investors focused on regenerative finance.</p>
+            </div>
+          </Button>
+        </Link>
+        <Link to="/directory?category=tech4good">
+          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Find Tech for Good Jobs</h3>
+              <p className="text-sm opacity-70">Discover tech jobs making a positive impact.</p>
+            </div>
+          </Button>
+        </Link>
+        <Link to="/directory?category=permaculture">
+          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Find Permaculture Farms</h3>
+              <p className="text-sm opacity-70">Locate farms dedicated to sustainable practices.</p>
+            </div>
+          </Button>
+        </Link>
+      </div>
+    </div>
   );
 };
 
