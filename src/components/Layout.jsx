@@ -25,8 +25,12 @@ const Layout = ({ children }) => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 md:py-12 flex-grow overflow-y-auto">
-        {children}
+      <main className="flex-grow overflow-hidden">
+        <div className="h-full overflow-y-auto px-4 py-8 md:py-12">
+          <div className="container mx-auto">
+            {children}
+          </div>
+        </div>
       </main>
     </div>
   );
