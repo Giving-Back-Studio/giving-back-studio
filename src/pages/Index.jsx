@@ -1,21 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Mic, Camera } from 'lucide-react';
 
 const Index = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/directory?search=${encodeURIComponent(searchTerm)}`);
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-4">
+    <div className="flex flex-col items-center justify-center min-h-full p-4 bg-gradient-to-b from-gbs-purple to-gbs-blue text-white">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-12 text-center">
-        Explore humanity centered innovation
+        Explore human-centered innovation
       </h1>
       
-      <div className="w-full max-w-2xl mb-12">
+      <form onSubmit={handleSearch} className="w-full max-w-2xl mb-12">
         <div className="relative">
           <Input
             type="text"
             placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-16 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
@@ -24,28 +36,28 @@ const Index = () => {
             <Camera className="text-white/70" />
           </div>
         </div>
-      </div>
+      </form>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
         <Link to="/directory?category=investors">
-          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
-            <div>
+          <Button className="w-full h-full py-6 bg-white/10 hover:bg-white/20 text-white border-none">
+            <div className="text-left">
               <h3 className="text-lg font-semibold mb-2">Find ReFi Investors</h3>
               <p className="text-sm opacity-70">Connect with investors focused on regenerative finance.</p>
             </div>
           </Button>
         </Link>
         <Link to="/directory?category=tech4good">
-          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
-            <div>
+          <Button className="w-full h-full py-6 bg-white/10 hover:bg-white/20 text-white border-none">
+            <div className="text-left">
               <h3 className="text-lg font-semibold mb-2">Find Tech for Good Jobs</h3>
               <p className="text-sm opacity-70">Discover tech jobs making a positive impact.</p>
             </div>
           </Button>
         </Link>
         <Link to="/directory?category=permaculture">
-          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
-            <div>
+          <Button className="w-full h-full py-6 bg-white/10 hover:bg-white/20 text-white border-none">
+            <div className="text-left">
               <h3 className="text-lg font-semibold mb-2">Find Permaculture Farms</h3>
               <p className="text-sm opacity-70">Locate farms dedicated to sustainable practices.</p>
             </div>

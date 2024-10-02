@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search } from 'lucide-react';
@@ -8,6 +9,22 @@ import PermacultureFarms from '@/components/PermacultureFarms';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState('investors');
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const search = searchParams.get('search');
+    const category = searchParams.get('category');
+    
+    if (search) {
+      setSearchTerm(search);
+    }
+    
+    if (category) {
+      setActiveTab(category);
+    }
+  }, [location]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -16,7 +33,7 @@ const Directory = () => {
   return (
     <div className="flex flex-col h-full">
       <div className="flex-shrink-0 sticky top-0 bg-gradient-to-b from-gbs-purple to-gbs-blue z-10 pb-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Humanity-Centered Innovation Directory</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Human-Centered Innovation Directory</h1>
         
         <div className="mb-8 flex justify-between items-center">
           <div className="relative w-full md:w-64">
@@ -31,7 +48,7 @@ const Directory = () => {
           </div>
         </div>
 
-        <Tabs defaultValue="investors">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-8">
             <TabsTrigger 
               value="investors" 
