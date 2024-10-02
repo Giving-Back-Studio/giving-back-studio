@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search } from 'lucide-react';
+import { Search, Download } from 'lucide-react';
 import ReFiInvestors from '@/components/ReFiInvestors';
 import Tech4GoodJobs from '@/components/Tech4GoodJobs';
 import PermacultureFarms from '@/components/PermacultureFarms';
+import generateCSV from '@/utils/csvGenerator';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,12 +15,16 @@ const Directory = () => {
     setSearchTerm(e.target.value);
   };
 
+  const handleGenerateCSV = async () => {
+    await generateCSV();
+  };
+
   return (
     <div className="space-y-8">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Humanity-Centered Innovation Directory</h1>
       
-      <div className="mb-8">
-        <div className="relative w-full md:w-64 mb-4">
+      <div className="mb-8 flex justify-between items-center">
+        <div className="relative w-full md:w-64">
           <Input
             type="text"
             placeholder="Search directory..."
@@ -28,6 +34,9 @@ const Directory = () => {
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
         </div>
+        <Button onClick={handleGenerateCSV} className="ml-4 bg-green-500 hover:bg-green-600">
+          <Download className="mr-2 h-4 w-4" /> Export CSV
+        </Button>
       </div>
 
       <Tabs defaultValue="investors" className="w-full">
