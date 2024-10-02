@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
-import { Search, Mic, Camera } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,13 +27,9 @@ const Index = () => {
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-16 py-3 bg-transparent border-white/30 text-white placeholder-white/70 rounded-full"
+            className="w-full pl-10 pr-4 py-3 bg-transparent border-white/30 text-white placeholder-white rounded-full"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-2">
-            <Mic className="text-white/70" />
-            <Camera className="text-white/70" />
-          </div>
         </div>
       </form>
       
