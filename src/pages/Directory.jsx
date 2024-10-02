@@ -32,7 +32,7 @@ const Directory = () => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-shrink-0 sticky top-0 bg-gradient-to-b from-gbs-purple to-gbs-blue z-10 pb-4">
+      <div className="flex-shrink-0 sticky top-0 z-10 pb-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Human-Centered Innovation Directory</h1>
         
         <div className="mb-8 flex justify-between items-center">
@@ -42,7 +42,7 @@ const Directory = () => {
               placeholder="Search directory..."
               value={searchTerm}
               onChange={handleSearch}
-              className="bg-white/10 border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 rounded-full w-full"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 rounded-full w-full"
             />
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
           </div>
