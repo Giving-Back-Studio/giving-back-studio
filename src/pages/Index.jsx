@@ -1,57 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Mic, Camera } from 'lucide-react';
+import { Input } from "@/components/ui/input";
+import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
+import { toast } from 'sonner';
 
 const Index = () => {
+  const [email, setEmail] = React.useState('');
+  const addInspiringInnovationListItem = useAddInspiringInnovationListItem();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await addInspiringInnovationListItem.mutateAsync({ email });
+      toast.success('Thank you for subscribing!');
+      setEmail('');
+    } catch (error) {
+      console.error('Error adding email to list:', error);
+      toast.error('An error occurred. Please try again.');
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-4">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-12 text-center">
-        Explore humanity centered innovation
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8">
+        Under Construction
       </h1>
-      
-      <div className="w-full max-w-2xl mb-12">
-        <div className="relative">
+      <img 
+        src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" 
+        alt="Under Construction" 
+        className="mb-8 rounded-lg shadow-lg"
+      />
+      <p className="text-xl mb-8">
+        We're building something amazing! In the meantime, subscribe to our inspiring innovations.
+      </p>
+      <form onSubmit={handleSubmit} className="w-full max-w-md mb-8">
+        <div className="flex gap-2">
           <Input
-            type="text"
-            placeholder="Search..."
-            className="w-full pl-10 pr-16 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full"
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="flex-grow"
           />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-2">
-            <Mic className="text-white/70" />
-            <Camera className="text-white/70" />
-          </div>
+          <Button type="submit">Subscribe</Button>
         </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
-        <Link to="/directory?category=investors">
-          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Find ReFi Investors</h3>
-              <p className="text-sm opacity-70">Connect with investors focused on regenerative finance.</p>
-            </div>
-          </Button>
-        </Link>
-        <Link to="/directory?category=tech4good">
-          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Find Tech for Good Jobs</h3>
-              <p className="text-sm opacity-70">Discover tech jobs making a positive impact.</p>
-            </div>
-          </Button>
-        </Link>
-        <Link to="/directory?category=permaculture">
-          <Button className="w-full py-6 bg-white/10 hover:bg-white/20 text-white">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Find Permaculture Farms</h3>
-              <p className="text-sm opacity-70">Locate farms dedicated to sustainable practices.</p>
-            </div>
-          </Button>
-        </Link>
-      </div>
+      </form>
+      <Link to="/search-directory" className="text-blue-500 hover:underline">
+        Check out our Search Directory (Beta)
+      </Link>
     </div>
   );
 };
