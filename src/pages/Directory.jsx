@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, Download } from 'lucide-react';
+import { Search } from 'lucide-react';
 import ReFiInvestors from '@/components/ReFiInvestors';
 import Tech4GoodJobs from '@/components/Tech4GoodJobs';
 import PermacultureFarms from '@/components/PermacultureFarms';
-import generateCSV from '@/utils/csvGenerator';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-  };
-
-  const handleGenerateCSV = async () => {
-    await generateCSV();
   };
 
   return (
@@ -34,9 +28,6 @@ const Directory = () => {
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
         </div>
-        <Button onClick={handleGenerateCSV} className="ml-4 bg-green-500 hover:bg-green-600">
-          <Download className="mr-2 h-4 w-4" /> Export CSV
-        </Button>
       </div>
 
       <Tabs defaultValue="investors" className="w-full">

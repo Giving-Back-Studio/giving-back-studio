@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Directory from "./pages/Directory";
 import ApplyToCoCreate from "./pages/ApplyToCoCreate";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/directory" element={<Directory />} />
             <Route path="/build" element={<ApplyToCoCreate />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Layout>
       </BrowserRouter>
