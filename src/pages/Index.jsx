@@ -15,7 +15,7 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-4 bg-gradient-to-b from-gbs-purple to-gbs-blue text-white">
+    <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-12 text-center">
         Explore human-centered innovation
       </h1>
@@ -39,19 +39,19 @@ const Index = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
         <Link to="/directory?category=investors" className="group">
-          <div className="w-full h-full p-6 bg-transparent hover:bg-white/10 text-white border border-white rounded-md transition-colors duration-300">
+          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
             <h3 className="text-lg font-semibold mb-2">Find ReFi Investors</h3>
             <p className="text-sm opacity-70">Connect with investors focused on regenerative finance.</p>
           </div>
         </Link>
         <Link to="/directory?category=tech4good" className="group">
-          <div className="w-full h-full p-6 bg-transparent hover:bg-white/10 text-white border border-white rounded-md transition-colors duration-300">
+          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
             <h3 className="text-lg font-semibold mb-2">Find Tech for Good Jobs</h3>
             <p className="text-sm opacity-70">Discover tech jobs making a positive impact.</p>
           </div>
         </Link>
         <Link to="/directory?category=permaculture" className="group">
-          <div className="w-full h-full p-6 bg-transparent hover:bg-white/10 text-white border border-white rounded-md transition-colors duration-300">
+          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
             <h3 className="text-lg font-semibold mb-2">Find Permaculture Farms</h3>
             <p className="text-sm opacity-70">Locate farms dedicated to sustainable practices.</p>
           </div>
