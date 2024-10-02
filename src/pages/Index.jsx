@@ -17,14 +17,14 @@ const Index = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-12 text-center">
-        Explore human-centered innovation
+        Discover humanity-centered innovation
       </h1>
       
       <form onSubmit={handleSearch} className="w-full max-w-2xl mb-12">
         <div className="relative">
           <Input
             type="text"
-            placeholder="Search..."
+            placeholder="Describe the opportunities you truly want to call in..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-3 bg-transparent border-white/30 text-white placeholder-white rounded-full"
