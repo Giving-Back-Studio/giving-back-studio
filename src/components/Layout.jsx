@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import { navItems } from '@/nav-items';
-import { Button } from "@/components/ui/button";
 
 const Layout = ({ children }) => {
   return (
@@ -26,22 +25,9 @@ const Layout = ({ children }) => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 md:py-12 flex-grow">
+      <main className="container mx-auto px-4 py-8 md:py-12 flex-grow overflow-y-auto">
         {children}
       </main>
-
-      <footer className="container mx-auto px-4 py-6 md:py-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <Link to="/directory">
-          <Button className="w-full sm:w-auto bg-white text-gbs-purple hover:bg-white/90 text-lg px-6 py-3">
-            Explore Directory
-          </Button>
-        </Link>
-        <Link to="/build">
-          <Button className="w-full sm:w-auto bg-gbs-lightPurple hover:bg-gbs-lightPurple/90 text-white text-lg px-6 py-3">
-            Apply to Co-Create
-          </Button>
-        </Link>
-      </footer>
     </div>
   );
 };

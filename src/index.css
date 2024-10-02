@@ -77,6 +77,15 @@
   }
 }
 
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+.animate-wave {
+  animation: wave 15s ease-in-out infinite;
+}
+
 @keyframes wave {
   0%, 100% {
     transform: translateY(0);
@@ -84,10 +93,6 @@
   50% {
     transform: translateY(20px);
   }
-}
-
-.animate-wave {
-  animation: wave 15s ease-in-out infinite;
 }
 
 /* Custom styles for the directory */

@@ -6,9 +6,9 @@ import { Search, Mic, Camera } from 'lucide-react';
 
 const Index = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <div className="flex flex-col items-center justify-center min-h-full p-4">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-12 text-center">
-        Explore human-centered innovation
+        Explore humanity centered innovation
       </h1>
       
       <div className="w-full max-w-2xl mb-12">
