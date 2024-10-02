@@ -15,7 +15,7 @@ const Directory = () => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 sticky top-0 bg-gradient-to-b from-gbs-purple to-gbs-blue z-10 pb-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Humanity-Centered Innovation Directory</h1>
         
         <div className="mb-8 flex justify-between items-center">
@@ -31,41 +31,41 @@ const Directory = () => {
           </div>
         </div>
 
-        <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-8">
-          <TabsTrigger 
-            value="investors" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
-          >
-            Investors
-          </TabsTrigger>
-          <TabsTrigger 
-            value="tech4good" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
-          >
-            Tech4Good Jobs
-          </TabsTrigger>
-          <TabsTrigger 
-            value="permaculture" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
-          >
-            Permaculture Farms
-          </TabsTrigger>
-        </TabsList>
-      </div>
+        <Tabs defaultValue="investors">
+          <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-8">
+            <TabsTrigger 
+              value="investors" 
+              className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            >
+              Investors
+            </TabsTrigger>
+            <TabsTrigger 
+              value="tech4good" 
+              className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            >
+              Tech4Good Jobs
+            </TabsTrigger>
+            <TabsTrigger 
+              value="permaculture" 
+              className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            >
+              Permaculture Farms
+            </TabsTrigger>
+          </TabsList>
 
-      <Tabs defaultValue="investors" className="flex-grow flex flex-col overflow-hidden">
-        <div className="flex-grow overflow-y-auto">
-          <TabsContent value="investors" className="h-full">
-            <ReFiInvestors searchTerm={searchTerm} />
-          </TabsContent>
-          <TabsContent value="tech4good" className="h-full">
-            <Tech4GoodJobs searchTerm={searchTerm} />
-          </TabsContent>
-          <TabsContent value="permaculture" className="h-full">
-            <PermacultureFarms searchTerm={searchTerm} />
-          </TabsContent>
-        </div>
-      </Tabs>
+          <div className="flex-grow overflow-y-auto">
+            <TabsContent value="investors" className="h-full">
+              <ReFiInvestors searchTerm={searchTerm} />
+            </TabsContent>
+            <TabsContent value="tech4good" className="h-full">
+              <Tech4GoodJobs searchTerm={searchTerm} />
+            </TabsContent>
+            <TabsContent value="permaculture" className="h-full">
+              <PermacultureFarms searchTerm={searchTerm} />
+            </TabsContent>
+          </div>
+        </Tabs>
+      </div>
     </div>
   );
 };
