@@ -10,7 +10,7 @@ const ApplyToCoCreate = () => {
     name: '',
     email: '',
     enterprise_name: '',
-    enterprise_purpose: '',
+    purpose: '',
     growth_value: ''
   });
 
@@ -33,7 +33,7 @@ const ApplyToCoCreate = () => {
         name: '',
         email: '',
         enterprise_name: '',
-        enterprise_purpose: '',
+        purpose: '',
         growth_value: ''
       });
     } catch (error) {
@@ -91,12 +91,12 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="enterprise_purpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
+          <label htmlFor="purpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
           <Textarea
-            id="enterprise_purpose"
-            name="enterprise_purpose"
+            id="purpose"
+            name="purpose"
             placeholder="In 1 sentence, what is the purpose of this enterprise?"
-            value={formData.enterprise_purpose}
+            value={formData.purpose}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             rows={2}
