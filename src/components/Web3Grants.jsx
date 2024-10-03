@@ -17,7 +17,7 @@ const Web3Grants = ({ searchTerm }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {grants.map((grant) => (
-        <Card key={grant.id} className="bg-white/10 hover:bg-white/20 transition-colors relative">
+        <Card key={grant.id} className="bg-transparent border border-white/30 hover:bg-white/10 transition-colors relative">
           <CardHeader>
             <CardTitle className="text-lg text-white">{grant.name}</CardTitle>
           </CardHeader>
