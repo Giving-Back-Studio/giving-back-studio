@@ -42,9 +42,9 @@ const Directory = () => {
               placeholder="Search directory..."
               value={searchTerm}
               onChange={handleSearch}
-              className="bg-transparent border-white/30 text-white placeholder-white rounded-full w-full"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 rounded-full w-full"
             />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
           </div>
         </div>
 
