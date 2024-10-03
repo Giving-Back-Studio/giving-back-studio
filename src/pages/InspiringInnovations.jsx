@@ -38,7 +38,7 @@ const InspiringInnovations = () => {
           </p>
         </div>
 
-        <div className="w-full lg:w-1/2 bg-white/20 backdrop-blur-md p-6 md:p-8 rounded-xl">
+        <div className="w-full lg:w-1/2 bg-transparent border border-white/30 p-6 md:p-8 rounded-xl">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-light mb-6">Every Monday, you'll get:</h2>
           <ul className="space-y-4 mb-8">
             {[
@@ -56,12 +56,12 @@ const InspiringInnovations = () => {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="bg-white/30 border-white/50 text-white placeholder-white/70 text-base md:text-lg py-2 md:py-3"
+              className="bg-transparent border-white/30 text-white placeholder-white/70 text-base md:text-lg py-2 md:py-3"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button type="submit" className="w-full bg-gbs-purple hover:bg-gbs-purple/90 text-base md:text-lg py-2 md:py-3">
+            <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90 text-base md:text-lg py-2 md:py-3">
               Subscribe to inspiring innovations
             </Button>
           </form>
