@@ -5,7 +5,7 @@ import { navItems } from '@/nav-items';
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue text-white font-sans flex flex-col">
       <header className="container mx-auto px-4 py-6 md:py-8">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <Link to="/" className="mb-4 sm:mb-0">
@@ -25,11 +25,9 @@ const Layout = ({ children }) => {
         </div>
       </header>
 
-      <main className="flex-grow overflow-hidden">
-        <div className="h-full overflow-y-auto px-4 py-8 md:py-12">
-          <div className="container mx-auto max-w-7xl">
-            {children}
-          </div>
+      <main className="flex-grow overflow-y-auto">
+        <div className="container mx-auto max-w-7xl px-4 py-8 md:py-12">
+          {children}
         </div>
       </main>
     </div>
