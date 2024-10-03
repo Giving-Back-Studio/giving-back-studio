@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import { v4 as uuidv4 } from 'uuid';
+
 const realData = {
   tech4good: [
     {
@@ -127,7 +129,8 @@ export const scrapeWeb3Grants = async () => {
   });
 };
 
-export const scrapeReFiInvestors = () => [
+export const scrapeReFiInvestors = (page = 0, limit = 20, searchTerm = '') => {
+  const allInvestors = [
   {
     id: uuidv4(),
     name: "Acumen",
@@ -249,7 +252,22 @@ export const scrapeReFiInvestors = () => [
     link: "https://theimpactengine.com/",
   },
   // ... Additional 80 investors would be listed here, following the same format.
-];
+  ];
+
+  let filteredInvestors = allInvestors;
+  if (searchTerm) {
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    filteredInvestors = allInvestors.filter(investor => 
+      investor.name.toLowerCase().includes(lowerSearchTerm) ||
+      investor.description.toLowerCase().includes(lowerSearchTerm)
+    );
+  }
+
+  const start = page * limit;
+  const end = start + limit;
+  return filteredInvestors.slice(start, end);
+};
 
 export const scrapeTech4GoodJobs = () => realData.tech4good;
 export const scrapePermacultureFarms = () => realData.permaculture;
+
