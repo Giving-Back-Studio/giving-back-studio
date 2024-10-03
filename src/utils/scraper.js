@@ -117,24 +117,48 @@ const realData = {
   ],
 };
 
+const fallbackGrants = [
+  {
+    id: uuidv4(),
+    name: "Ethereum Foundation Grants",
+    description: "Supporting projects that contribute to the Ethereum ecosystem.",
+    link: "https://ethereum.org/en/community/grants/"
+  },
+  {
+    id: uuidv4(),
+    name: "Web3 Foundation Grants Program",
+    description: "Funding for building the foundation of the decentralized web.",
+    link: "https://web3.foundation/grants/"
+  },
+  // Add a few more fallback grants here
+];
+
 export const scrapeWeb3Grants = async (searchTerm = '') => {
-  const response = await fetch('/src/data/web3_grants.csv');
-  const csvText = await response.text();
-  const lines = csvText.split('\n').slice(1); // Skip header row
-  const grants = lines.map(line => {
-    const [id, name, description, link] = line.split(',');
-    return { id, name, description, link };
-  });
+  try {
+    const response = await fetch('/src/data/web3_grants.csv');
+    if (!response.ok) {
+      throw new Error('Failed to fetch CSV file');
+    }
+    const csvText = await response.text();
+    const lines = csvText.split('\n').slice(1); // Skip header row
+    const grants = lines.map(line => {
+      const [id, name, description, link] = line.split(',');
+      return { id, name, description, link };
+    });
 
-  if (searchTerm) {
-    const lowerSearchTerm = searchTerm.toLowerCase();
-    return grants.filter(grant => 
-      grant.name.toLowerCase().includes(lowerSearchTerm) ||
-      grant.description.toLowerCase().includes(lowerSearchTerm)
-    );
+    if (searchTerm) {
+      const lowerSearchTerm = searchTerm.toLowerCase();
+      return grants.filter(grant => 
+        grant.name.toLowerCase().includes(lowerSearchTerm) ||
+        grant.description.toLowerCase().includes(lowerSearchTerm)
+      );
+    }
+
+    return grants;
+  } catch (error) {
+    console.error('Error fetching Web3 grants:', error);
+    return fallbackGrants;
   }
-
-  return grants;
 };
 
 export const scrapeReFiInvestors = (page = 0, limit = 20, searchTerm = '') => {
