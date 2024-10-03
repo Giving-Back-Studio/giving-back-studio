@@ -11,12 +11,12 @@ const Layout = ({ children }) => {
           <Link to="/" className="mb-4 sm:mb-0">
             <Logo />
           </Link>
-          <nav className="flex flex-wrap justify-center sm:space-x-4 md:space-x-6">
+          <nav className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-white hover:text-white/80 transition-colors px-3 py-2 text-sm md:text-base lg:text-lg"
+                className="text-white hover:text-white/80 transition-colors px-2 py-1 text-sm sm:text-base lg:text-lg"
               >
                 {item.title}
               </Link>
@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
       </header>
 
       <main className="flex-grow overflow-y-auto">
-        <div className="container mx-auto max-w-7xl px-4 py-8 md:py-12">
+        <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-8 md:py-12">
           {children}
         </div>
       </main>

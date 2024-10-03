@@ -25,30 +25,30 @@ const NewsletterFooter = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white/20 backdrop-blur-md p-4">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="flex-grow mr-4">
-          <h2 className="text-xl font-light mb-2">Subscribe to inspiring innovations</h2>
-          <form onSubmit={handleSubmit} className="flex">
+    <div className="fixed bottom-0 left-0 right-0 bg-white/20 backdrop-blur-md p-3 sm:p-4">
+      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <div className="flex-grow w-full sm:w-auto">
+          <h2 className="text-lg sm:text-xl font-light mb-2 text-center sm:text-left">Subscribe to inspiring innovations</h2>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
             <Input
               type="email"
               placeholder="Enter your email"
-              className="bg-white/30 border-white/50 text-white placeholder-white/70 mr-2"
+              className="bg-white/30 border-white/50 text-white placeholder-white/70 text-sm sm:text-base flex-grow"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button type="submit" className="bg-gbs-purple hover:bg-gbs-purple/90">
+            <Button type="submit" className="bg-gbs-purple hover:bg-gbs-purple/90 text-sm sm:text-base">
               Subscribe
             </Button>
           </form>
         </div>
         <Button
           variant="ghost"
-          className="text-white"
+          className="text-white absolute top-1 right-1 sm:static"
           onClick={() => setIsVisible(false)}
         >
-          <X size={24} />
+          <X size={20} />
         </Button>
       </div>
     </div>

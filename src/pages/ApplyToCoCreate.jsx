@@ -41,7 +41,7 @@ const ApplyToCoCreate = () => {
         growth_value: ''
       });
       setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 3000); // Hide confetti after 3 seconds
+      setTimeout(() => setShowConfetti(false), 3000);
     } catch (error) {
       toast.error(`Error submitting application: ${error.message}`);
     }
@@ -50,13 +50,13 @@ const ApplyToCoCreate = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
       <ConfettiAnimation show={showConfetti} />
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-center">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 sm:mb-8 text-center">
         Apply to Co-Create
       </h1>
       
-      <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6 bg-transparent border border-white/30 rounded-lg p-8">
+      <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-4 sm:space-y-6 bg-transparent border border-white/30 rounded-lg p-4 sm:p-8">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+          <label htmlFor="name" className="block text-sm font-medium mb-1 sm:mb-2">Name</label>
           <Input
             id="name"
             name="name"
@@ -70,7 +70,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+          <label htmlFor="email" className="block text-sm font-medium mb-1 sm:mb-2">Email</label>
           <Input
             id="email"
             name="email"
@@ -84,7 +84,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-2">Enterprise Name</label>
+          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-1 sm:mb-2">Enterprise Name</label>
           <Input
             id="enterprise_name"
             name="enterprise_name"
@@ -98,7 +98,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="purpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
+          <label htmlFor="purpose" className="block text-sm font-medium mb-1 sm:mb-2">Enterprise Purpose</label>
           <Textarea
             id="purpose"
             name="purpose"
@@ -112,7 +112,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="challenge" className="block text-sm font-medium mb-2">Challenge</label>
+          <label htmlFor="challenge" className="block text-sm font-medium mb-1 sm:mb-2">Challenge</label>
           <Textarea
             id="challenge"
             name="challenge"
@@ -126,7 +126,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="growth_value" className="block text-sm font-medium mb-2">Growth Impact</label>
+          <label htmlFor="growth_value" className="block text-sm font-medium mb-1 sm:mb-2">Growth Impact</label>
           <Textarea
             id="growth_value"
             name="growth_value"
