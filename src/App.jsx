@@ -8,23 +8,32 @@ import Directory from "./pages/Directory";
 import ApplyToCoCreate from "./pages/ApplyToCoCreate";
 import Admin from "./pages/Admin";
 import InspiringInnovations from "./pages/InspiringInnovations";
+import useGoogleAnalytics from "./hooks/useGoogleAnalytics";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  useGoogleAnalytics();
+
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/directory" element={<Directory />} />
+        <Route path="/build" element={<ApplyToCoCreate />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/inspiring-innovations" element={<InspiringInnovations />} />
+      </Routes>
+    </Layout>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/directory" element={<Directory />} />
-            <Route path="/build" element={<ApplyToCoCreate />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/inspiring-innovations" element={<InspiringInnovations />} />
-          </Routes>
-        </Layout>
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
