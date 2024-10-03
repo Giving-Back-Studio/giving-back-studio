@@ -15,8 +15,8 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-light mb-8 text-center text-white">
+    <div className="flex flex-col items-center justify-center min-h-full p-4 text-white bg-gradient-to-b from-gbs-purple to-gbs-blue">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-light mb-8 text-center">
         Discover humanity-centered innovation
       </h1>
       
@@ -27,35 +27,35 @@ const Index = () => {
             placeholder="Describe the opportunities you truly want to call in..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-transparent border-white/30 text-white placeholder-white rounded-full text-lg"
+            className="w-full pl-10 pr-4 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full text-lg"
           />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
         </div>
       </form>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl">
         <Link to="/directory?category=investors" className="group">
-          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
+          <div className="w-full h-full p-6 bg-white/10 border border-white/30 rounded-md transition-colors duration-300 hover:bg-white/20">
             <h3 className="text-xl font-semibold mb-2 text-white">Find ReFi Investors</h3>
-            <p className="text-sm text-white">Connect with investors focused on regenerative finance.</p>
+            <p className="text-sm text-white/80">Connect with investors focused on regenerative finance.</p>
           </div>
         </Link>
         <Link to="/directory?category=tech4good" className="group">
-          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
+          <div className="w-full h-full p-6 bg-white/10 border border-white/30 rounded-md transition-colors duration-300 hover:bg-white/20">
             <h3 className="text-xl font-semibold mb-2 text-white">Find Tech for Good Jobs</h3>
-            <p className="text-sm text-white">Discover tech jobs making a positive impact.</p>
+            <p className="text-sm text-white/80">Discover tech jobs making a positive impact.</p>
           </div>
         </Link>
         <Link to="/directory?category=permaculture" className="group">
-          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
+          <div className="w-full h-full p-6 bg-white/10 border border-white/30 rounded-md transition-colors duration-300 hover:bg-white/20">
             <h3 className="text-xl font-semibold mb-2 text-white">Find Permaculture Farms</h3>
-            <p className="text-sm text-white">Locate farms dedicated to sustainable practices.</p>
+            <p className="text-sm text-white/80">Locate farms dedicated to sustainable practices.</p>
           </div>
         </Link>
         <Link to="/directory?category=web3grants" className="group">
-          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
+          <div className="w-full h-full p-6 bg-white/10 border border-white/30 rounded-md transition-colors duration-300 hover:bg-white/20">
             <h3 className="text-xl font-semibold mb-2 text-white">Explore Web3 Grants</h3>
-            <p className="text-sm text-white">Discover funding opportunities in the Web3 ecosystem.</p>
+            <p className="text-sm text-white/80">Discover funding opportunities in the Web3 ecosystem.</p>
           </div>
         </Link>
       </div>
