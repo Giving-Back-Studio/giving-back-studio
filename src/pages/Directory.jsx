@@ -32,51 +32,51 @@ const Directory = () => {
   };
 
   return (
-    <div className="space-y-4 md:space-y-8">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-light mb-4 md:mb-8 text-white text-center">Human-Centered Innovation Directory</h1>
+    <div className="space-y-4 md:space-y-6 lg:space-y-8">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 md:mb-6 lg:mb-8 text-white text-center">Human-Centered Innovation Directory</h1>
       
-      <div className="mb-4 md:mb-8">
-        <div className="relative w-full">
+      <div className="mb-4 md:mb-6 lg:mb-8">
+        <div className="relative w-full max-w-2xl mx-auto">
           <Input
             type="text"
             placeholder="Search directory..."
             value={searchTerm}
             onChange={handleSearch}
-            className="bg-transparent border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 rounded-full w-full"
+            className="bg-transparent border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 md:py-3 rounded-full w-full"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
         </div>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-4 md:mb-8 overflow-x-auto">
+        <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-4 md:mb-6 lg:mb-8 overflow-x-auto">
           <TabsTrigger 
             value="investors" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
           >
             Investors
           </TabsTrigger>
           <TabsTrigger 
             value="tech4good" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
           >
             Tech4Good Jobs
           </TabsTrigger>
           <TabsTrigger 
             value="permaculture" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
           >
             Permaculture Farms
           </TabsTrigger>
           <TabsTrigger 
             value="web3grants" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
           >
             Web3 Grants
           </TabsTrigger>
         </TabsList>
 
-        <div className="space-y-4">
+        <div className="space-y-4 md:space-y-6 lg:space-y-8">
           <TabsContent value="investors">
             <ReFiInvestors searchTerm={searchTerm} />
           </TabsContent>

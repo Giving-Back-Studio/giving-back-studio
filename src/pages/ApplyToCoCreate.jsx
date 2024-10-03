@@ -50,11 +50,11 @@ const ApplyToCoCreate = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
       <ConfettiAnimation show={showConfetti} />
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 sm:mb-8 text-center">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-6 sm:mb-8 md:mb-10 text-center">
         Apply to Co-Create
       </h1>
       
-      <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-4 sm:space-y-6 bg-transparent border border-white/30 rounded-lg p-4 sm:p-8">
+      <form onSubmit={handleSubmit} className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl space-y-4 sm:space-y-6 md:space-y-8 bg-transparent border border-white/30 rounded-lg p-4 sm:p-6 md:p-8 lg:p-10">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-1 sm:mb-2">Name</label>
           <Input
@@ -106,7 +106,7 @@ const ApplyToCoCreate = () => {
             value={formData.purpose}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
-            rows={2}
+            rows={3}
             required
           />
         </div>
@@ -120,7 +120,7 @@ const ApplyToCoCreate = () => {
             value={formData.challenge}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
-            rows={2}
+            rows={3}
             required
           />
         </div>
@@ -134,12 +134,12 @@ const ApplyToCoCreate = () => {
             value={formData.growth_value}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
-            rows={3}
+            rows={4}
             required
           />
         </div>
         
-        <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90">
+        <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90 py-2 md:py-3 text-lg">
           Submit Application
         </Button>
       </form>
