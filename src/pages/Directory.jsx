@@ -32,11 +32,11 @@ const Directory = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Human-Centered Innovation Directory</h1>
+    <div className="space-y-4 md:space-y-8">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-light mb-4 md:mb-8 text-white text-center">Human-Centered Innovation Directory</h1>
       
-      <div className="mb-8 flex justify-between items-center">
-        <div className="relative w-full md:w-64">
+      <div className="mb-4 md:mb-8">
+        <div className="relative w-full">
           <Input
             type="text"
             placeholder="Search directory..."
@@ -48,29 +48,29 @@ const Directory = () => {
         </div>
       </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-8">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-4 md:mb-8 overflow-x-auto">
           <TabsTrigger 
             value="investors" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
           >
             Investors
           </TabsTrigger>
           <TabsTrigger 
             value="tech4good" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
           >
             Tech4Good Jobs
           </TabsTrigger>
           <TabsTrigger 
             value="permaculture" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
           >
             Permaculture Farms
           </TabsTrigger>
           <TabsTrigger 
             value="web3grants" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap"
           >
             Web3 Grants
           </TabsTrigger>
