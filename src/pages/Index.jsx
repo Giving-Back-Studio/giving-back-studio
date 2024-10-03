@@ -16,7 +16,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-light mb-8 text-center text-white">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-light mb-8 text-center text-white">
         Discover humanity-centered innovation
       </h1>
       
