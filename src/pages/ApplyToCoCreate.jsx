@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
 import { toast } from 'sonner';
+import ConfettiAnimation from '@/components/ConfettiAnimation';
 
 const ApplyToCoCreate = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const ApplyToCoCreate = () => {
     challenge: '',
     growth_value: ''
   });
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const addApplication = useAddApplication();
 
@@ -38,6 +40,8 @@ const ApplyToCoCreate = () => {
         challenge: '',
         growth_value: ''
       });
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 3000); // Hide confetti after 3 seconds
     } catch (error) {
       toast.error(`Error submitting application: ${error.message}`);
     }
@@ -45,6 +49,7 @@ const ApplyToCoCreate = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
+      <ConfettiAnimation show={showConfetti} />
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-center">
         Apply to Co-Create
       </h1>
@@ -56,7 +61,7 @@ const ApplyToCoCreate = () => {
             id="name"
             name="name"
             type="text"
-            placeholder="Your full name"
+            placeholder="[Your full name]"
             value={formData.name}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
@@ -70,7 +75,7 @@ const ApplyToCoCreate = () => {
             id="email"
             name="email"
             type="email"
-            placeholder="your.email@example.com"
+            placeholder="[your.email@example.com]"
             value={formData.email}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
@@ -84,7 +89,7 @@ const ApplyToCoCreate = () => {
             id="enterprise_name"
             name="enterprise_name"
             type="text"
-            placeholder="Your enterprise name"
+            placeholder="[Your enterprise name]"
             value={formData.enterprise_name}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
@@ -97,7 +102,7 @@ const ApplyToCoCreate = () => {
           <Textarea
             id="purpose"
             name="purpose"
-            placeholder="In 1 sentence, what is the purpose of this enterprise?"
+            placeholder="[In 1 sentence, what is the purpose of this enterprise?]"
             value={formData.purpose}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
@@ -111,7 +116,7 @@ const ApplyToCoCreate = () => {
           <Textarea
             id="challenge"
             name="challenge"
-            placeholder="What is your biggest challenge right now as a social enterprise creator?"
+            placeholder="[What is your biggest challenge right now as a social enterprise creator?]"
             value={formData.challenge}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
@@ -125,7 +130,7 @@ const ApplyToCoCreate = () => {
           <Textarea
             id="growth_value"
             name="growth_value"
-            placeholder="If you could grow revenue exponentially, how would it serve humanity?"
+            placeholder="[If you could grow revenue exponentially, how would it serve humanity?]"
             value={formData.growth_value}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white"
