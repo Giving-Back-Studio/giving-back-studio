@@ -5,10 +5,12 @@ import { Input } from "@/components/ui/input";
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const InspiringInnovations = () => {
   const [email, setEmail] = useState('');
   const [showCosmic, setShowCosmic] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const addInspiringInnovationListItem = useAddInspiringInnovationListItem();
 
   const handleSubmit = async (e) => {
@@ -21,13 +23,25 @@ const InspiringInnovations = () => {
       setTimeout(() => setShowCosmic(false), 5000);
     } catch (error) {
       console.error('Error adding email to list:', error);
-      toast.error('An error occurred. Please try again.');
+      if (error.message.includes('duplicate key value violates unique constraint')) {
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+      } else {
+        toast.error('An error occurred. Please try again.');
+      }
     }
   };
 
   return (
     <>
       {showCosmic && <CosmicAnimation />}
+      {showAlert && (
+        <Alert variant="warning" className="mb-4">
+          <AlertDescription>
+            Whoops, you're already subscribed!
+          </AlertDescription>
+        </Alert>
+      )}
       <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 xl:gap-16">
         <div className="w-full lg:w-1/2">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 sm:mb-6 md:mb-8 leading-tight">
