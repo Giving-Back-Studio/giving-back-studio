@@ -32,8 +32,8 @@ const Directory = () => {
   };
 
   return (
-    <div className="flex flex-col h-full min-h-screen bg-gradient-to-b from-gbs-purple to-gbs-blue">
-      <div className="flex-shrink-0 sticky top-0 z-10 pb-4 px-4 pt-8">
+    <div className="flex flex-col h-full">
+      <div className="flex-shrink-0 sticky top-0 z-10 pb-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">Human-Centered Innovation Directory</h1>
         
         <div className="mb-8 flex justify-between items-center">
