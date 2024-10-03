@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
+import { toast } from 'sonner';
 
 const ApplyToCoCreate = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    enterpriseName: '',
-    enterprisePurpose: '',
+    enterprise_name: '',
+    purpose: '',
     challenge: '',
-    growthImpact: ''
+    growth_value: ''
   });
+
+  const addApplication = useAddApplication();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,10 +25,22 @@ const ApplyToCoCreate = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    try {
+      await addApplication.mutateAsync(formData);
+      toast.success('Application submitted successfully!');
+      setFormData({
+        name: '',
+        email: '',
+        enterprise_name: '',
+        purpose: '',
+        challenge: '',
+        growth_value: ''
+      });
+    } catch (error) {
+      toast.error(`Error submitting application: ${error.message}`);
+    }
   };
 
   return (
@@ -63,13 +79,13 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="enterpriseName" className="block text-sm font-medium mb-2">Enterprise Name</label>
+          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-2">Enterprise Name</label>
           <Input
-            id="enterpriseName"
-            name="enterpriseName"
+            id="enterprise_name"
+            name="enterprise_name"
             type="text"
             placeholder="Your enterprise name"
-            value={formData.enterpriseName}
+            value={formData.enterprise_name}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             required
@@ -77,12 +93,12 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="enterprisePurpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
+          <label htmlFor="purpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
           <Textarea
-            id="enterprisePurpose"
-            name="enterprisePurpose"
+            id="purpose"
+            name="purpose"
             placeholder="In 1 sentence, what is the purpose of this enterprise?"
-            value={formData.enterprisePurpose}
+            value={formData.purpose}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             rows={2}
@@ -105,12 +121,12 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="growthImpact" className="block text-sm font-medium mb-2">Growth Impact</label>
+          <label htmlFor="growth_value" className="block text-sm font-medium mb-2">Growth Impact</label>
           <Textarea
-            id="growthImpact"
-            name="growthImpact"
+            id="growth_value"
+            name="growth_value"
             placeholder="If you could grow revenue exponentially, how would it serve humanity?"
-            value={formData.growthImpact}
+            value={formData.growth_value}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             rows={3}
