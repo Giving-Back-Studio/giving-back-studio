@@ -1,3 +1,18 @@
+import { v4 as uuidv4 } from 'uuid';
+
+const generateInvestors = (count) => {
+  const investors = [];
+  for (let i = 0; i < count; i++) {
+    investors.push({
+      id: uuidv4(),
+      name: `ReFi Investor ${i + 1}`,
+      description: `A forward-thinking investor focused on regenerative finance projects and sustainable initiatives. Investor ${i + 1} is committed to funding solutions that address environmental and social challenges.`,
+      link: `https://refi-investor-${i + 1}.example.com`,
+    });
+  }
+  return investors;
+};
+
 const realData = {
   tech4good: [
     {
@@ -37,44 +52,7 @@ const realData = {
       link: 'https://www.terran.io/',
     },
   ],
-  refi: [
-    {
-      id: '1',
-      name: 'Gitcoin',
-      description: 'Building and funding digital public goods.',
-      link: 'https://gitcoin.co/',
-    },
-    {
-      id: '2',
-      name: 'Regen Network',
-      description: 'Ecological assets for a regenerative economy.',
-      link: 'https://www.regen.network/',
-    },
-    {
-      id: '3',
-      name: 'Toucan Protocol',
-      description: 'Bringing carbon credits on-chain for greater transparency and liquidity.',
-      link: 'https://toucan.earth/',
-    },
-    {
-      id: '4',
-      name: 'Celo',
-      description: 'A carbon-negative blockchain ecosystem focused on creating the conditions for prosperity for everyone.',
-      link: 'https://celo.org/',
-    },
-    {
-      id: '5',
-      name: 'KlimaDAO',
-      description: 'Driving climate action and earning rewards with a carbon-backed digital currency.',
-      link: 'https://www.klimadao.finance/',
-    },
-    {
-      id: '6',
-      name: 'Moss.Earth',
-      description: 'Democratizing carbon credits and promoting environmental conservation through blockchain technology.',
-      link: 'https://moss.earth/',
-    },
-  ],
+  refi: generateInvestors(100),
   permaculture: [
     {
       id: '1',
