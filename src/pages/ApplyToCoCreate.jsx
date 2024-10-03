@@ -11,7 +11,6 @@ const ApplyToCoCreate = () => {
     email: '',
     enterprise_name: '',
     purpose: '',
-    challenge: '',
     growth_value: ''
   });
 
@@ -35,7 +34,6 @@ const ApplyToCoCreate = () => {
         email: '',
         enterprise_name: '',
         purpose: '',
-        challenge: '',
         growth_value: ''
       });
     } catch (error) {
@@ -102,20 +100,6 @@ const ApplyToCoCreate = () => {
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             rows={2}
-            required
-          />
-        </div>
-        
-        <div>
-          <label htmlFor="challenge" className="block text-sm font-medium mb-2">Challenge</label>
-          <Textarea
-            id="challenge"
-            name="challenge"
-            placeholder="What is your biggest challenge right now as a social enterprise creator?"
-            value={formData.challenge}
-            onChange={handleChange}
-            className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
-            rows={3}
             required
           />
         </div>
