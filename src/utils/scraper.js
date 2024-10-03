@@ -117,14 +117,24 @@ const realData = {
   ],
 };
 
-export const scrapeWeb3Grants = async () => {
+export const scrapeWeb3Grants = async (searchTerm = '') => {
   const response = await fetch('/src/data/web3_grants.csv');
   const csvText = await response.text();
   const lines = csvText.split('\n').slice(1); // Skip header row
-  return lines.map(line => {
+  const grants = lines.map(line => {
     const [id, name, description, link] = line.split(',');
     return { id, name, description, link };
   });
+
+  if (searchTerm) {
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    return grants.filter(grant => 
+      grant.name.toLowerCase().includes(lowerSearchTerm) ||
+      grant.description.toLowerCase().includes(lowerSearchTerm)
+    );
+  }
+
+  return grants;
 };
 
 export const scrapeReFiInvestors = (page = 0, limit = 20, searchTerm = '') => {
@@ -268,3 +278,4 @@ export const scrapeReFiInvestors = (page = 0, limit = 20, searchTerm = '') => {
 
 export const scrapeTech4GoodJobs = () => realData.tech4good;
 export const scrapePermacultureFarms = () => realData.permaculture;
+
