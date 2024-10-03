@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { scrapeReFiInvestors } from '@/utils/scraper';
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -26,7 +26,7 @@ const ReFiInvestors = ({ searchTerm }) => {
     getNextPageParam: (lastPage) => lastPage.hasMore ? lastPage.nextPage : undefined,
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
