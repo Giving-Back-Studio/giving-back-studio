@@ -107,15 +107,15 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="challenge" className="block text-sm font-medium mb-2">Current Challenge</label>
+          <label htmlFor="challenge" className="block text-sm font-medium mb-2">Challenge [What is your biggest challenge right now as a social enterprise creator?]</label>
           <Textarea
             id="challenge"
             name="challenge"
-            placeholder="What's the biggest challenge your enterprise is currently facing?"
+            placeholder="Describe your biggest challenge as a social enterprise creator"
             value={formData.challenge}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
-            rows={2}
+            rows={3}
             required
           />
         </div>
