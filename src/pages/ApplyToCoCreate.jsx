@@ -51,7 +51,7 @@ const ApplyToCoCreate = () => {
       
       <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6 bg-transparent border border-white/30 rounded-lg p-8">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+          <label htmlFor="name" className="block text-sm font-medium mb-2">Name [Your full name]</label>
           <Input
             id="name"
             name="name"
@@ -65,7 +65,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+          <label htmlFor="email" className="block text-sm font-medium mb-2">Email [your.email@example.com]</label>
           <Input
             id="email"
             name="email"
@@ -79,7 +79,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-2">Enterprise Name</label>
+          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-2">Enterprise Name [Your enterprise name]</label>
           <Input
             id="enterprise_name"
             name="enterprise_name"
@@ -93,7 +93,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="purpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
+          <label htmlFor="purpose" className="block text-sm font-medium mb-2">Enterprise Purpose [In 1 sentence, what is the purpose of this enterprise?]</label>
           <Textarea
             id="purpose"
             name="purpose"
@@ -121,7 +121,7 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="growth_value" className="block text-sm font-medium mb-2">Growth Impact</label>
+          <label htmlFor="growth_value" className="block text-sm font-medium mb-2">Growth Impact [If you could grow revenue exponentially, how would it serve humanity?]</label>
           <Textarea
             id="growth_value"
             name="growth_value"
