@@ -115,6 +115,102 @@ const realData = {
   ],
 };
 
+const web3GrantsData = [
+  {
+    id: '1',
+    name: 'Ethereum Foundation Grants',
+    description: 'Supporting projects that contribute to the Ethereum ecosystem.',
+    link: 'https://ethereum.org/en/community/grants/',
+  },
+  {
+    id: '2',
+    name: 'Web3 Foundation Grants Program',
+    description: 'Funding for building the foundation of the decentralized web.',
+    link: 'https://web3.foundation/grants/',
+  },
+  {
+    id: '3',
+    name: 'Gitcoin Grants',
+    description: 'Crowdfunding platform for open source projects in the Web3 space.',
+    link: 'https://gitcoin.co/grants/',
+  },
+  {
+    id: '4',
+    name: 'Polygon Grants',
+    description: 'Supporting developers building on the Polygon network.',
+    link: 'https://polygon.technology/developers/grants',
+  },
+  {
+    id: '5',
+    name: 'Chainlink Grants Program',
+    description: 'Funding for projects enhancing the Chainlink ecosystem.',
+    link: 'https://chain.link/community/grants',
+  },
+  {
+    id: '6',
+    name: 'Aave Grants DAO',
+    description: 'Grants for projects contributing to the Aave ecosystem.',
+    link: 'https://aavegrants.org/',
+  },
+  {
+    id: '7',
+    name: 'Uniswap Grants Program',
+    description: 'Supporting projects that benefit the Uniswap ecosystem.',
+    link: 'https://unigrants.org/',
+  },
+  {
+    id: '8',
+    name: 'Filecoin Dev Grants',
+    description: 'Funding for developers building on the Filecoin network.',
+    link: 'https://filecoin.io/grants/',
+  },
+  {
+    id: '9',
+    name: 'NEAR Grants Program',
+    description: 'Supporting projects building on the NEAR Protocol.',
+    link: 'https://near.org/grants/',
+  },
+  {
+    id: '10',
+    name: 'Algorand Foundation Grants Program',
+    description: 'Funding for projects advancing the Algorand ecosystem.',
+    link: 'https://algorand.foundation/grants-program',
+  },
+  {
+    id: '11',
+    name: 'Tezos Foundation Grants',
+    description: 'Supporting projects that contribute to the Tezos ecosystem.',
+    link: 'https://tezos.foundation/grants/',
+  },
+  {
+    id: '12',
+    name: 'Harmony Grants',
+    description: 'Funding for projects building on the Harmony blockchain.',
+    link: 'https://open.harmony.one/300m-on-bounties-grants-daos',
+  },
+  {
+    id: '13',
+    name: 'Solana Foundation Grants',
+    description: 'Supporting developers building on the Solana blockchain.',
+    link: 'https://solana.foundation/grants',
+  },
+  {
+    id: '14',
+    name: 'Polkadot Treasury Grants',
+    description: 'Funding for projects benefiting the Polkadot ecosystem.',
+    link: 'https://polkadot.network/treasury/',
+  },
+  {
+    id: '15',
+    name: 'Cosmos Ecosystem Grants',
+    description: 'Supporting projects building in the Cosmos ecosystem.',
+    link: 'https://cosmos.network/ecosystem/funding',
+  },
+];
+
+
 export const scrapeReFiInvestors = () => realData.refi;
 export const scrapeTech4GoodJobs = () => realData.tech4good;
 export const scrapePermacultureFarms = () => realData.permaculture;
+
+export const scrapeWeb3Grants = () => web3GrantsData;

@@ -6,6 +6,7 @@ import { Search } from 'lucide-react';
 import ReFiInvestors from '@/components/ReFiInvestors';
 import Tech4GoodJobs from '@/components/Tech4GoodJobs';
 import PermacultureFarms from '@/components/PermacultureFarms';
+import Web3Grants from '@/components/Web3Grants';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,7 +43,7 @@ const Directory = () => {
               placeholder="Search directory..."
               value={searchTerm}
               onChange={handleSearch}
-              className="bg-transparent border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 rounded-full w-full"
+              className="bg-transparent border-white/30 text-white placeholder-white pl-10 pr-4 py-2 rounded-full w-full"
             />
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
           </div>
@@ -68,6 +69,12 @@ const Directory = () => {
             >
               Permaculture Farms
             </TabsTrigger>
+            <TabsTrigger 
+              value="web3grants" 
+              className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent"
+            >
+              Web3 Grants
+            </TabsTrigger>
           </TabsList>
 
           <div className="flex-grow overflow-y-auto">
@@ -79,6 +86,9 @@ const Directory = () => {
             </TabsContent>
             <TabsContent value="permaculture" className="h-full">
               <PermacultureFarms searchTerm={searchTerm} />
+            </TabsContent>
+            <TabsContent value="web3grants" className="h-full">
+              <Web3Grants searchTerm={searchTerm} />
             </TabsContent>
           </div>
         </Tabs>

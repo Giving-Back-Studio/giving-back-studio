@@ -16,7 +16,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-light mb-8 text-center text-white">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-light mb-8 text-center text-white">
         Discover humanity-centered innovation
       </h1>
       
@@ -33,7 +33,7 @@ const Index = () => {
         </div>
       </form>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl">
         <Link to="/directory?category=investors" className="group">
           <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
             <h3 className="text-xl font-semibold mb-2 text-white">Find ReFi Investors</h3>
@@ -50,6 +50,12 @@ const Index = () => {
           <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
             <h3 className="text-xl font-semibold mb-2 text-white">Find Permaculture Farms</h3>
             <p className="text-sm text-white">Locate farms dedicated to sustainable practices.</p>
+          </div>
+        </Link>
+        <Link to="/directory?category=web3grants" className="group">
+          <div className="w-full h-full p-6 bg-transparent border border-white rounded-md transition-colors duration-300 hover:bg-white/10">
+            <h3 className="text-xl font-semibold mb-2 text-white">Explore Web3 Grants</h3>
+            <p className="text-sm text-white">Discover funding opportunities in the Web3 ecosystem.</p>
           </div>
         </Link>
       </div>
