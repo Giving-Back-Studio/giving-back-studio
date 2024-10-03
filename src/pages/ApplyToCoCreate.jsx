@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
-import { toast } from 'sonner';
 
 const ApplyToCoCreate = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    enterprise_name: '',
-    enterprise_purpose: '',
-    growth_value: ''
+    enterpriseName: '',
+    enterprisePurpose: '',
+    challenge: '',
+    growthImpact: ''
   });
-
-  const addApplication = useAddApplication();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,21 +21,10 @@ const ApplyToCoCreate = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await addApplication.mutateAsync(formData);
-      toast.success('Application submitted successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        enterprise_name: '',
-        enterprise_purpose: '',
-        growth_value: ''
-      });
-    } catch (error) {
-      toast.error(`Error submitting application: ${error.message}`);
-    }
+    // Handle form submission logic here
+    console.log(formData);
   };
 
   return (
@@ -77,13 +63,13 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-2">Enterprise Name</label>
+          <label htmlFor="enterpriseName" className="block text-sm font-medium mb-2">Enterprise Name</label>
           <Input
-            id="enterprise_name"
-            name="enterprise_name"
+            id="enterpriseName"
+            name="enterpriseName"
             type="text"
             placeholder="Your enterprise name"
-            value={formData.enterprise_name}
+            value={formData.enterpriseName}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             required
@@ -91,12 +77,12 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="enterprise_purpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
+          <label htmlFor="enterprisePurpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
           <Textarea
-            id="enterprise_purpose"
-            name="enterprise_purpose"
+            id="enterprisePurpose"
+            name="enterprisePurpose"
             placeholder="In 1 sentence, what is the purpose of this enterprise?"
-            value={formData.enterprise_purpose}
+            value={formData.enterprisePurpose}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             rows={2}
@@ -105,12 +91,26 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="growth_value" className="block text-sm font-medium mb-2">Growth Impact</label>
+          <label htmlFor="challenge" className="block text-sm font-medium mb-2">Challenge</label>
           <Textarea
-            id="growth_value"
-            name="growth_value"
+            id="challenge"
+            name="challenge"
+            placeholder="What is your biggest challenge right now as a social enterprise creator?"
+            value={formData.challenge}
+            onChange={handleChange}
+            className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
+            rows={3}
+            required
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="growthImpact" className="block text-sm font-medium mb-2">Growth Impact</label>
+          <Textarea
+            id="growthImpact"
+            name="growthImpact"
             placeholder="If you could grow revenue exponentially, how would it serve humanity?"
-            value={formData.growth_value}
+            value={formData.growthImpact}
             onChange={handleChange}
             className="w-full bg-transparent border-white/30 text-white placeholder-white/70"
             rows={3}
