@@ -14,11 +14,11 @@ const Layout = ({ children }) => {
             <Link to="/directory" className="text-white hover:text-white/80 transition-colors">
               Directory
             </Link>
-            <Link to="/newsletter" className="text-white hover:text-white/80 transition-colors">
+            <Link to="/inspiring-innovations" className="text-white hover:text-white/80 transition-colors">
               Newsletter
             </Link>
             <Link 
-              to="/apply" 
+              to="/build" 
               className="bg-[#262D8C] bg-opacity-60 text-white px-4 py-2 rounded-md transition-colors border border-white border-opacity-50 hover:bg-opacity-70"
             >
               Apply to co-create
