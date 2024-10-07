@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, Download } from 'lucide-react';
-import { Button } from "@/components/ui/button";
+import { Search } from 'lucide-react';
 import ReFiInvestors from '@/components/ReFiInvestors';
-import Tech4GoodJobs from '@/components/Tech4GoodJobs';
 import PermacultureFarms from '@/components/PermacultureFarms';
 import Web3Grants from '@/components/Web3Grants';
-import generateCSV from '@/utils/csvGenerator';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,13 +13,7 @@ const Directory = () => {
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const search = searchParams.get('search');
     const category = searchParams.get('category');
-    
-    if (search) {
-      setSearchTerm(search);
-    }
-    
     if (category) {
       setActiveTab(category);
     }
@@ -33,77 +23,57 @@ const Directory = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleGenerateCSV = () => {
-    generateCSV();
-  };
-
   return (
-    <div className="space-y-4 md:space-y-6 lg:space-y-8">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 md:mb-6 lg:mb-8 text-white text-center">Human-Centered Innovation Directory</h1>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-light mb-8 text-white">Humanity-centered innovation directory</h1>
       
-      <div className="mb-4 md:mb-6 lg:mb-8 flex justify-between items-center">
+      <div className="mb-8">
         <div className="relative w-full max-w-2xl">
           <Input
             type="text"
             placeholder="Search directory..."
             value={searchTerm}
             onChange={handleSearch}
-            className="bg-transparent border-white/30 text-white placeholder-white/70 pl-10 pr-4 py-2 md:py-3 rounded-full w-full"
+            className="w-full pl-10 pr-4 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full text-lg"
           />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" size={24} />
         </div>
-        <Button
-          onClick={handleGenerateCSV}
-          className="ml-4 bg-white text-gbs-purple hover:bg-white/90"
-        >
-          <Download className="mr-2 h-4 w-4" />
-          Export CSV
-        </Button>
       </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="bg-transparent border-b border-white/20 w-full flex justify-start mb-4 md:mb-6 lg:mb-8 overflow-x-auto">
-          <TabsTrigger 
-            value="investors" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
-          >
-            Investors
-          </TabsTrigger>
-          <TabsTrigger 
-            value="tech4good" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
-          >
-            Tech4Good Jobs
-          </TabsTrigger>
-          <TabsTrigger 
-            value="permaculture" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
-          >
-            Permaculture Farms
-          </TabsTrigger>
-          <TabsTrigger 
-            value="web3grants" 
-            className="text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white bg-transparent data-[state=active]:bg-transparent whitespace-nowrap px-4 py-2 md:px-6 md:py-3"
-          >
-            Web3 Grants
-          </TabsTrigger>
-        </TabsList>
+      <div className="mb-8">
+        <button
+          onClick={() => setActiveTab('investors')}
+          className={`mr-4 pb-2 ${activeTab === 'investors' ? 'border-b-2 border-white' : ''}`}
+        >
+          Aligned Investors
+        </button>
+        <button
+          onClick={() => setActiveTab('permaculture')}
+          className={`mr-4 pb-2 ${activeTab === 'permaculture' ? 'border-b-2 border-white' : ''}`}
+        >
+          Permaculture Farms
+        </button>
+        <button
+          onClick={() => setActiveTab('grants')}
+          className={`mr-4 pb-2 ${activeTab === 'grants' ? 'border-b-2 border-white' : ''}`}
+        >
+          Public Good Grants
+        </button>
+      </div>
 
-        <div className="space-y-4 md:space-y-6 lg:space-y-8">
-          <TabsContent value="investors">
-            <ReFiInvestors searchTerm={searchTerm} />
-          </TabsContent>
-          <TabsContent value="tech4good">
-            <Tech4GoodJobs searchTerm={searchTerm} />
-          </TabsContent>
-          <TabsContent value="permaculture">
-            <PermacultureFarms searchTerm={searchTerm} />
-          </TabsContent>
-          <TabsContent value="web3grants">
-            <Web3Grants searchTerm={searchTerm} />
-          </TabsContent>
-        </div>
-      </Tabs>
+      <div className="space-y-8">
+        {activeTab === 'investors' && <ReFiInvestors searchTerm={searchTerm} />}
+        {activeTab === 'permaculture' && <PermacultureFarms searchTerm={searchTerm} />}
+        {activeTab === 'grants' && <Web3Grants searchTerm={searchTerm} />}
+      </div>
+
+      <div className="mt-12 p-6 bg-white/10 rounded-lg text-center">
+        <h2 className="text-2xl font-light mb-4">Want to keep track of these opportunities?</h2>
+        <p className="mb-4">Sign up for a more personalized experience and save your results.</p>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-colors text-lg">
+          Join to co-create
+        </button>
+      </div>
     </div>
   );
 };

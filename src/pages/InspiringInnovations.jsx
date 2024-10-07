@@ -5,12 +5,10 @@ import { Input } from "@/components/ui/input";
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
-import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const InspiringInnovations = () => {
   const [email, setEmail] = useState('');
   const [showCosmic, setShowCosmic] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
   const addInspiringInnovationListItem = useAddInspiringInnovationListItem();
 
   const handleSubmit = async (e) => {
@@ -23,65 +21,51 @@ const InspiringInnovations = () => {
       setTimeout(() => setShowCosmic(false), 5000);
     } catch (error) {
       console.error('Error adding email to list:', error);
-      if (error.message.includes('duplicate key value violates unique constraint')) {
-        setShowAlert(true);
-        setTimeout(() => setShowAlert(false), 5000);
-      } else {
-        toast.error('An error occurred. Please try again.');
-      }
+      toast.error('An error occurred. Please try again.');
     }
   };
 
   return (
-    <>
+    <div className="flex flex-col md:flex-row items-center justify-between min-h-[calc(100vh-80px)] p-8">
       {showCosmic && <CosmicAnimation />}
-      {showAlert && (
-        <Alert variant="warning" className="mb-4">
-          <AlertDescription>
-            Whoops, you're already subscribed!
-          </AlertDescription>
-        </Alert>
-      )}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 xl:gap-16">
-        <div className="w-full lg:w-1/2">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 sm:mb-6 md:mb-8 leading-tight">
-            Grow your regenerative social enterprise
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-8 font-light">
-            Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
-          </p>
-        </div>
-
-        <div className="w-full lg:w-1/2 bg-transparent border border-white/30 p-4 sm:p-6 md:p-8 lg:p-10 rounded-xl">
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-4 sm:mb-6 md:mb-8">Every Monday, you'll get:</h2>
-          <ul className="space-y-2 sm:space-y-4 md:space-y-6 mb-6 sm:mb-8 md:mb-10">
-            {[
-              "A practical Integrative Organizing lesson",
-              "New tools to grow and scale your impact",
-              "Invitations to exclusive events and conversations"
-            ].map((benefit, index) => (
-              <li key={index} className="flex items-center text-sm sm:text-base md:text-lg">
-                <CheckCircle className="text-green-400 mr-2 sm:mr-3 md:mr-4 flex-shrink-0" size={20} />
-                <span className="font-light">{benefit}</span>
-              </li>
-            ))}
-          </ul>
-          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="bg-transparent border-white/30 text-white placeholder-white/70 text-sm sm:text-base md:text-lg py-2 md:py-3"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90 text-sm sm:text-base md:text-lg py-2 md:py-3">
-              Subscribe to inspiring innovations
-            </Button>
-          </form>
-        </div>
+      <div className="w-full md:w-1/2 mb-8 md:mb-0">
+        <h1 className="text-5xl font-light mb-4 leading-tight">
+          Grow your regenerative social enterprise
+        </h1>
+        <p className="text-xl mb-4 font-light">
+          Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
+        </p>
       </div>
-    </>
+
+      <div className="w-full md:w-1/2 bg-white/10 p-8 rounded-xl">
+        <h2 className="text-2xl font-light mb-6">Every Monday, you'll get:</h2>
+        <ul className="space-y-4 mb-8">
+          {[
+            "A practical Integrative Organizing lesson",
+            "New tools to grow and scale your impact",
+            "Invitations to exclusive events and conversations"
+          ].map((benefit, index) => (
+            <li key={index} className="flex items-center text-lg">
+              <CheckCircle className="text-green-400 mr-4 flex-shrink-0" size={24} />
+              <span>{benefit}</span>
+            </li>
+          ))}
+        </ul>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <Input
+            type="email"
+            placeholder="Your email"
+            className="bg-white/20 border-white/30 text-white placeholder-white/70 text-lg py-3"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white text-lg py-3">
+            Subscribe to inspiring innovations
+          </Button>
+        </form>
+      </div>
+    </div>
   );
 };
 

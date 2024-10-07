@@ -12,8 +12,7 @@ const ApplyToCoCreate = () => {
     email: '',
     enterprise_name: '',
     purpose: '',
-    challenge: '',
-    growth_value: ''
+    growth_impact: ''
   });
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -37,8 +36,7 @@ const ApplyToCoCreate = () => {
         email: '',
         enterprise_name: '',
         purpose: '',
-        challenge: '',
-        growth_value: ''
+        growth_impact: ''
       });
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 3000);
@@ -48,99 +46,85 @@ const ApplyToCoCreate = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-4 text-white">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-8 text-white">
       <ConfettiAnimation show={showConfetti} />
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-6 sm:mb-8 md:mb-10 text-center">
-        Apply to Co-Create
+      <h1 className="text-5xl font-light mb-8 text-center">
+        Join to co-create
       </h1>
+      <p className="text-xl mb-8 text-center max-w-2xl">
+        Join us in building a future of sustainable innovation. Apply to co-create with Giving Back Studio and collaborate on projects that make a lasting impact. Together, we can drive meaningful change through humanity-centered solutions.
+      </p>
       
-      <form onSubmit={handleSubmit} className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl space-y-4 sm:space-y-6 md:space-y-8 bg-transparent border border-white/30 rounded-lg p-4 sm:p-6 md:p-8 lg:p-10">
+      <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6 bg-white/10 rounded-lg p-8">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-1 sm:mb-2">Name</label>
+          <label htmlFor="name" className="block text-sm font-medium mb-2">Your name</label>
           <Input
             id="name"
             name="name"
             type="text"
-            placeholder="[Your full name]"
             value={formData.name}
             onChange={handleChange}
-            className="w-full bg-transparent border-white/30 text-white placeholder-white"
+            className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-1 sm:mb-2">Email</label>
+          <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
           <Input
             id="email"
             name="email"
             type="email"
-            placeholder="[your.email@example.com]"
             value={formData.email}
             onChange={handleChange}
-            className="w-full bg-transparent border-white/30 text-white placeholder-white"
+            className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-1 sm:mb-2">Enterprise Name</label>
+          <label htmlFor="enterprise_name" className="block text-sm font-medium mb-2">Enterprise name</label>
           <Input
             id="enterprise_name"
             name="enterprise_name"
             type="text"
-            placeholder="[Your enterprise name]"
             value={formData.enterprise_name}
             onChange={handleChange}
-            className="w-full bg-transparent border-white/30 text-white placeholder-white"
+            className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="purpose" className="block text-sm font-medium mb-1 sm:mb-2">Enterprise Purpose</label>
+          <label htmlFor="purpose" className="block text-sm font-medium mb-2">Purpose</label>
           <Textarea
             id="purpose"
             name="purpose"
-            placeholder="[In 1 sentence, what is the purpose of this enterprise?]"
+            placeholder="Tell us what drives you and your project. What is your core mission?"
             value={formData.purpose}
             onChange={handleChange}
-            className="w-full bg-transparent border-white/30 text-white placeholder-white"
+            className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
             rows={3}
             required
           />
         </div>
         
         <div>
-          <label htmlFor="challenge" className="block text-sm font-medium mb-1 sm:mb-2">Challenge</label>
+          <label htmlFor="growth_impact" className="block text-sm font-medium mb-2">Growth Impact</label>
           <Textarea
-            id="challenge"
-            name="challenge"
-            placeholder="[What is your biggest challenge right now as a social enterprise creator?]"
-            value={formData.challenge}
+            id="growth_impact"
+            name="growth_impact"
+            placeholder="How will your project create meaningful change? Share the potential impact on your community or industry."
+            value={formData.growth_impact}
             onChange={handleChange}
-            className="w-full bg-transparent border-white/30 text-white placeholder-white"
-            rows={3}
-            required
-          />
-        </div>
-        
-        <div>
-          <label htmlFor="growth_value" className="block text-sm font-medium mb-1 sm:mb-2">Growth Impact</label>
-          <Textarea
-            id="growth_value"
-            name="growth_value"
-            placeholder="[If you could grow revenue exponentially, how would it serve humanity?]"
-            value={formData.growth_value}
-            onChange={handleChange}
-            className="w-full bg-transparent border-white/30 text-white placeholder-white"
+            className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
             rows={4}
             required
           />
         </div>
         
-        <Button type="submit" className="w-full bg-white text-gbs-purple hover:bg-white/90 py-2 md:py-3 text-lg">
-          Submit Application
+        <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 text-lg">
+          Submit application
         </Button>
       </form>
     </div>
