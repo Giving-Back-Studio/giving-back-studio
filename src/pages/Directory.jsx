@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search } from 'lucide-react';
+import { Search, Download } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 import ReFiInvestors from '@/components/ReFiInvestors';
 import Tech4GoodJobs from '@/components/Tech4GoodJobs';
 import PermacultureFarms from '@/components/PermacultureFarms';
 import Web3Grants from '@/components/Web3Grants';
+import generateCSV from '@/utils/csvGenerator';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,12 +33,16 @@ const Directory = () => {
     setSearchTerm(e.target.value);
   };
 
+  const handleGenerateCSV = () => {
+    generateCSV();
+  };
+
   return (
     <div className="space-y-4 md:space-y-6 lg:space-y-8">
       <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 md:mb-6 lg:mb-8 text-white text-center">Human-Centered Innovation Directory</h1>
       
-      <div className="mb-4 md:mb-6 lg:mb-8">
-        <div className="relative w-full max-w-2xl mx-auto">
+      <div className="mb-4 md:mb-6 lg:mb-8 flex justify-between items-center">
+        <div className="relative w-full max-w-2xl">
           <Input
             type="text"
             placeholder="Search directory..."
@@ -46,6 +52,13 @@ const Directory = () => {
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
         </div>
+        <Button
+          onClick={handleGenerateCSV}
+          className="ml-4 bg-white text-gbs-purple hover:bg-white/90"
+        >
+          <Download className="mr-2 h-4 w-4" />
+          Export CSV
+        </Button>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
