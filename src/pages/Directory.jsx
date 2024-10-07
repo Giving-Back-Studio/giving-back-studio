@@ -5,40 +5,60 @@ import { Search } from 'lucide-react';
 import ReFiInvestors from '@/components/ReFiInvestors';
 import PermacultureFarms from '@/components/PermacultureFarms';
 import Web3Grants from '@/components/Web3Grants';
+import { performSearch } from '@/utils/searchUtils';
 
 const Directory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('investors');
+  const [searchResults, setSearchResults] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const category = searchParams.get('category');
+    const search = searchParams.get('search');
+    
     if (category) {
       setActiveTab(category);
     }
+    
+    if (search) {
+      setSearchTerm(search);
+      handleSearch(search);
+    }
   }, [location]);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (term) => {
+    const { category, results } = await performSearch(term);
+    setActiveTab(category);
+    setSearchResults(results);
+  };
+
+  const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSearch(searchTerm);
   };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-light mb-8 text-white">Humanity-centered innovation directory</h1>
       
-      <div className="mb-8">
+      <form onSubmit={handleSubmit} className="mb-8">
         <div className="relative w-full max-w-2xl">
           <Input
             type="text"
             placeholder="Search directory..."
             value={searchTerm}
-            onChange={handleSearch}
+            onChange={handleInputChange}
             className="w-full pl-10 pr-4 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full text-lg"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" size={24} />
         </div>
-      </div>
+      </form>
 
       <div className="mb-8">
         <button
@@ -62,9 +82,9 @@ const Directory = () => {
       </div>
 
       <div className="space-y-8">
-        {activeTab === 'investors' && <ReFiInvestors searchTerm={searchTerm} />}
-        {activeTab === 'permaculture' && <PermacultureFarms searchTerm={searchTerm} />}
-        {activeTab === 'grants' && <Web3Grants searchTerm={searchTerm} />}
+        {activeTab === 'investors' && <ReFiInvestors searchTerm={searchTerm} initialResults={searchResults} />}
+        {activeTab === 'permaculture' && <PermacultureFarms searchTerm={searchTerm} initialResults={searchResults} />}
+        {activeTab === 'grants' && <Web3Grants searchTerm={searchTerm} initialResults={searchResults} />}
       </div>
 
       <div className="mt-12 p-6 bg-white/10 rounded-lg text-center">

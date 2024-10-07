@@ -1,25 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Search } from 'lucide-react';
+import { determineSearchCategory } from '@/utils/searchUtils';
 
 const Index = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const category = determineSearchCategory(searchTerm);
+    navigate(`/directory?category=${category}&search=${encodeURIComponent(searchTerm)}`);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4 text-white">
       <h1 className="text-5xl font-light mb-8 text-center">
         Grow your social enterprise.
       </h1>
       
-      <div className="w-full max-w-2xl mb-12">
+      <form onSubmit={handleSearch} className="w-full max-w-2xl mb-12">
         <div className="relative">
           <Input
             type="text"
             placeholder="Search for opportunities..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full text-lg"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" size={24} />
         </div>
-      </div>
+      </form>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
         <Link to="/directory?category=investors" className="group">
