@@ -1,75 +1,87 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Input } from "@/components/ui/input";
-import { Search } from 'lucide-react';
-import { determineSearchCategory } from '@/utils/searchUtils';
-import { motion } from 'framer-motion';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Globe, Users, Zap, Heart } from 'lucide-react';
 
 const Index = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const category = determineSearchCategory(searchTerm);
-    navigate(`/directory?category=${category}&search=${encodeURIComponent(searchTerm)}`);
-  };
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4 text-white space-y-12">
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-5xl md:text-6xl font-light mb-8 text-center leading-tight"
-      >
-        Grow your social enterprise.
-      </motion.h1>
-      
-      <motion.form
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        onSubmit={handleSearch}
-        className="w-full max-w-2xl"
-      >
-        <div className="relative">
-          <Input
-            type="text"
-            placeholder="Search for opportunities..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 bg-white/10 border-white/30 text-white placeholder-white/70 rounded-full text-lg focus:ring-2 focus:ring-gbs-lavender focus:border-transparent transition-all duration-300"
+    <div className="min-h-screen bg-gradient-to-br from-gbs-darkPurple via-gbs-purple to-gbs-blue text-white">
+      <div className="container mx-auto px-4 py-16 space-y-16">
+        <header className="text-center space-y-4">
+          <h1 className="text-4xl md:text-6xl font-bold">Giving Back Studio</h1>
+          <p className="text-xl md:text-2xl font-light">Catalyzing Humanity-Centered Innovation for a Thriving World</p>
+        </header>
+
+        <section className="space-y-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-center">Our Vision</h2>
+          <p className="text-lg md:text-xl text-center max-w-3xl mx-auto">
+            Giving Back Studio is more than an agency; we're a movement. We empower visionaries to create regenerative social enterprises that harmonize profit with purpose. Our open-source tools and collaborative ecosystem nurture innovations that uplift humanity and heal our planet.
+          </p>
+        </section>
+
+        <section className="grid md:grid-cols-3 gap-8">
+          <FeatureCard
+            icon={<Globe className="w-12 h-12" />}
+            title="Impact Ecosystem Directory"
+            description="Discover and connect with a curated network of conscious investors, regenerative farms, and transformative grants. Your next collaboration for change is just a click away."
           />
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70" size={24} />
-        </div>
-      </motion.form>
-      
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl"
-      >
-        <CategoryCard to="/directory?category=investors" title="Find Aligned Investors" description="Connect with investors focused on regenerative finance." />
-        <CategoryCard to="/directory?category=permaculture" title="Find Permaculture Farms" description="Locate farms dedicated to sustainable practices." />
-        <CategoryCard to="/directory?category=grants" title="Find Public Good Grants" description="Discover opportunities to do good and do well with grants." />
-      </motion.div>
+          <FeatureCard
+            icon={<Users className="w-12 h-12" />}
+            title="Collective Funding Platform"
+            description="Fuel open-source projects that serve the greater good. Our integrated crowdfunding tools turn visionary ideas into world-changing realities through the power of community support."
+          />
+          <FeatureCard
+            icon={<Zap className="w-12 h-12" />}
+            title="AI-Powered Growth Allies"
+            description="Harness the potential of custom AI agents to supercharge your impact. From smart lead generation to personalized mentorship, our digital allies help you scale your vision efficiently and ethically."
+          />
+        </section>
+
+        <section className="text-center space-y-8">
+          <h2 className="text-3xl md:text-4xl font-semibold">The Giving Back Difference</h2>
+          <ul className="text-lg space-y-4">
+            <li className="flex items-center justify-center">
+              <Heart className="w-6 h-6 mr-2 text-gbs-lavender" />
+              <span>Humanity-Centered Innovation: Every project prioritizes people and planet</span>
+            </li>
+            <li className="flex items-center justify-center">
+              <Globe className="w-6 h-6 mr-2 text-gbs-lavender" />
+              <span>Open Source & Accessible: Transparency and collaboration at our core</span>
+            </li>
+            <li className="flex items-center justify-center">
+              <Users className="w-6 h-6 mr-2 text-gbs-lavender" />
+              <span>Community-Led Growth: Your success amplifies our collective impact</span>
+            </li>
+          </ul>
+        </section>
+
+        <section className="text-center space-y-8">
+          <h2 className="text-3xl md:text-4xl font-semibold">Join the Movement</h2>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto">
+            Whether you're a seasoned social entrepreneur, an aspiring changemaker, or an investor seeking meaningful returns, Giving Back Studio is your launchpad for impact. Together, we're not just building businesses—we're cultivating a regenerative future where everyone thrives.
+          </p>
+          <Button asChild className="text-lg px-6 py-3 bg-gbs-lightPurple hover:bg-gbs-lavender hover:text-gbs-darkPurple transition-all duration-300">
+            <Link to="/build">
+              Start Your Impact Journey <ArrowRight className="ml-2" />
+            </Link>
+          </Button>
+        </section>
+
+        <footer className="text-center space-y-4">
+          <p className="text-xl">Ready to give back and grow forward?</p>
+          <p>Contact us: <a href="mailto:hello@givingback.studio" className="underline hover:text-gbs-lavender transition-colors">hello@givingback.studio</a></p>
+        </footer>
+      </div>
     </div>
   );
 };
 
-const CategoryCard = ({ to, title, description }) => (
-  <Link to={to} className="group">
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="h-full p-6 bg-white/10 rounded-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg"
-    >
-      <h3 className="text-xl font-semibold mb-2 text-gbs-lavender group-hover:text-white transition-colors duration-300">{title}</h3>
-      <p className="text-sm text-white/80">{description}</p>
-    </motion.div>
-  </Link>
+const FeatureCard = ({ icon, title, description }) => (
+  <div className="bg-white/10 p-6 rounded-lg space-y-4 hover:bg-white/20 transition-all duration-300">
+    <div className="text-gbs-lavender">{icon}</div>
+    <h3 className="text-xl font-semibold">{title}</h3>
+    <p>{description}</p>
+  </div>
 );
 
 export default Index;

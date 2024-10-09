@@ -1,10 +1,8 @@
-import { HomeIcon, FolderIcon, PlusCircleIcon, ShieldIcon, LightbulbIcon, LayoutIcon } from "lucide-react";
+import { HomeIcon, PlusCircleIcon, ShieldIcon, LightbulbIcon } from "lucide-react";
 import Index from "./pages/Index.jsx";
-import Directory from "./pages/Directory.jsx";
 import ApplyToCoCreate from "./pages/ApplyToCoCreate.jsx";
 import Admin from "./pages/Admin.jsx";
 import InspiringInnovations from "./pages/InspiringInnovations.jsx";
-import NewLandingPage from "./pages/NewLandingPage.jsx";
 
 export const navItems = [
   {
@@ -12,12 +10,6 @@ export const navItems = [
     to: "/",
     icon: <HomeIcon className="h-4 w-4" />,
     page: <Index />,
-  },
-  {
-    title: "Directory",
-    to: "/directory",
-    icon: <FolderIcon className="h-4 w-4" />,
-    page: <Directory />,
   },
   {
     title: "Apply to Co-Create",
@@ -30,12 +22,6 @@ export const navItems = [
     to: "/inspiring-innovations",
     icon: <LightbulbIcon className="h-4 w-4" />,
     page: <InspiringInnovations />,
-  },
-  {
-    title: "New Landing Page",
-    to: "/landing-page",
-    icon: <LayoutIcon className="h-4 w-4" />,
-    page: <NewLandingPage />,
   },
 ];
 
