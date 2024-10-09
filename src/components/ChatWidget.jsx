@@ -4,15 +4,15 @@ import { Input } from "@/components/ui/input";
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase/hooks/useInspiringInnovationList';
 import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
 import { toast } from 'sonner';
-import { Minimize2, Maximize2 } from 'lucide-react';
+import { MessageCircle, X } from 'lucide-react';
 
 const ChatWidget = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({});
   const [chatMode, setChatMode] = useState(null);
-  const [isMinimized, setIsMinimized] = useState(false);
 
   const addInspiringInnovationListItem = useAddInspiringInnovationListItem();
   const addApplication = useAddApplication();
@@ -48,6 +48,21 @@ const ChatWidget = () => {
       ]
     }]);
   }, []);
+
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen && messages.length === 0) {
+      setMessages([{ 
+        text: "Welcome! How can I assist you today?",
+        sender: 'bot',
+        options: [
+          { text: "Subscribe to Newsletter", value: "newsletter" },
+          { text: "Apply to Co-Create", value: "application" },
+          { text: "Advanced Opportunity Search", value: "search" }
+        ]
+      }]);
+    }
+  };
 
   const handleOptionSelect = (option) => {
     setChatMode(option);
@@ -134,26 +149,29 @@ const ChatWidget = () => {
     }]);
   };
 
-  const toggleMinimize = () => {
-    setIsMinimized(!isMinimized);
-  };
-
   return (
-    <div className={`fixed bottom-4 right-4 w-full sm:w-80 bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${isMinimized ? 'h-14' : 'h-[450px] sm:h-[500px]'}`}>
-      <div className="bg-purple-600 text-white p-4 flex justify-between items-center">
-        <h3 className="font-semibold">GrowBeyond Assistant</h3>
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          onClick={toggleMinimize}
-          className="text-white hover:bg-purple-700"
+    <div className={`fixed bottom-4 right-4 transition-all duration-300 ease-in-out ${isOpen ? 'w-full sm:w-80 h-[450px] sm:h-[500px]' : 'w-14 h-14'}`}>
+      {!isOpen ? (
+        <Button
+          onClick={toggleChat}
+          className="w-full h-full rounded-full bg-purple-600 text-white hover:bg-purple-700"
         >
-          {isMinimized ? <Maximize2 size={20} /> : <Minimize2 size={20} />}
+          <MessageCircle size={24} />
         </Button>
-      </div>
-      {!isMinimized && (
-        <>
-          <div className="h-[calc(100%-120px)] overflow-y-auto p-4 bg-gray-100">
+      ) : (
+        <div className="flex flex-col h-full bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-purple-600 text-white p-4 flex justify-between items-center">
+            <h3 className="font-semibold">GrowBeyond Assistant</h3>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleChat}
+              className="text-white hover:bg-purple-700"
+            >
+              <X size={20} />
+            </Button>
+          </div>
+          <div className="flex-grow overflow-y-auto p-4 bg-gray-100">
             {messages.map((message, index) => (
               <div key={index} className={`mb-2 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
                 <span className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-purple-600 text-white' : 'bg-white text-indigo-600'}`}>
@@ -187,7 +205,7 @@ const ChatWidget = () => {
               <Button onClick={handleSend}>Send</Button>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
