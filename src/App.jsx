@@ -7,6 +7,7 @@ import Directory from "./pages/Directory";
 import ApplyToCoCreate from "./pages/ApplyToCoCreate";
 import Admin from "./pages/Admin";
 import InspiringInnovations from "./pages/InspiringInnovations";
+import ChatWidget from "./components/ChatWidget";
 import useGoogleAnalytics from "./hooks/useGoogleAnalytics";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const AppContent = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/inspiring-innovations" element={<InspiringInnovations />} />
       </Routes>
+      <ChatWidget />
     </Layout>
   );
 };
