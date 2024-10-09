@@ -2,25 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
+import { useAddMovementCreatorOpportunity } from "@/integrations/supabase/hooks/useMovementCreatorOpportunities";
 import { toast } from 'sonner';
 
 const ChatWidget = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    enterprise_name: '',
-    enterprise_purpose: '',
-    challenge: '',
-    growth_impact: ''
-  });
+  const [formData, setFormData] = useState({});
+  const [chatMode, setChatMode] = useState(null);
 
   const addApplication = useAddApplication();
+  const addOpportunity = useAddMovementCreatorOpportunity();
 
-  const conversation = [
-    { question: "Hi there! I'm excited to learn about your project. What's your full name?", field: 'name' },
+  const applicationConversation = [
+    { question: "Great! Let's start your application. What's your full name?", field: 'name' },
     { question: "Nice to meet you, {name}! What's your email address?", field: 'email' },
     { question: "Great, thanks! Now, tell me about your enterprise. What's it called?", field: 'enterprise_name' },
     { question: "'{enterprise_name}' sounds interesting! In one sentence, what's the main purpose of your enterprise?", field: 'enterprise_purpose' },
@@ -28,10 +24,32 @@ const ChatWidget = () => {
     { question: "That's a common hurdle. Now, imagine if you could grow your revenue exponentially. How would that serve humanity?", field: 'growth_impact' },
   ];
 
+  const opportunityConversation = [
+    { question: "Great! Let's add a new opportunity. What's the name of the opportunity?", field: 'name' },
+    { question: "What category does this opportunity fall under? (e.g., Investor, Tech4Good Job, Permaculture Farm, Grant)", field: 'category' },
+    { question: "Please provide a brief description of the opportunity:", field: 'description' },
+    { question: "What's the website or contact information for this opportunity?", field: 'contact' },
+  ];
+
   useEffect(() => {
-    // Start the conversation
-    setMessages([{ text: conversation[0].question, sender: 'bot' }]);
+    // Start with option selection
+    setMessages([{ 
+      text: "Welcome! How can I assist you today?",
+      sender: 'bot',
+      options: [
+        { text: "Apply to Co-Create", value: "application" },
+        { text: "Add New Opportunity", value: "opportunity" }
+      ]
+    }]);
   }, []);
+
+  const handleOptionSelect = (option) => {
+    setChatMode(option);
+    setStep(0);
+    setFormData({});
+    const conversation = option === 'application' ? applicationConversation : opportunityConversation;
+    setMessages([...messages, { text: conversation[0].question, sender: 'bot' }]);
+  };
 
   const handleSend = async () => {
     if (input.trim() === '') return;
@@ -39,7 +57,7 @@ const ChatWidget = () => {
     setMessages([...messages, { text: input, sender: 'user' }]);
     setInput('');
 
-    // Update formData based on the current step
+    const conversation = chatMode === 'application' ? applicationConversation : opportunityConversation;
     const updatedFormData = { ...formData, [conversation[step].field]: input };
     setFormData(updatedFormData);
 
@@ -51,16 +69,37 @@ const ChatWidget = () => {
       );
       setMessages(msgs => [...msgs, { text: nextQuestion, sender: 'bot' }]);
     } else {
-      // Submit application
+      // Submit data
       try {
-        await addApplication.mutateAsync(updatedFormData);
-        setMessages(msgs => [
-          ...msgs,
-          { text: `Thank you for applying, ${updatedFormData.name}! We're excited about your project, ${updatedFormData.enterprise_name}. We'll review your application and be in touch soon.`, sender: 'bot' }
-        ]);
-        toast.success('Application submitted successfully!');
+        if (chatMode === 'application') {
+          await addApplication.mutateAsync(updatedFormData);
+          setMessages(msgs => [
+            ...msgs,
+            { text: `Thank you for applying, ${updatedFormData.name}! We're excited about your project, ${updatedFormData.enterprise_name}. We'll review your application and be in touch soon.`, sender: 'bot' }
+          ]);
+          toast.success('Application submitted successfully!');
+        } else {
+          await addOpportunity.mutateAsync(updatedFormData);
+          setMessages(msgs => [
+            ...msgs,
+            { text: `Thank you for adding the new opportunity: ${updatedFormData.name}. It has been added to our directory.`, sender: 'bot' }
+          ]);
+          toast.success('New opportunity added successfully!');
+        }
+        // Reset chat
+        setChatMode(null);
+        setStep(0);
+        setFormData({});
+        setMessages([{ 
+          text: "Is there anything else I can help you with?",
+          sender: 'bot',
+          options: [
+            { text: "Apply to Co-Create", value: "application" },
+            { text: "Add New Opportunity", value: "opportunity" }
+          ]
+        }]);
       } catch (error) {
-        toast.error(`Error submitting application: ${error.message}`);
+        toast.error(`Error submitting data: ${error.message}`);
       }
     }
   };
@@ -68,7 +107,7 @@ const ChatWidget = () => {
   return (
     <div className="fixed bottom-4 right-4 w-80 bg-white rounded-lg shadow-lg overflow-hidden">
       <div className="bg-purple-600 text-white p-4">
-        <h3 className="font-semibold">Apply to Co-Create</h3>
+        <h3 className="font-semibold">Chat Assistant</h3>
       </div>
       <div className="h-80 overflow-y-auto p-4 bg-gray-100">
         {messages.map((message, index) => (
@@ -76,6 +115,19 @@ const ChatWidget = () => {
             <span className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-purple-600 text-white' : 'bg-white text-indigo-600'}`}>
               {message.text}
             </span>
+            {message.options && (
+              <div className="mt-2 space-y-2">
+                {message.options.map((option, optionIndex) => (
+                  <Button
+                    key={optionIndex}
+                    onClick={() => handleOptionSelect(option.value)}
+                    className="w-full bg-indigo-600 text-white"
+                  >
+                    {option.text}
+                  </Button>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
