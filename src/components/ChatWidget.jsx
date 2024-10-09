@@ -73,7 +73,7 @@ const ChatWidget = () => {
       <div className="h-80 overflow-y-auto p-4 bg-gray-100">
         {messages.map((message, index) => (
           <div key={index} className={`mb-2 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
-            <span className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-purple-600 text-white' : 'bg-white'}`}>
+            <span className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-purple-600 text-white' : 'bg-white text-indigo-600'}`}>
               {message.text}
             </span>
           </div>
@@ -86,7 +86,7 @@ const ChatWidget = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="flex-grow mr-2"
+            className="flex-grow mr-2 text-indigo-600"
           />
           <Button onClick={handleSend}>Send</Button>
         </div>
