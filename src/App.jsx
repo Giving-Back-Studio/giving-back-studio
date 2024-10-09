@@ -7,6 +7,7 @@ import Directory from "./pages/Directory";
 import ApplyToCoCreate from "./pages/ApplyToCoCreate";
 import Admin from "./pages/Admin";
 import InspiringInnovations from "./pages/InspiringInnovations";
+import NewLandingPage from "./pages/NewLandingPage";
 import ChatWidget from "./components/ChatWidget";
 import useGoogleAnalytics from "./hooks/useGoogleAnalytics";
 
@@ -22,6 +23,7 @@ const AppContent = () => {
         <Route path="/build" element={<ApplyToCoCreate />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/inspiring-innovations" element={<InspiringInnovations />} />
+        <Route path="/landing-page" element={<NewLandingPage />} />
       </Routes>
       <ChatWidget />
     </Layout>
