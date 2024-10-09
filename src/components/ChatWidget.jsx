@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
@@ -18,13 +18,18 @@ const ChatWidget = () => {
 
   const addApplication = useAddApplication();
 
-  const questions = [
-    "What's your name?",
-    "What's your email?",
-    "What's the name of your enterprise?",
-    "What's the purpose of your enterprise?",
-    "How do you plan to grow and create impact?"
+  const conversation = [
+    { question: "Hi there! I'm excited to learn about your project. What's your name?", field: 'name' },
+    { question: "Nice to meet you, {name}! What's your email address?", field: 'email' },
+    { question: "Great, thanks! Now, tell me about your enterprise. What's it called?", field: 'enterprise_name' },
+    { question: "'{enterprise_name}' sounds interesting! What's the main purpose of your enterprise?", field: 'purpose' },
+    { question: "That's inspiring! How do you plan to grow and create impact with {enterprise_name}?", field: 'growth_impact' },
   ];
+
+  useEffect(() => {
+    // Start the conversation
+    setMessages([{ text: conversation[0].question, sender: 'bot' }]);
+  }, []);
 
   const handleSend = async () => {
     if (input.trim() === '') return;
@@ -33,24 +38,24 @@ const ChatWidget = () => {
     setInput('');
 
     // Update formData based on the current step
-    const updatedFormData = { ...formData };
-    switch (step) {
-      case 0: updatedFormData.name = input; break;
-      case 1: updatedFormData.email = input; break;
-      case 2: updatedFormData.enterprise_name = input; break;
-      case 3: updatedFormData.purpose = input; break;
-      case 4: updatedFormData.growth_impact = input; break;
-    }
+    const updatedFormData = { ...formData, [conversation[step].field]: input };
     setFormData(updatedFormData);
 
-    if (step < questions.length - 1) {
+    if (step < conversation.length - 1) {
       setStep(step + 1);
-      setMessages(msgs => [...msgs, { text: questions[step + 1], sender: 'bot' }]);
+      const nextQuestion = conversation[step + 1].question.replace(
+        /{(\w+)}/g,
+        (match, field) => updatedFormData[field] || match
+      );
+      setMessages(msgs => [...msgs, { text: nextQuestion, sender: 'bot' }]);
     } else {
       // Submit application
       try {
         await addApplication.mutateAsync(updatedFormData);
-        setMessages(msgs => [...msgs, { text: "Thank you for applying! We'll be in touch soon.", sender: 'bot' }]);
+        setMessages(msgs => [
+          ...msgs,
+          { text: `Thank you for applying, ${updatedFormData.name}! We're excited about your project, ${updatedFormData.enterprise_name}. We'll review your application and be in touch soon.`, sender: 'bot' }
+        ]);
         toast.success('Application submitted successfully!');
       } catch (error) {
         toast.error(`Error submitting application: ${error.message}`);
