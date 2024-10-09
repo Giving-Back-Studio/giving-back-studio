@@ -7,7 +7,9 @@ import { motion } from 'framer-motion';
 const Layout = ({ children }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gbs-darkPurple via-gbs-purple to-gbs-blue text-white font-sans flex flex-col relative overflow-hidden">
-      <FlowerOfLife />
+      <div className="absolute inset-0 z-0">
+        <FlowerOfLife />
+      </div>
       <header className="bg-white/10 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center">
@@ -33,7 +35,7 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      <footer className="bg-white/10 backdrop-blur-md py-8 mt-12">
+      <footer className="bg-white/10 backdrop-blur-md py-8 mt-12 relative z-10">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; {new Date().getFullYear()} GrowBeyond. All rights reserved.</p>
         </div>

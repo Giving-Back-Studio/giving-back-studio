@@ -2,8 +2,8 @@ import React from 'react';
 
 const FlowerOfLife = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <svg className="absolute w-full h-full" viewBox="0 0 1000 1000">
+    <div className="w-full h-full">
+      <svg className="w-full h-full" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
         <defs>
           <pattern id="flowerOfLife" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
             <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
