@@ -7,9 +7,7 @@ import { motion } from 'framer-motion';
 const Layout = ({ children }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gbs-darkPurple via-gbs-purple to-gbs-blue text-white font-sans flex flex-col relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <FlowerOfLife />
-      </div>
+      <FlowerOfLife opacity={0.05} color="255,255,255" rotationDuration={240} />
       <header className="bg-white/10 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center">
