@@ -12,7 +12,6 @@ const Layout = ({ children }) => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center">
             <Logo className="w-12 h-12" />
-            <span className="ml-2 text-xl font-semibold">GrowBeyond</span>
           </Link>
           <nav className="flex items-center space-x-6">
             <NavLink to="/">Directory</NavLink>
