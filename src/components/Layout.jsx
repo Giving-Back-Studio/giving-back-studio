@@ -11,17 +11,11 @@ const Layout = ({ children }) => {
             <Logo className="w-10 h-10" />
           </Link>
           <nav className="flex items-center space-x-6">
-            <Link to="/directory" className="text-white hover:text-white/80 transition-colors">
+            <Link to="/" className="text-white hover:text-white/80 transition-colors">
               Directory
             </Link>
             <Link to="/inspiring-innovations" className="text-white hover:text-white/80 transition-colors">
               Newsletter
-            </Link>
-            <Link 
-              to="/build" 
-              className="bg-[#262D8C] bg-opacity-60 text-white px-4 py-2 rounded-md transition-colors border border-white border-opacity-50 hover:bg-opacity-70"
-            >
-              Apply to co-create
             </Link>
           </nav>
         </div>
