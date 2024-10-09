@@ -11,7 +11,8 @@ const ApplyToCoCreate = () => {
     name: '',
     email: '',
     enterprise_name: '',
-    purpose: '',
+    enterprise_purpose: '',
+    challenge: '',
     growth_impact: ''
   });
   const [showConfetti, setShowConfetti] = useState(false);
@@ -35,7 +36,8 @@ const ApplyToCoCreate = () => {
         name: '',
         email: '',
         enterprise_name: '',
-        purpose: '',
+        enterprise_purpose: '',
+        challenge: '',
         growth_impact: ''
       });
       setShowConfetti(true);
@@ -49,15 +51,15 @@ const ApplyToCoCreate = () => {
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-8 text-white">
       <ConfettiAnimation show={showConfetti} />
       <h1 className="text-5xl font-light mb-8 text-center">
-        Join to co-create
+        Apply to build an open-source innovation together
       </h1>
       <p className="text-xl mb-8 text-center max-w-2xl">
-        Join us in building a future of sustainable innovation. Apply to co-create with Giving Back Studio and collaborate on projects that make a lasting impact. Together, we can drive meaningful change through humanity-centered solutions.
+        Join us in creating impactful, open-source solutions. Let's collaborate on projects that drive meaningful change through humanity-centered innovation.
       </p>
       
       <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6 bg-white/10 rounded-lg p-8">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-2">Your name</label>
+          <label htmlFor="name" className="block text-sm font-medium mb-2">Your full name</label>
           <Input
             id="name"
             name="name"
@@ -78,6 +80,7 @@ const ApplyToCoCreate = () => {
             value={formData.email}
             onChange={handleChange}
             className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+            placeholder="your.email@example.com"
             required
           />
         </div>
@@ -96,12 +99,26 @@ const ApplyToCoCreate = () => {
         </div>
         
         <div>
-          <label htmlFor="purpose" className="block text-sm font-medium mb-2">Purpose</label>
+          <label htmlFor="enterprise_purpose" className="block text-sm font-medium mb-2">Enterprise Purpose</label>
           <Textarea
-            id="purpose"
-            name="purpose"
-            placeholder="Tell us what drives you and your project. What is your core mission?"
-            value={formData.purpose}
+            id="enterprise_purpose"
+            name="enterprise_purpose"
+            placeholder="In 1 sentence, what is the purpose of this enterprise?"
+            value={formData.enterprise_purpose}
+            onChange={handleChange}
+            className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+            rows={2}
+            required
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="challenge" className="block text-sm font-medium mb-2">Challenge</label>
+          <Textarea
+            id="challenge"
+            name="challenge"
+            placeholder="What is your biggest challenge right now as a social enterprise creator?"
+            value={formData.challenge}
             onChange={handleChange}
             className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
             rows={3}
@@ -114,11 +131,11 @@ const ApplyToCoCreate = () => {
           <Textarea
             id="growth_impact"
             name="growth_impact"
-            placeholder="How will your project create meaningful change? Share the potential impact on your community or industry."
+            placeholder="If you could grow revenue exponentially, how would it serve humanity?"
             value={formData.growth_impact}
             onChange={handleChange}
             className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
-            rows={4}
+            rows={3}
             required
           />
         </div>

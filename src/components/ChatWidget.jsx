@@ -12,18 +12,20 @@ const ChatWidget = () => {
     name: '',
     email: '',
     enterprise_name: '',
-    purpose: '',
+    enterprise_purpose: '',
+    challenge: '',
     growth_impact: ''
   });
 
   const addApplication = useAddApplication();
 
   const conversation = [
-    { question: "Hi there! I'm excited to learn about your project. What's your name?", field: 'name' },
+    { question: "Hi there! I'm excited to learn about your project. What's your full name?", field: 'name' },
     { question: "Nice to meet you, {name}! What's your email address?", field: 'email' },
     { question: "Great, thanks! Now, tell me about your enterprise. What's it called?", field: 'enterprise_name' },
-    { question: "'{enterprise_name}' sounds interesting! What's the main purpose of your enterprise?", field: 'purpose' },
-    { question: "That's inspiring! How do you plan to grow and create impact with {enterprise_name}?", field: 'growth_impact' },
+    { question: "'{enterprise_name}' sounds interesting! In one sentence, what's the main purpose of your enterprise?", field: 'enterprise_purpose' },
+    { question: "I see. What's your biggest challenge right now as a social enterprise creator?", field: 'challenge' },
+    { question: "That's a common hurdle. Now, imagine if you could grow your revenue exponentially. How would that serve humanity?", field: 'growth_impact' },
   ];
 
   useEffect(() => {
