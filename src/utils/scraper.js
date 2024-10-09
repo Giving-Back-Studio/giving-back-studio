@@ -301,5 +301,20 @@ export const scrapeReFiInvestors = (page = 0, limit = 20, searchTerm = '') => {
 };
 
 export const scrapeTech4GoodJobs = () => realData.tech4good;
-export const scrapePermacultureFarms = () => realData.permaculture;
 
+export const scrapeFarms = (page = 0, limit = 20, searchTerm = '') => {
+  const allFarms = realData.permaculture;
+  
+  let filteredFarms = allFarms;
+  if (searchTerm) {
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    filteredFarms = allFarms.filter(farm => 
+      farm.name.toLowerCase().includes(lowerSearchTerm) ||
+      farm.description.toLowerCase().includes(lowerSearchTerm)
+    );
+  }
+
+  const start = page * limit;
+  const end = start + limit;
+  return filteredFarms.slice(start, end);
+};
