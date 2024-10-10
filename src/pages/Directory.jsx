@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReFiInvestors from '@/components/ReFiInvestors';
 import PermacultureFarms from '@/components/PermacultureFarms';
 import Web3Grants from '@/components/Web3Grants';
-import ChatWidget from '@/components/ChatWidget';
 
 const Directory = () => {
   const [activeTab, setActiveTab] = useState('investors');
@@ -37,8 +36,6 @@ const Directory = () => {
         {activeTab === 'permaculture' && <PermacultureFarms />}
         {activeTab === 'grants' && <Web3Grants />}
       </div>
-
-      <ChatWidget />
     </div>
   );
 };
