@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
 
       <footer className="bg-white/10 backdrop-blur-md py-8 mt-12 relative z-10">
         <div className="container mx-auto px-4 text-center">
-          <p>For The Good Of All</p>
+          <p>For the good of all</p>
         </div>
       </footer>
     </div>
