@@ -14,7 +14,6 @@ const Layout = ({ children }) => {
             <Logo className="w-12 h-12" />
           </Link>
           <nav className="flex items-center space-x-6">
-            <NavLink to="/">Directory</NavLink>
             <NavLink to="/inspiring-innovations">Newsletter</NavLink>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -34,7 +33,7 @@ const Layout = ({ children }) => {
 
       <footer className="bg-white/10 backdrop-blur-md py-8 mt-12 relative z-10">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; {new Date().getFullYear()} GrowBeyond. All rights reserved.</p>
+          <p>For The Good Of All</p>
         </div>
       </footer>
     </div>
