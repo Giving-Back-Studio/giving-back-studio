@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ChatMessage from './chat/ChatMessage';
-import ChatInput from './chat/ChatInput';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Send } from 'lucide-react';
 
-const ChatWidget = () => {
+const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const navigate = useNavigate();
@@ -59,17 +60,45 @@ const ChatWidget = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 w-80 bg-white/10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden">
-      <div className="h-96 overflow-y-auto p-4">
+    <div className="bg-white/10 rounded-lg p-4 max-w-2xl mx-auto">
+      <div className="h-[400px] overflow-y-auto mb-4">
         {messages.map((message, index) => (
-          <ChatMessage key={index} message={message} onOptionSelect={handleOptionSelect} />
+          <div key={index} className={`mb-4 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
+            <div className={`inline-block p-2 rounded-lg ${message.sender === 'user' ? 'bg-gbs-purple' : 'bg-gbs-blue'}`}>
+              {message.text}
+            </div>
+            {message.options && (
+              <div className="mt-2 space-y-2">
+                {message.options.map((option, optionIndex) => (
+                  <Button
+                    key={optionIndex}
+                    onClick={() => handleOptionSelect(option)}
+                    variant="outline"
+                    className="mr-2 mb-2"
+                  >
+                    {option.text}
+                  </Button>
+                ))}
+              </div>
+            )}
+          </div>
         ))}
       </div>
-      <div className="p-4 bg-white/5">
-        <ChatInput input={input} setInput={setInput} handleSend={handleSend} />
+      <div className="flex">
+        <Input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+          placeholder="Type your message..."
+          className="flex-grow mr-2"
+        />
+        <Button onClick={handleSend}>
+          <Send className="h-4 w-4" />
+        </Button>
       </div>
     </div>
   );
 };
 
-export default ChatWidget;
+export default ChatInterface;
