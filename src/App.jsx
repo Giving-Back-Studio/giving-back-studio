@@ -7,7 +7,8 @@ import Directory from "./pages/Directory";
 import ApplyToCoCreate from "./pages/ApplyToCoCreate";
 import Admin from "./pages/Admin";
 import InspiringInnovations from "./pages/InspiringInnovations";
-import NewLandingPage from "./pages/NewLandingPage";
+import Index from "./pages/Index";
+import Prototype from "./pages/Prototype";
 import ChatWidget from "./components/ChatWidget";
 import useGoogleAnalytics from "./hooks/useGoogleAnalytics";
 
@@ -19,11 +20,12 @@ const AppContent = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Directory />} />
+        <Route path="/" element={<Index />} />
+        <Route path="/directory" element={<Directory />} />
         <Route path="/build" element={<ApplyToCoCreate />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/inspiring-innovations" element={<InspiringInnovations />} />
-        <Route path="/landing-page" element={<NewLandingPage />} />
+        <Route path="/prototype" element={<Prototype />} />
       </Routes>
       <ChatWidget />
     </Layout>
