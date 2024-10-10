@@ -14,6 +14,7 @@ const Layout = ({ children }) => {
             <Logo className="w-12 h-12" />
           </Link>
           <nav className="flex items-center space-x-6">
+            <NavLink to="/directory">Directory</NavLink>
             <NavLink to="/inspiring-innovations">Newsletter</NavLink>
             <motion.div
               whileHover={{ scale: 1.05 }}
