@@ -5,7 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
 import { toast } from 'sonner';
 import ConfettiAnimation from '@/components/ConfettiAnimation';
-import { CheckCircle } from 'lucide-react';
+import BuildServiceHeader from '@/components/BuildServiceHeader';
+import BuildServiceBenefits from '@/components/BuildServiceBenefits';
+import BuildServiceEligibility from '@/components/BuildServiceEligibility';
+import BuildServiceGains from '@/components/BuildServiceGains';
+import BuildServiceFAQ from '@/components/BuildServiceFAQ';
 
 const ApplyToCoCreate = () => {
   const [formData, setFormData] = useState({
@@ -53,61 +57,10 @@ const ApplyToCoCreate = () => {
       <ConfettiAnimation show={showConfetti} />
       
       <div className="max-w-4xl w-full space-y-12">
-        <header className="text-center space-y-4">
-          <h1 className="text-5xl font-bold mb-4">
-            Launch a Profitable, Purpose-Driven Social Enterprise
-          </h1>
-          <p className="text-xl">
-            Our Build service is your path to creating new, purpose-aligned revenue streams that generate profit with impact, guaranteed.
-          </p>
-        </header>
-
-        <section className="bg-white/10 p-8 rounded-lg space-y-6">
-          <h2 className="text-3xl font-semibold mb-4">Who is it for?</h2>
-          <p className="text-lg mb-4">
-            Investing in SELF is the right choice if:
-          </p>
-          <ul className="space-y-2">
-            {[
-              "You are ready to add new revenue streams that advance wellbeing.",
-              "You have a proven track record of building successful social enterprises.",
-              "You resonate with a purpose-driven culture that values deep, root-cause solutions."
-            ].map((item, index) => (
-              <li key={index} className="flex items-start">
-                <CheckCircle className="text-gbs-lavender mr-2 flex-shrink-0 mt-1" size={20} />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="bg-white/10 p-8 rounded-lg space-y-6">
-          <h2 className="text-3xl font-semibold mb-4">What do you get?</h2>
-          <ul className="space-y-4">
-            {[
-              {
-                title: "Time & Money Savings",
-                description: "We'll craft a purpose-aligned path to growth, saving you valuable resources."
-              },
-              {
-                title: "Collaborative Alignment",
-                description: "Weekly facilitated team building sessions to deepen alignment, resolve tensions, and turn insights into evolutionary action. You'll create a cohesive team that works together to achieve what everyone truly wants."
-              },
-              {
-                title: "Step-by-Step Guidance",
-                description: "From idea to the launch of your Minimum Viable Business Product, our full-stack training prepares you to build self-organizing teams and launch profitable ventures."
-              }
-            ].map((item, index) => (
-              <li key={index} className="flex flex-col">
-                <span className="font-semibold text-gbs-lavender text-lg">{item.title}</span>
-                <span>{item.description}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-xl font-semibold mt-6">
-            Result? New purpose-aligned revenue streams that accelerate your impact.
-          </p>
-        </section>
+        <BuildServiceHeader />
+        <BuildServiceBenefits />
+        <BuildServiceEligibility />
+        <BuildServiceGains />
 
         <form onSubmit={handleSubmit} className="bg-white/10 rounded-lg p-8 space-y-6">
           <h2 className="text-3xl font-semibold mb-4">Apply to Co-Create</h2>
@@ -197,6 +150,8 @@ const ApplyToCoCreate = () => {
             Submit application
           </Button>
         </form>
+
+        <BuildServiceFAQ />
       </div>
     </div>
   );
