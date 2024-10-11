@@ -25,17 +25,17 @@ const Index = () => {
           <FeatureCard
             icon={<Globe className="w-12 h-12" />}
             title="Impact Ecosystem Directory"
-            description="Discover and connect with a curated network of conscious investors, regenerative farms, and transformative grants. Your next collaboration for change is just a click away."
+            description="Connect with our curated network of conscious investors, regenerative farms, and transformative grants. Find your next collaboration for change with just a few clicks."
           />
           <FeatureCard
             icon={<Users className="w-12 h-12" />}
             title="Collective Funding Platform"
-            description="Fuel open-source projects that serve the greater good. Our integrated crowdfunding tools turn visionary ideas into world-changing realities through the power of community support."
+            description="Fuel open-source projects serving the greater good. Our integrated crowdfunding tools turn visionary ideas into world-changing realities through community support."
           />
           <FeatureCard
             icon={<Zap className="w-12 h-12" />}
             title="AI-Powered Growth Allies"
-            description="Harness the potential of custom AI agents to supercharge your impact. From smart lead generation to personalized mentorship, our digital allies help you scale your vision efficiently and ethically."
+            description="Leverage our AI tools to automate lead generation, track impact metrics, and scale your social enterprise efficiently and ethically."
           />
         </section>
 
