@@ -9,7 +9,9 @@ const Index = () => {
       <div className="container mx-auto px-4 py-16 space-y-16">
         <header className="text-center space-y-4">
           <h1 className="text-4xl md:text-6xl font-bold">Giving Back Studio</h1>
-          <p className="text-xl md:text-2xl font-light">Catalyzing Humanity-Centered Innovation for a Thriving World</p>
+          <p className="text-xl md:text-2xl font-light">
+            Empowering Changemakers with AI Tools and Resources to Build a Thriving, Regenerative World
+          </p>
         </header>
 
         <section className="space-y-8">
