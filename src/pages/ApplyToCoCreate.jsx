@@ -72,7 +72,7 @@ const ApplyToCoCreate = () => {
               type="text"
               value={formData.name}
               onChange={handleChange}
-              className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+              className="w-full bg-white/20 border-white/30 text-white placeholder-white"
               required
             />
           </div>
@@ -85,7 +85,7 @@ const ApplyToCoCreate = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+              className="w-full bg-white/20 border-white/30 text-white placeholder-white"
               placeholder="your.email@example.com"
               required
             />
@@ -99,7 +99,7 @@ const ApplyToCoCreate = () => {
               type="text"
               value={formData.enterprise_name}
               onChange={handleChange}
-              className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+              className="w-full bg-white/20 border-white/30 text-white placeholder-white"
               required
             />
           </div>
@@ -112,7 +112,7 @@ const ApplyToCoCreate = () => {
               placeholder="In 1 sentence, what is the purpose of this enterprise?"
               value={formData.enterprise_purpose}
               onChange={handleChange}
-              className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+              className="w-full bg-white/20 border-white/30 text-white placeholder-white"
               rows={2}
               required
             />
@@ -126,7 +126,7 @@ const ApplyToCoCreate = () => {
               placeholder="What is your biggest challenge right now as a social enterprise creator?"
               value={formData.challenge}
               onChange={handleChange}
-              className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+              className="w-full bg-white/20 border-white/30 text-white placeholder-white"
               rows={3}
               required
             />
@@ -140,7 +140,7 @@ const ApplyToCoCreate = () => {
               placeholder="If you could grow revenue exponentially, how would it serve humanity?"
               value={formData.growth_impact}
               onChange={handleChange}
-              className="w-full bg-white/20 border-white/30 text-white placeholder-white/70"
+              className="w-full bg-white/20 border-white/30 text-white placeholder-white"
               rows={3}
               required
             />
