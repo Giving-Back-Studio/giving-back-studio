@@ -5,7 +5,6 @@ import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
 import CTAButton from '@/components/CTAButton';
-import { Command, CommandInput } from "@/components/ui/command";
 
 const InspiringInnovations = () => {
   const [email, setEmail] = useState('');
@@ -30,10 +29,10 @@ const InspiringInnovations = () => {
     <div className="flex flex-col md:flex-row items-center justify-between min-h-[calc(100vh-80px)] p-8 md:space-x-12">
       {showCosmic && <CosmicAnimation />}
       <div className="w-full md:w-1/2 mb-8 md:mb-0">
-        <Command className="rounded-lg border shadow-md">
-          <CommandInput placeholder="Grow your regenerative social enterprise" />
-        </Command>
-        <p className="text-xl mt-4 font-light">
+        <h1 className="text-5xl font-light mb-4 leading-tight">
+          Grow your regenerative social enterprise
+        </h1>
+        <p className="text-xl mb-4 font-light">
           Insights on permaculture, humanity-centered design, and heart-based leadership to transform your social enterprise.
         </p>
       </div>
