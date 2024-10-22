@@ -1,14 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import FlowerOfLife from '@/components/FlowerOfLife';
 import { motion } from 'framer-motion';
 
 const Layout = ({ children }) => {
+  const navigate = useNavigate();
+
   const scrollToApplication = () => {
-    const applicationSection = document.getElementById('apply-to-co-create');
-    if (applicationSection) {
-      applicationSection.scrollIntoView({ behavior: 'smooth' });
+    if (window.location.pathname !== '/') {
+      navigate('/', { state: { scrollToApply: true } });
+    } else {
+      const applicationSection = document.getElementById('apply-to-co-create');
+      if (applicationSection) {
+        applicationSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -26,7 +32,7 @@ const Layout = ({ children }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button onClick={scrollToApplication} className="bg-gbs-lightPurple hover:bg-gbs-lavender hover:text-gbs-darkPurple text-white px-4 py-2 rounded-full transition-colors duration-300">
+              <button onClick={scrollToApplication} className="btn-primary">
                 Apply to Co-Create
               </button>
             </motion.div>
