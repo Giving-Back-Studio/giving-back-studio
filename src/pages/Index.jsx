@@ -1,9 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Globe, Users, Zap, Heart } from 'lucide-react';
+import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
+import { toast } from 'sonner';
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    enterprise_name: '',
+    enterprise_purpose: '',
+    challenge: '',
+    growth_impact: ''
+  });
+
+  const addApplication = useAddApplication();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await addApplication.mutateAsync(formData);
+      toast.success('Application submitted successfully!');
+      setFormData({
+        name: '',
+        email: '',
+        enterprise_name: '',
+        enterprise_purpose: '',
+        challenge: '',
+        growth_impact: ''
+      });
+    } catch (error) {
+      toast.error(`Error submitting application: ${error.message}`);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gbs-darkPurple via-gbs-purple to-gbs-blue text-white">
       <div className="container mx-auto px-4 py-16 space-y-16">
@@ -62,11 +102,67 @@ const Index = () => {
           <p className="text-lg md:text-xl max-w-3xl mx-auto">
             Whether you're a seasoned social entrepreneur, an aspiring changemaker, or an investor seeking meaningful returns, Giving Back Studio is your launchpad for impact. Together, we're not just building businesses—we're cultivating a regenerative future where everyone thrives.
           </p>
-          <Button asChild className="text-lg px-6 py-3 bg-gbs-lightPurple hover:bg-gbs-lavender hover:text-gbs-darkPurple transition-all duration-300">
-            <Link to="/build">
-              Start Your Impact Journey <ArrowRight className="ml-2" />
-            </Link>
-          </Button>
+        </section>
+
+        <section className="bg-white/10 rounded-lg p-8 space-y-6">
+          <h2 className="text-3xl font-semibold mb-4 text-center">Apply to Co-Create</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              name="name"
+              placeholder="Your full name"
+              value={formData.name}
+              onChange={handleChange}
+              className="bg-white/20 border-white/30 text-white placeholder-white/70"
+              required
+            />
+            <Input
+              name="email"
+              type="email"
+              placeholder="Your email"
+              value={formData.email}
+              onChange={handleChange}
+              className="bg-white/20 border-white/30 text-white placeholder-white/70"
+              required
+            />
+            <Input
+              name="enterprise_name"
+              placeholder="Enterprise name"
+              value={formData.enterprise_name}
+              onChange={handleChange}
+              className="bg-white/20 border-white/30 text-white placeholder-white/70"
+              required
+            />
+            <Textarea
+              name="enterprise_purpose"
+              placeholder="In 1 sentence, what is the purpose of this enterprise?"
+              value={formData.enterprise_purpose}
+              onChange={handleChange}
+              className="bg-white/20 border-white/30 text-white placeholder-white/70"
+              rows={2}
+              required
+            />
+            <Textarea
+              name="challenge"
+              placeholder="What is your biggest challenge right now as a social enterprise creator?"
+              value={formData.challenge}
+              onChange={handleChange}
+              className="bg-white/20 border-white/30 text-white placeholder-white/70"
+              rows={3}
+              required
+            />
+            <Textarea
+              name="growth_impact"
+              placeholder="If you could grow revenue exponentially, how would it serve humanity?"
+              value={formData.growth_impact}
+              onChange={handleChange}
+              className="bg-white/20 border-white/30 text-white placeholder-white/70"
+              rows={3}
+              required
+            />
+            <Button type="submit" className="w-full bg-gbs-lightPurple hover:bg-gbs-lavender text-white py-3 text-lg">
+              Submit application
+            </Button>
+          </form>
         </section>
 
         <footer className="text-center space-y-4">
