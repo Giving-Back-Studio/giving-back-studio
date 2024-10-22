@@ -55,7 +55,7 @@ const InspiringInnovations = () => {
           <Input
             type="email"
             placeholder="Your email"
-            className="bg-white/20 border-white/50 text-white placeholder-white text-lg py-3"
+            className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400 text-lg py-3"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
