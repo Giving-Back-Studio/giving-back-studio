@@ -87,7 +87,7 @@ const Index = () => {
               placeholder="Your full name"
               value={formData.name}
               onChange={handleChange}
-              className="bg-white/20 border-white/30 text-white placeholder-white"
+              className="bg-white/30 border-white/50 text-white placeholder-white"
               required
             />
             <Input
@@ -96,7 +96,7 @@ const Index = () => {
               placeholder="Your email"
               value={formData.email}
               onChange={handleChange}
-              className="bg-white/20 border-white/30 text-white placeholder-white"
+              className="bg-white/30 border-white/50 text-white placeholder-white"
               required
             />
             <Input
@@ -104,7 +104,7 @@ const Index = () => {
               placeholder="Enterprise name"
               value={formData.enterprise_name}
               onChange={handleChange}
-              className="bg-white/20 border-white/30 text-white placeholder-white"
+              className="bg-white/30 border-white/50 text-white placeholder-white"
               required
             />
             <Textarea
@@ -112,7 +112,7 @@ const Index = () => {
               placeholder="In 1 sentence, what is the purpose of this enterprise?"
               value={formData.enterprise_purpose}
               onChange={handleChange}
-              className="bg-white/20 border-white/30 text-white placeholder-white"
+              className="bg-white/30 border-white/50 text-white placeholder-white"
               rows={2}
               required
             />
@@ -121,7 +121,7 @@ const Index = () => {
               placeholder="What is your biggest challenge right now as a social enterprise creator?"
               value={formData.challenge}
               onChange={handleChange}
-              className="bg-white/20 border-white/30 text-white placeholder-white"
+              className="bg-white/30 border-white/50 text-white placeholder-white"
               rows={3}
               required
             />
@@ -130,7 +130,7 @@ const Index = () => {
               placeholder="If you could grow revenue exponentially, how would it serve humanity?"
               value={formData.growth_impact}
               onChange={handleChange}
-              className="bg-white/20 border-white/30 text-white placeholder-white"
+              className="bg-white/30 border-white/50 text-white placeholder-white"
               rows={3}
               required
             />
