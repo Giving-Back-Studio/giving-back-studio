@@ -38,18 +38,20 @@ const InspiringInnovations = () => {
       </div>
 
       <div className="w-full md:w-1/2 bg-white/10 p-8 rounded-xl">
-        <h2 className="text-2xl font-light mb-6">Every Monday, you'll get:</h2>
+        <h2 className="text-2xl font-light mb-6">Every Wednesday, you'll get:</h2>
         <ul className="space-y-4 mb-8">
-          {[
-            "A practical Integrative Organizing lesson",
-            "New tools to grow and scale your impact",
-            "Invitations to exclusive events and conversations"
-          ].map((benefit, index) => (
-            <li key={index} className="flex items-center text-lg">
-              <CheckCircle className="text-green-400 mr-4 flex-shrink-0" size={24} />
-              <span>{benefit}</span>
-            </li>
-          ))}
+          <li className="flex items-center text-lg">
+            <CheckCircle className="text-green-400 mr-4 flex-shrink-0" size={24} />
+            <span>A practical lesson about growing cooperative social enterprises</span>
+          </li>
+          <li className="flex items-center text-lg">
+            <CheckCircle className="text-green-400 mr-4 flex-shrink-0" size={24} />
+            <span>New tools to grow and scale your impact</span>
+          </li>
+          <li className="flex items-center text-lg">
+            <CheckCircle className="text-green-400 mr-4 flex-shrink-0" size={24} />
+            <span>Invitations to exclusive events and conversations</span>
+          </li>
         </ul>
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
