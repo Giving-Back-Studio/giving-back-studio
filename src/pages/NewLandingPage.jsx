@@ -7,9 +7,20 @@ const NewLandingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gbs-darkPurple via-gbs-purple to-gbs-blue text-white">
       <div className="container mx-auto px-4 py-16 space-y-16">
-        <header className="text-center space-y-4">
-          <h1 className="text-4xl md:text-6xl font-bold">Giving Back Studio</h1>
-          <p className="text-xl md:text-2xl font-light">Catalyzing Humanity-Centered Innovation for a Thriving World</p>
+        <header className="text-center space-y-6">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            Empower Your Vision<br />
+            <span className="text-gbs-lavender">Transform the World</span>
+          </h1>
+          <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
+            Join Giving Back Studio and turn your social enterprise ideas into reality. 
+            Together, we'll create a thriving future for all.
+          </p>
+          <Button asChild className="text-lg px-6 py-3 bg-gbs-lightPurple hover:bg-gbs-lavender hover:text-gbs-darkPurple transition-all duration-300">
+            <Link to="/build">
+              Start Your Impact Journey <ArrowRight className="ml-2" />
+            </Link>
+          </Button>
         </header>
 
         <section className="space-y-8">
@@ -71,6 +82,7 @@ const NewLandingPage = () => {
           <p className="text-xl">Ready to give back and grow forward?</p>
           <p>Contact us: <a href="mailto:hello@givingback.studio" className="underline hover:text-gbs-lavender transition-colors">hello@givingback.studio</a></p>
         </footer>
+
       </div>
     </div>
   );
