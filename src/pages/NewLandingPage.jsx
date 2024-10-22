@@ -9,12 +9,12 @@ const NewLandingPage = () => {
       <div className="container mx-auto px-4 py-16 space-y-16">
         <header className="text-center space-y-6">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Catalyze Change,<br />
-            <span className="text-gbs-lavender">Amplify Impact</span>
+            Imagine <span className="text-gbs-lavender">Transforming</span> Your Vision<br />
+            Into a Thriving Social Enterprise
           </h1>
           <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
-            Giving Back Studio empowers visionaries like you to build thriving social enterprises. 
-            Together, we'll create innovative solutions for a regenerative future.
+            Giving Back Studio empowers visionaries like you to build innovative solutions for a regenerative future. 
+            Together, we'll amplify your impact and catalyze positive change.
           </p>
           <Button asChild className="text-lg px-6 py-3 bg-gbs-lightPurple hover:bg-gbs-lavender hover:text-gbs-darkPurple transition-all duration-300">
             <Link to="/build">
