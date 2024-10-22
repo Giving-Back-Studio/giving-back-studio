@@ -82,58 +82,79 @@ const Index = () => {
         <section id="apply-to-co-create" className="bg-white/10 rounded-lg p-8 space-y-6">
           <h2 className="text-3xl font-semibold mb-4 text-center">Apply to Co-Create</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              name="name"
-              placeholder="Your full name"
-              value={formData.name}
-              onChange={handleChange}
-              className="bg-white/30 border-white/50 text-white placeholder-white/90"
-              required
-            />
-            <Input
-              name="email"
-              type="email"
-              placeholder="Your email"
-              value={formData.email}
-              onChange={handleChange}
-              className="bg-white/30 border-white/50 text-white placeholder-white/90"
-              required
-            />
-            <Input
-              name="enterprise_name"
-              placeholder="Enterprise name"
-              value={formData.enterprise_name}
-              onChange={handleChange}
-              className="bg-white/30 border-white/50 text-white placeholder-white/90"
-              required
-            />
-            <Textarea
-              name="enterprise_purpose"
-              placeholder="In 1 sentence, what is the purpose of this enterprise?"
-              value={formData.enterprise_purpose}
-              onChange={handleChange}
-              className="bg-white/30 border-white/50 text-white placeholder-white/90"
-              rows={2}
-              required
-            />
-            <Textarea
-              name="challenge"
-              placeholder="What is your biggest challenge right now as a social enterprise creator?"
-              value={formData.challenge}
-              onChange={handleChange}
-              className="bg-white/30 border-white/50 text-white placeholder-white/90"
-              rows={3}
-              required
-            />
-            <Textarea
-              name="growth_impact"
-              placeholder="If you could grow revenue exponentially, how would it serve humanity?"
-              value={formData.growth_impact}
-              onChange={handleChange}
-              className="bg-white/30 border-white/50 text-white placeholder-white/90"
-              rows={3}
-              required
-            />
+            <div>
+              <label htmlFor="name" className="block text-white mb-2">Your full name</label>
+              <Input
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="bg-white/30 border-white/50 text-white placeholder-white/90"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-white mb-2">Your email</label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="bg-white/30 border-white/50 text-white placeholder-white/90"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="enterprise_name" className="block text-white mb-2">Enterprise name</label>
+              <Input
+                id="enterprise_name"
+                name="enterprise_name"
+                value={formData.enterprise_name}
+                onChange={handleChange}
+                className="bg-white/30 border-white/50 text-white placeholder-white/90"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="enterprise_purpose" className="block text-white mb-2">Enterprise purpose</label>
+              <Textarea
+                id="enterprise_purpose"
+                name="enterprise_purpose"
+                placeholder="In 1 sentence, what is the purpose of this enterprise?"
+                value={formData.enterprise_purpose}
+                onChange={handleChange}
+                className="bg-white/30 border-white/50 text-white placeholder-white/90"
+                rows={2}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="challenge" className="block text-white mb-2">Your biggest challenge</label>
+              <Textarea
+                id="challenge"
+                name="challenge"
+                placeholder="What is your biggest challenge right now as a social enterprise creator?"
+                value={formData.challenge}
+                onChange={handleChange}
+                className="bg-white/30 border-white/50 text-white placeholder-white/90"
+                rows={3}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="growth_impact" className="block text-white mb-2">Growth impact</label>
+              <Textarea
+                id="growth_impact"
+                name="growth_impact"
+                placeholder="If you could grow revenue exponentially, how would it serve humanity?"
+                value={formData.growth_impact}
+                onChange={handleChange}
+                className="bg-white/30 border-white/50 text-white placeholder-white/90"
+                rows={3}
+                required
+              />
+            </div>
             <Button type="submit" className="w-full bg-gbs-lightPurple hover:bg-gbs-lavender text-white py-3 text-lg">
               Submit application
             </Button>
