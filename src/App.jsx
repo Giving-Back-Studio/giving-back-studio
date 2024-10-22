@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Layout from "./components/Layout";
-import NewLandingPage from "./pages/NewLandingPage";
+import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import InspiringInnovations from "./pages/InspiringInnovations";
 import Prototype from "./pages/Prototype";
@@ -34,7 +34,7 @@ const AppContent = () => {
     <Layout>
       <ScrollToApply />
       <Routes>
-        <Route path="/" element={<NewLandingPage />} />
+        <Route path="/" element={<Index />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/inspiring-innovations" element={<InspiringInnovations />} />
         <Route path="/prototype" element={<Prototype />} />
