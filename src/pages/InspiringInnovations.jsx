@@ -26,7 +26,7 @@ const InspiringInnovations = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between min-h-[calc(100vh-80px)] p-8">
+    <div className="flex flex-col md:flex-row items-center justify-between min-h-[calc(100vh-80px)] p-8 md:space-x-12">
       {showCosmic && <CosmicAnimation />}
       <div className="w-full md:w-1/2 mb-8 md:mb-0">
         <h1 className="text-5xl font-light mb-4 leading-tight">
