@@ -97,14 +97,7 @@ const Index = () => {
           </ul>
         </section>
 
-        <section className="text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl font-semibold">Join the Movement</h2>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto">
-            Whether you're a seasoned social entrepreneur, an aspiring changemaker, or an investor seeking meaningful returns, Giving Back Studio is your launchpad for impact. Together, we're not just building businesses—we're cultivating a regenerative future where everyone thrives.
-          </p>
-        </section>
-
-        <section className="bg-white/10 rounded-lg p-8 space-y-6">
+        <section id="apply-to-co-create" className="bg-white/10 rounded-lg p-8 space-y-6">
           <h2 className="text-3xl font-semibold mb-4 text-center">Apply to Co-Create</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input

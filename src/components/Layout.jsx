@@ -5,6 +5,13 @@ import FlowerOfLife from '@/components/FlowerOfLife';
 import { motion } from 'framer-motion';
 
 const Layout = ({ children }) => {
+  const scrollToApplication = () => {
+    const applicationSection = document.getElementById('apply-to-co-create');
+    if (applicationSection) {
+      applicationSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gbs-darkPurple via-gbs-purple to-gbs-blue text-white font-sans flex flex-col relative overflow-hidden">
       <FlowerOfLife opacity={0.05} color="255,255,255" rotationDuration={240} />
@@ -14,15 +21,14 @@ const Layout = ({ children }) => {
             <Logo className="w-12 h-12" />
           </Link>
           <nav className="flex items-center space-x-6">
-            <NavLink to="/directory">Directory</NavLink>
             <NavLink to="/inspiring-innovations">Newsletter</NavLink>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to="/build" className="bg-gbs-lightPurple hover:bg-gbs-lavender hover:text-gbs-darkPurple text-white px-4 py-2 rounded-full transition-colors duration-300">
+              <button onClick={scrollToApplication} className="bg-gbs-lightPurple hover:bg-gbs-lavender hover:text-gbs-darkPurple text-white px-4 py-2 rounded-full transition-colors duration-300">
                 Apply to Co-Create
-              </Link>
+              </button>
             </motion.div>
           </nav>
         </div>
