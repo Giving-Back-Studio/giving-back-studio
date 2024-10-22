@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAddInspiringInnovationListItem } from '@/integrations/supabase';
 import { toast } from 'sonner';
 import CosmicAnimation from '@/components/CosmicAnimation';
+import CTAButton from '@/components/CTAButton';
 
 const InspiringInnovations = () => {
   const [email, setEmail] = useState('');
@@ -60,9 +60,9 @@ const InspiringInnovations = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button type="submit" className="btn-primary w-full">
+          <CTAButton type="submit" className="w-full">
             Subscribe to inspiring innovations
-          </Button>
+          </CTAButton>
         </form>
       </div>
     </div>

@@ -107,12 +107,3 @@ html, body, #root {
 .form-input {
   @apply bg-gbs-darkPurple border-white/30 text-white placeholder-gray-400 rounded-md focus:ring-2 focus:ring-white/50 focus:border-transparent;
 }
-
-/* Unified custom styles for buttons */
-.btn-primary {
-  @apply bg-gbs-lightPurple hover:bg-gbs-purple text-white font-medium py-3 px-6 rounded-full transition-colors duration-300 text-lg shadow-md hover:shadow-lg;
-}
-
-.btn-secondary {
-  @apply bg-white text-gbs-purple hover:bg-gbs-lavender hover:text-gbs-darkPurple font-medium py-3 px-6 rounded-full transition-colors duration-300 text-lg shadow-md hover:shadow-lg;
-}

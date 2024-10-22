@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import FlowerOfLife from '@/components/FlowerOfLife';
 import { motion } from 'framer-motion';
+import CTAButton from '@/components/CTAButton';
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
@@ -32,9 +33,9 @@ const Layout = ({ children }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button onClick={scrollToApplication} className="btn-primary">
+              <CTAButton onClick={scrollToApplication}>
                 Apply to Co-Create
-              </button>
+              </CTAButton>
             </motion.div>
           </nav>
         </div>

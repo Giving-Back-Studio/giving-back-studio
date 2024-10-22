@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
+import { Heart } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Heart } from 'lucide-react';
 import { useAddApplication } from "@/integrations/supabase/hooks/useApplications";
 import { toast } from 'sonner';
+import CTAButton from '@/components/CTAButton';
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -158,9 +158,9 @@ const Index = () => {
                 required
               />
             </div>
-            <Button type="submit" className="btn-primary w-full">
+            <CTAButton type="submit" className="w-full">
               Submit application
-            </Button>
+            </CTAButton>
           </form>
         </section>
 
