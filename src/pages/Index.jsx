@@ -89,7 +89,7 @@ const Index = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400"
+                className="form-input"
                 placeholder="Enter your full name"
                 required
               />
@@ -102,7 +102,7 @@ const Index = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400"
+                className="form-input"
                 placeholder="Enter your email address"
                 required
               />
@@ -114,7 +114,7 @@ const Index = () => {
                 name="enterprise_name"
                 value={formData.enterprise_name}
                 onChange={handleChange}
-                className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400"
+                className="form-input"
                 placeholder="Enter your enterprise name"
                 required
               />
@@ -127,7 +127,7 @@ const Index = () => {
                 placeholder="In 1 sentence, what is the purpose of this enterprise?"
                 value={formData.enterprise_purpose}
                 onChange={handleChange}
-                className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400"
+                className="form-input"
                 rows={2}
                 required
               />
@@ -140,7 +140,7 @@ const Index = () => {
                 placeholder="What is your biggest challenge right now as a social enterprise creator?"
                 value={formData.challenge}
                 onChange={handleChange}
-                className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400"
+                className="form-input"
                 rows={3}
                 required
               />
@@ -153,12 +153,12 @@ const Index = () => {
                 placeholder="If you could grow revenue exponentially, how would it serve humanity?"
                 value={formData.growth_impact}
                 onChange={handleChange}
-                className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400"
+                className="form-input"
                 rows={3}
                 required
               />
             </div>
-            <Button type="submit" className="w-full bg-gbs-lightPurple hover:bg-gbs-lavender text-white py-3 text-lg">
+            <Button type="submit" className="btn-primary w-full">
               Submit application
             </Button>
           </form>

@@ -55,12 +55,12 @@ const InspiringInnovations = () => {
           <Input
             type="email"
             placeholder="Your email"
-            className="bg-gbs-darkPurple border-white/50 text-white placeholder-gray-400 text-lg py-3"
+            className="form-input"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white text-lg py-3">
+          <Button type="submit" className="btn-primary w-full">
             Subscribe to inspiring innovations
           </Button>
         </form>
