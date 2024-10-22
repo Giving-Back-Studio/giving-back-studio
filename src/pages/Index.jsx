@@ -47,10 +47,14 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gbs-darkPurple via-gbs-purple to-gbs-blue text-white">
       <div className="container mx-auto px-4 py-16 space-y-16">
-        <header className="text-center space-y-4">
-          <h1 className="text-4xl md:text-6xl font-bold">Giving Back Studio</h1>
-          <p className="text-xl md:text-2xl font-light">
-            Empowering Changemakers to Build Cooperative Social Enterprises
+        <header className="text-center space-y-6">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            Imagine <span className="text-gbs-lavender">Transforming</span> Your Vision<br />
+            Into a Thriving Social Enterprise
+          </h1>
+          <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
+            Giving Back Studio empowers visionaries like you to build innovative solutions for a regenerative future. 
+            Together, we'll amplify your impact and catalyze positive change.
           </p>
         </header>
 
